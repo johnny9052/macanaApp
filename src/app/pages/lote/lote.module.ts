@@ -7,13 +7,17 @@ import { IonicModule } from '@ionic/angular';
 import { LotePageRoutingModule } from './lote-routing.module';
 
 import { LotePage } from './lote.page';
+import { ComponentsModule } from '../../components/components.module';
+import { TranslateModule } from '@ngx-translate/core';
 
 @NgModule({
   imports: [
     CommonModule,
     FormsModule,
     IonicModule,
-    LotePageRoutingModule
+    LotePageRoutingModule,
+    ComponentsModule,
+    TranslateModule
   ],
   declarations: [LotePage]
 })

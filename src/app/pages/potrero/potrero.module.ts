@@ -7,13 +7,17 @@ import { IonicModule } from '@ionic/angular';
 import { PotreroPageRoutingModule } from './potrero-routing.module';
 
 import { PotreroPage } from './potrero.page';
+import { ComponentsModule } from '../../components/components.module';
+import { TranslateModule } from '@ngx-translate/core';
 
 @NgModule({
   imports: [
     CommonModule,
     FormsModule,
     IonicModule,
-    PotreroPageRoutingModule
+    PotreroPageRoutingModule,
+    ComponentsModule,
+    TranslateModule
   ],
   declarations: [PotreroPage]
 })

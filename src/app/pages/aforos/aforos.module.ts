@@ -7,13 +7,17 @@ import { IonicModule } from '@ionic/angular';
 import { AforosPageRoutingModule } from './aforos-routing.module';
 
 import { AforosPage } from './aforos.page';
+import { ComponentsModule } from '../../components/components.module';
+import { TranslateModule } from '@ngx-translate/core';
 
 @NgModule({
   imports: [
     CommonModule,
     FormsModule,
     IonicModule,
-    AforosPageRoutingModule
+    AforosPageRoutingModule,
+    ComponentsModule,
+    TranslateModule
   ],
   declarations: [AforosPage]
 })

@@ -7,13 +7,17 @@ import { IonicModule } from '@ionic/angular';
 import { AnalisisPageRoutingModule } from './analisis-routing.module';
 
 import { AnalisisPage } from './analisis.page';
+import { ComponentsModule } from '../../components/components.module';
+import { TranslateModule } from '@ngx-translate/core';
 
 @NgModule({
   imports: [
     CommonModule,
     FormsModule,
     IonicModule,
-    AnalisisPageRoutingModule
+    AnalisisPageRoutingModule,
+    ComponentsModule,
+    TranslateModule
   ],
   declarations: [AnalisisPage]
 })

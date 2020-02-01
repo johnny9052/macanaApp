@@ -7,13 +7,17 @@ import { IonicModule } from '@ionic/angular';
 import { PlagaPageRoutingModule } from './plaga-routing.module';
 
 import { PlagaPage } from './plaga.page';
+import { ComponentsModule } from '../../components/components.module';
+import { TranslateModule } from '@ngx-translate/core';
 
 @NgModule({
   imports: [
     CommonModule,
     FormsModule,
     IonicModule,
-    PlagaPageRoutingModule
+    PlagaPageRoutingModule,
+    ComponentsModule,
+    TranslateModule
   ],
   declarations: [PlagaPage]
 })

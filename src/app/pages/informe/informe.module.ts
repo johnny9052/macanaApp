@@ -7,13 +7,17 @@ import { IonicModule } from '@ionic/angular';
 import { InformePageRoutingModule } from './informe-routing.module';
 
 import { InformePage } from './informe.page';
+import { ComponentsModule } from '../../components/components.module';
+import { TranslateModule } from '@ngx-translate/core';
 
 @NgModule({
   imports: [
     CommonModule,
     FormsModule,
     IonicModule,
-    InformePageRoutingModule
+    InformePageRoutingModule,
+    ComponentsModule,
+    TranslateModule
   ],
   declarations: [InformePage]
 })

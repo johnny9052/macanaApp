@@ -9,15 +9,15 @@
   swipeGesture="false"
 >
   <ion-header>
-    <ion-toolbar color="flylinkers">
+    <ion-toolbar color="macana">
       <ion-chip
-        color="flylinkers"
+        color="macana"
       >
         <ion-avatar>
-          <img src="https://flylinkers.com/media/{{(imagePerfil !== '' )? imagePerfil: 'avatar_2x.png' }}">
+          <img src="https://macana.com/media/{{(imagePerfil !== '' )? imagePerfil: 'avatar_2x.png' }}">
         </ion-avatar>
 
-        <ion-label color="flylinkersBlanco">{{firstName}} {{lastName}} </ion-label>
+        <ion-label color="macanaBlanco">{{firstName}} {{lastName}} </ion-label>
       </ion-chip>
     </ion-toolbar>
   </ion-header>
@@ -29,7 +29,7 @@
           <ion-icon
             name="home"
             slot="start"
-            color="flylinkers"
+            color="macana"
           ></ion-icon>
 
           <ion-label>{{ 'inicio' | translate }}</ion-label>
@@ -37,99 +37,210 @@
       </ion-menu-toggle>
 
       <ion-menu-toggle>
-        <ion-item routerLink="/profile">
+        <ion-item routerLink="/usuarios">
           <ion-icon
             name="person"
             slot="start"
-            color="flylinkers"
+            color="macana"
           ></ion-icon>
 
-          <ion-label>{{ 'perfil' | translate }}</ion-label>
+          <ion-label>{{ 'usuarios' | translate }}</ion-label>
         </ion-item>
       </ion-menu-toggle>
 
       <ion-menu-toggle>
-        <ion-item routerLink="/notification">
+        <ion-item routerLink="/roles">
           <ion-icon
             name="notifications"
             slot="start"
-            color="flylinkers"
+            color="macana"
           ></ion-icon>
 
-          <ion-label>{{ 'notificaciones' | translate }}</ion-label>
+          <ion-label>{{ 'roles' | translate }}</ion-label>
         </ion-item>
       </ion-menu-toggle>
 
       <ion-menu-toggle>
-        <ion-item routerLink="/messages">
+        <ion-item routerLink="/permisos">
           <ion-icon
             name="chatbubbles"
             slot="start"
-            color="flylinkers"
+            color="macana"
           ></ion-icon>
 
-          <ion-label>{{ 'mensajes' | translate }}</ion-label>
+          <ion-label>{{ 'permisos' | translate }}</ion-label>
         </ion-item>
       </ion-menu-toggle>
 
       <ion-menu-toggle>
-        <ion-item routerLink="/interests">
+        <ion-item routerLink="/lote">
           <ion-icon
             name="flag"
             slot="start"
-            color="flylinkers"
+            color="macana"
           ></ion-icon>
 
-          <ion-label>{{ 'intereses' | translate }}</ion-label>
+          <ion-label>{{ 'lotes' | translate }}</ion-label>
         </ion-item>
       </ion-menu-toggle>
 
       <ion-menu-toggle>
-        <ion-item routerLink="/event">
+        <ion-item routerLink="/potrero">
           <ion-icon
             name="locate"
             slot="start"
-            color="flylinkers"
+            color="macana"
           ></ion-icon>
 
-          <ion-label>{{ 'eventos' | translate }}</ion-label>
+          <ion-label>{{ 'potreros' | translate }}</ion-label>
         </ion-item>
       </ion-menu-toggle>
 
       <ion-menu-toggle>
-        <ion-item routerLink="/network">
+        <ion-item routerLink="/aforos">
           <ion-icon
             name="people"
             slot="start"
-            color="flylinkers"
+            color="macana"
           ></ion-icon>
 
-          <ion-label>{{ 'red' | translate }}</ion-label>
+          <ion-label>{{ 'aforos' | translate }}</ion-label>
         </ion-item>
       </ion-menu-toggle>
 
       <ion-menu-toggle>
-        <ion-item routerLink="/sponsor">
+        <ion-item routerLink="/vacas">
           <ion-icon
             name="flag"
             slot="start"
-            color="flylinkers"
+            color="macana"
           ></ion-icon>
 
-          <ion-label>{{ 'patrocinadores' | translate }}</ion-label>
+          <ion-label>{{ 'vacas' | translate }}</ion-label>
         </ion-item>
       </ion-menu-toggle>
-      <!-- <ion-menu-toggle>
-        <ion-item routerLink="/view-detail-post">
+
+
+      <ion-menu-toggle>
+        <ion-item routerLink="/cambio-climatico">
           <ion-icon
-            name="person"
+            name="flag"
             slot="start"
-            color="flylinkers"
+            color="macana"
           ></ion-icon>
 
-          <ion-label>View Post</ion-label>
+          <ion-label>{{ 'cambioClimatico' | translate }}</ion-label>
         </ion-item>
-      </ion-menu-toggle> -->
+      </ion-menu-toggle>
+
+
+      <ion-menu-toggle>
+        <ion-item routerLink="/pluviosidad">
+          <ion-icon
+            name="flag"
+            slot="start"
+            color="macana"
+          ></ion-icon>
+
+          <ion-label>{{ 'pluviosidad' | translate }}</ion-label>
+        </ion-item>
+      </ion-menu-toggle>
+
+
+
+
+      <ion-menu-toggle>
+        <ion-item routerLink="/plaga">
+          <ion-icon
+            name="flag"
+            slot="start"
+            color="macana"
+          ></ion-icon>
+
+          <ion-label>{{ 'plagas' | translate }}</ion-label>
+        </ion-item>
+      </ion-menu-toggle>
+
+
+
+
+      <ion-menu-toggle>
+        <ion-item routerLink="/fertilizacion">
+          <ion-icon
+            name="flag"
+            slot="start"
+            color="macana"
+          ></ion-icon>
+
+          <ion-label>{{ 'fertilizacion' | translate }}</ion-label>
+        </ion-item>
+      </ion-menu-toggle>
+
+
+
+      <ion-menu-toggle>
+        <ion-item routerLink="/reportes">
+          <ion-icon
+            name="flag"
+            slot="start"
+            color="macana"
+          ></ion-icon>
+
+          <ion-label>{{ 'reportes' | translate }}</ion-label>
+        </ion-item>
+      </ion-menu-toggle>
+
+
+
+
+
+
+      <ion-menu-toggle>
+        <ion-item routerLink="/plan-manejo">
+          <ion-icon
+            name="flag"
+            slot="start"
+            color="macana"
+          ></ion-icon>
+
+          <ion-label>{{ 'planManejo' | translate }}</ion-label>
+        </ion-item>
+      </ion-menu-toggle>
+
+
+
+
+
+
+
+      <ion-menu-toggle>
+        <ion-item routerLink="/analisis">
+          <ion-icon
+            name="flag"
+            slot="start"
+            color="macana"
+          ></ion-icon>
+
+          <ion-label>{{ 'analisis' | translate }}</ion-label>
+        </ion-item>
+      </ion-menu-toggle>
+
+
+
+
+
+      <ion-menu-toggle>
+        <ion-item routerLink="/informe">
+          <ion-icon
+            name="flag"
+            slot="start"
+            color="macana"
+          ></ion-icon>
+
+          <ion-label>{{ 'informes' | translate }}</ion-label>
+        </ion-item>
+      </ion-menu-toggle>
+      
     </ion-list>
   </ion-content>
 </ion-menu>

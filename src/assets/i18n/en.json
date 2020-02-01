@@ -25,5 +25,24 @@
     "usuarioIdentificado": "Usuario identificado correctamente",
     "usuarioNoExiste": "Usuario o contraseña invalidos", 
     "desconectarse":"Desconectarse",
-    "deseaDesconectarse":"¿Esta seguro que desea desconectarse?"
+    "deseaDesconectarse":"¿Esta seguro que desea desconectarse?",
+
+    "***************MENU**********************": "",
+    "usuarios":"Usuarios",
+    "roles":"Roles",
+    "permisos":"Permisos",
+    "lotes":"Rotacion",
+    "potreros":"Potreros",
+    "aforos":"Aforos",
+    "vacas":"Vacas",
+    "cambioClimatico":"Cambio climatico",
+    "pluviosidad":"Pluviosidad",
+    "plagas":"Plagas",
+    "fertilizacion":"Fertilizacion",
+    "rotacion":"Rotacion",
+    "reportes":"Reportes",
+    "planManejo":"Plan de manejo",
+    "analisis":"Analisis",
+    "informes":"Informes"
+
 }

@@ -7,13 +7,17 @@ import { IonicModule } from '@ionic/angular';
 import { CambioClimaticoPageRoutingModule } from './cambio-climatico-routing.module';
 
 import { CambioClimaticoPage } from './cambio-climatico.page';
+import { ComponentsModule } from '../../components/components.module';
+import { TranslateModule } from '@ngx-translate/core';
 
 @NgModule({
   imports: [
     CommonModule,
     FormsModule,
     IonicModule,
-    CambioClimaticoPageRoutingModule
+    CambioClimaticoPageRoutingModule,
+    ComponentsModule,
+    TranslateModule
   ],
   declarations: [CambioClimaticoPage]
 })

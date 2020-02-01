@@ -7,13 +7,17 @@ import { IonicModule } from '@ionic/angular';
 import { PermisosPageRoutingModule } from './permisos-routing.module';
 
 import { PermisosPage } from './permisos.page';
+import { ComponentsModule } from '../../components/components.module';
+import { TranslateModule } from '@ngx-translate/core';
 
 @NgModule({
   imports: [
     CommonModule,
     FormsModule,
     IonicModule,
-    PermisosPageRoutingModule
+    PermisosPageRoutingModule,
+    ComponentsModule,
+    TranslateModule
   ],
   declarations: [PermisosPage]
 })

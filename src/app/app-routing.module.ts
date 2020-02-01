@@ -37,10 +37,6 @@ const routes: Routes = [
     loadChildren: () => import('./pages/fertilizacion/fertilizacion.module').then( m => m.FertilizacionPageModule)
   },
   {
-    path: 'rotacion',
-    loadChildren: () => import('./pages/rotacion/rotacion.module').then( m => m.RotacionPageModule)
-  },
-  {
     path: 'usuarios',
     loadChildren: () => import('./pages/usuarios/usuarios.module').then( m => m.UsuariosPageModule)
   },

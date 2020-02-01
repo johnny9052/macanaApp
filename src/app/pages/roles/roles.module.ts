@@ -7,13 +7,17 @@ import { IonicModule } from '@ionic/angular';
 import { RolesPageRoutingModule } from './roles-routing.module';
 
 import { RolesPage } from './roles.page';
+import { ComponentsModule } from '../../components/components.module';
+import { TranslateModule } from '@ngx-translate/core';
 
 @NgModule({
   imports: [
     CommonModule,
     FormsModule,
     IonicModule,
-    RolesPageRoutingModule
+    RolesPageRoutingModule,
+    ComponentsModule,
+    TranslateModule
   ],
   declarations: [RolesPage]
 })
