@@ -1,0 +1,33 @@
+<ion-header no-border="no-border">
+  <ion-toolbar color="macana">
+    <!-- Esta seccion coloca el icono del menu, para 
+      que sea desplegado cuando se le da click -->
+
+    <ion-buttons slot="start">
+      <!-- ESTO ACTIVA EL MENU, INDICANDO EL ID DEL MENU QUE SE QUIERE ACTIVAR -->
+      <ion-menu-button
+        color="macanaBlanco"
+        menu="primerMenu"
+      ></ion-menu-button>
+    </ion-buttons>
+
+    <!-- Searchbar with cancel button always shown -->
+
+    <ion-searchbar
+      showCancelButton="never"
+      *ngIf="search"
+    ></ion-searchbar>
+
+    <ion-title *ngIf="titulo">{{titulo}}</ion-title>
+
+    <ion-buttons slot="end">
+      <!-- <ion-button color="flylinkersBlanco">
+        <ion-icon name="chatbubbles"></ion-icon>
+      </ion-button> -->
+
+      <ion-button color="macanaBlanco" (click)="logOut()">
+        <ion-icon name="log-out" ></ion-icon>
+      </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>

@@ -11,6 +11,7 @@ import { IonicModule } from '@ionic/angular';
 import { RouterModule } from '@angular/router';
 
 import { TranslateModule } from '@ngx-translate/core';
+import { HeaderComponent } from './header/header.component';
 
 
 @NgModule({
@@ -18,12 +19,14 @@ import { TranslateModule } from '@ngx-translate/core';
     MenuComponent,
     HeaderLoginComponent,
     FooterLoginComponent,
+    HeaderComponent
   ],
   exports: [
     /*Todos los componentes se que exportaran a traves del modulo*/
     MenuComponent,
     HeaderLoginComponent,
     FooterLoginComponent,
+    HeaderComponent
     /*END Todos los componentes se que exportaran a traves del modulo*/
  ],
   imports: [

@@ -7,13 +7,19 @@ import { IonicModule } from '@ionic/angular';
 import { MasterPagePageRoutingModule } from './master-page-routing.module';
 
 import { MasterPagePage } from './master-page.page';
+import { ComponentsModule } from '../../components/components.module';
+
+/*Necesario para las opciones de la parte superior del idioma tipo popover*/
+import { TranslateModule } from '@ngx-translate/core';
 
 @NgModule({
   imports: [
     CommonModule,
     FormsModule,
     IonicModule,
-    MasterPagePageRoutingModule
+    MasterPagePageRoutingModule,
+    ComponentsModule,
+    TranslateModule
   ],
   declarations: [MasterPagePage]
 })

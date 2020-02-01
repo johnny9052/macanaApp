@@ -19,5 +19,11 @@
     "acceder":"Ingresar", 
     "olvidoContrasena":"Olvido su contraseña",
     "ingreseCorreo":"Ingrese su correo",
-    "ingresePassword":"Ingrese su contraseña"
+    "ingresePassword":"Ingrese su contraseña",
+
+    "identificacion": "Identificación",
+    "usuarioIdentificado": "Usuario identificado correctamente",
+    "usuarioNoExiste": "Usuario o contraseña invalidos", 
+    "desconectarse":"Desconectarse",
+    "deseaDesconectarse":"¿Esta seguro que desea desconectarse?"
 }
