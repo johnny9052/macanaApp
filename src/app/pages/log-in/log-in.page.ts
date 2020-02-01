@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ModelUserLogIn } from 'src/app/interfaces/userInterface';
 import { HelperService } from 'src/app/util/HelperService';
 import { SecurityService } from '../../services/security.service';
+import { NavController } from '@ionic/angular';
 
 @Component({
   selector: 'app-log-in',
@@ -13,7 +14,8 @@ export class LogInPage implements OnInit {
 
   constructor(
     private securityService: SecurityService,
-    public helperService: HelperService
+    public helperService: HelperService,
+    private navCtrl: NavController
   ) {}
 
   ngOnInit() {
@@ -22,7 +24,8 @@ export class LogInPage implements OnInit {
   }
 
   identify() {
-    this.securityService.logInUser(this.userDataLogIn);
+    // this.securityService.logInUser(this.userDataLogIn);
+    this.navCtrl.navigateForward('/master-page');
   }
 
   openPage(url: string) {

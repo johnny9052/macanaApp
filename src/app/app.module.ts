@@ -16,7 +16,11 @@ import { HttpClient, HttpClientModule } from '@angular/common/http';
 import { ComponentsModule } from './components/components.module';
 
 
+/*Import necesario para el almacenamiento local*/
+import { IonicStorageModule } from '@ionic/storage';
 
+
+/*Import necesario para la internacionalizacion*/
 import { TranslateLoader, TranslateModule } from '@ngx-translate/core';
 import { TranslateHttpLoader } from '@ngx-translate/http-loader';
 import { PipesModule } from './pipes/pipes.module';
@@ -43,7 +47,8 @@ npm install @ionic-native/http*/
         },
         deps: [ HttpClient ]
       }
-    })],
+    }),
+    IonicStorageModule.forRoot()],
   providers: [
     StatusBar,
     SplashScreen,

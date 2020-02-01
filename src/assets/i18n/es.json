@@ -16,4 +16,8 @@
 
     "logInTitulo": "Spanish",
     "ingresar": "Ingresar",
+    "acceder":"Ingresar", 
+    "olvidoContrasena":"Olvido su contraseña",
+    "ingreseCorreo":"Ingrese su correo",
+    "ingresePassword":"Ingrese su contraseña"
 }
