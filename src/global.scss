@@ -24,3 +24,134 @@
 @import "~@ionic/angular/css/text-alignment.css";
 @import "~@ionic/angular/css/text-transformation.css";
 @import "~@ionic/angular/css/flex-utils.css";
+
+
+
+
+
+
+.image-center{
+    margin:0 auto;
+ }
+
+ .flylinkersColor{
+     color:#1a9aaf;
+ }
+
+ .flylinkersBlanco{
+    color:#ffffff;
+}
+
+.top-margin-20{
+    margin-top: 20px;
+}
+
+.top-margin-10{
+    margin-top: 10px;
+}
+
+.bordeado{
+    border: 3px solid #eef2f3;
+}
+
+
+.imageLogoBanner{
+    padding:7px !important; 
+    margin-left: 5px;
+}
+
+
+.slidePaginaPrincipal{
+    height: 87%;
+}
+
+.ionSlidePaginaPrincipal{
+    height: 100%; background-image: url('/assets/slides/backgroundIndex.jpg');  
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+.ionToolBarPaginaPrincipal{
+    height: 13%;
+}
+
+
+
+
+/*****************************
+******************************
+      ANIMACIONES
+******************************
+******************************
+*****************************/
+
+
+.animated {
+    -webkit-animation-duration: 1s;
+    animation-duration: 1s;
+    -webkit-animation-fill-mode: both;
+    animation-fill-mode: both;
+}
+
+.animated.fast {
+    -webkit-animation-duration: 400ms;
+    animation-duration: 400ms;
+}
+
+@-webkit-keyframes fadeIn {
+    from {
+      opacity: 0;
+    }
+  
+    to {
+      opacity: 1;
+    }
+  }
+  
+  @keyframes fadeIn {
+    from {
+      opacity: 0;
+    }
+  
+    to {
+      opacity: 1;
+    }
+  }
+  
+  .fadeIn {
+    -webkit-animation-name: fadeIn;
+    animation-name: fadeIn;
+  }
+
+  
+  @-webkit-keyframes fadeOut {
+    from {
+      opacity: 1;
+    }
+  
+    to {
+      opacity: 0;
+    }
+  }
+  
+  @keyframes fadeOut {
+    from {
+      opacity: 1;
+    }
+  
+    to {
+      opacity: 0;
+    }
+  }
+  
+  .fadeOut {
+    -webkit-animation-name: fadeOut;
+    animation-name: fadeOut;
+  }
+
+
+  .ocultarElemento{
+    display: none;
+  }
+  

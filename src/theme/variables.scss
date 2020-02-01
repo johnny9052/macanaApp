@@ -74,4 +74,124 @@
   --ion-color-light-contrast-rgb: 0, 0, 0;
   --ion-color-light-shade: #d7d8da;
   --ion-color-light-tint: #f5f6f9;
+
+
+  /*macana*/
+
+  --ion-color-macana: #1a9aaf;
+  --ion-color-macana-rgb: 26,154,175;
+  --ion-color-macana-contrast: #ffffff;
+  --ion-color-macana-contrast-rgb: 255,255,255;
+  --ion-color-macana-shade: #17889a;
+  --ion-color-macana-tint: #31a4b7;
+
+  /*macana-Gris*/
+  --ion-color-macanaGris: #eef2f3;
+  --ion-color-macanaGris-rgb: 238,242,243;
+  --ion-color-macanaGris-contrast: #000000;
+  --ion-color-macanaGris-contrast-rgb: 0,0,0;
+  --ion-color-macanaGris-shade: #d1d5d6;
+  --ion-color-macanaGris-tint: #f0f3f4;
+
+
+   /*macana-Gris-Oscuro*/
+   --ion-color-macanaGrisOscuro: #c0c0c0;
+   --ion-color-macanaGrisOscuro-rgb: 192,192,192;
+   --ion-color-macanaGrisOscuro-contrast: #000000;
+   --ion-color-macanaGrisOscuro-contrast-rgb: 0,0,0;
+   --ion-color-macanaGrisOscuro-shade: #a9a9a9;
+   --ion-color-macanaGrisOscuro-tint: #c6c6c6;
+
+
+  /*macana-Blanco*/
+  --ion-color-macanaBlanco: #ffffff;
+  --ion-color-macanaBlanco-rgb: 255,255,255;
+  --ion-color-macanaBlanco-contrast: #000000;
+  --ion-color-macanaBlanco-contrast-rgb: 0,0,0;
+  --ion-color-macanaBlanco-shade: #e0e0e0;
+  --ion-color-macanaBlanco-tint: #ffffff;
+
+
+  /*macana-Negro*/
+  --ion-color-macanaNegro: #000000;
+  --ion-color-macanaNegro-rgb: 0,0,0;
+  --ion-color-macanaNegro-contrast: #ffffff;
+  --ion-color-macanaNegro-contrast-rgb: 255,255,255;
+  --ion-color-macanaNegro-shade: #000000;
+  --ion-color-macanaNegro-tint: #1a1a1a;
+
+
+  
+  /*macana-Rojo*/
+  --ion-color-macanaRojo: #ff5a5a;
+  --ion-color-macanaRojo-rgb: 255,90,90;
+  --ion-color-macanaRojo-contrast: #ffffff;
+  --ion-color-macanaRojo-contrast-rgb: 0,0,0;
+  --ion-color-macanaRojo-shade: #e04f4f;
+  --ion-color-macanaRojo-tint: #ff6b6b;
+}
+
+/*macana*/
+.ion-color-macana {
+  --ion-color-base: var(--ion-color-macana) !important;
+  --ion-color-base-rgb: var(--ion-color-macana-rgb) !important;
+  --ion-color-contrast: var(--ion-color-macana-contrast) !important;
+  --ion-color-contrast-rgb: var(--ion-color-macana-contrast-rgb) !important;
+  --ion-color-shade: var(--ion-color-macana-shade) !important;
+  --ion-color-tint: var(--ion-color-macana-tint) !important;
+}
+
+
+/*macana Gris*/
+.ion-color-macanaGris {
+  --ion-color-base: var(--ion-color-macanaGris) !important;
+  --ion-color-base-rgb: var(--ion-color-macanaGris-rgb) !important;
+  --ion-color-contrast: var(--ion-color-macanaGris-contrast) !important;
+  --ion-color-contrast-rgb: var(--ion-color-macanaGris-contrast-rgb) !important;
+  --ion-color-shade: var(--ion-color-macanaGris-shade) !important;
+  --ion-color-tint: var(--ion-color-macanaGris-tint) !important;
+}
+
+/*macana Gris*/
+.ion-color-macanaGrisOscuro {
+  --ion-color-base: var(--ion-color-macanaGrisOscuro) !important;
+  --ion-color-base-rgb: var(--ion-color-macanaGrisOscuro-rgb) !important;
+  --ion-color-contrast: var(--ion-color-macanaGrisOscuro-contrast) !important;
+  --ion-color-contrast-rgb: var(--ion-color-macanaGrisOscuro-contrast-rgb) !important;
+  --ion-color-shade: var(--ion-color-macanaGrisOscuro-shade) !important;
+  --ion-color-tint: var(--ion-color-macanaGrisOscuro-tint) !important;
+}
+
+
+/*macana Blanco*/
+.ion-color-macanaBlanco {
+  --ion-color-base: var(--ion-color-macanaBlanco) !important;
+  --ion-color-base-rgb: var(--ion-color-macanaBlanco-rgb) !important;
+  --ion-color-contrast: var(--ion-color-macanaBlanco-contrast) !important;
+  --ion-color-contrast-rgb: var(--ion-color-macanaBlanco-contrast-rgb) !important;
+  --ion-color-shade: var(--ion-color-macanaBlanco-shade) !important;
+  --ion-color-tint: var(--ion-color-macanaBlanco-tint) !important;
+}
+
+
+
+/*macana Negro*/
+.ion-color-macanaNegro {
+  --ion-color-base: var(--ion-color-macanaNegro) !important;
+  --ion-color-base-rgb: var(--ion-color-macanaNegro-rgb) !important;
+  --ion-color-contrast: var(--ion-color-macanaNegro-contrast) !important;
+  --ion-color-contrast-rgb: var(--ion-color-macanaNegro-contrast-rgb) !important;
+  --ion-color-shade: var(--ion-color-macanaNegro-shade) !important;
+  --ion-color-tint: var(--ion-color-macanaNegro-tint) !important;
+}
+
+
+/*macana Rojo*/
+.ion-color-macanaRojo {
+  --ion-color-base: var(--ion-color-macanaRojo) !important;
+  --ion-color-base-rgb: var(--ion-color-macanaRojo-rgb) !important;
+  --ion-color-contrast: var(--ion-color-macanaRojo-contrast) !important;
+  --ion-color-contrast-rgb: var(--ion-color-macanaRojo-contrast-rgb) !important;
+  --ion-color-shade: var(--ion-color-macanaRojo-shade) !important;
+  --ion-color-tint: var(--ion-color-macanaRojo-tint) !important;
 }

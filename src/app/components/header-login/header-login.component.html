@@ -1,0 +1,31 @@
+<ion-header
+  no-border="no-border" 
+  [ngClass]="ocultar"
+>
+  <ion-toolbar color="flylinkers">
+    <ion-buttons
+      slot="end"
+      *ngIf="botonRegreso"
+    >
+
+      <ion-button fill="clear" (click)="ocultarRegresar()">
+        <ion-icon name="arrow-back"></ion-icon>
+        {{ 'regresar' | translate }}
+      </ion-button>
+    </ion-buttons>
+
+    <ion-buttons slot="end"  *ngIf="botonIngreso">
+      <ion-button routerLink="/identify" fill="clear">
+        <ion-icon name="person"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+
+
+
+    <ion-title>{{titulo}}</ion-title>
+
+    <ion-thumbnail slot="start" class="imageLogoBanner">
+      <img src="/assets/images/logo.png">
+    </ion-thumbnail>
+  </ion-toolbar>
+</ion-header>
