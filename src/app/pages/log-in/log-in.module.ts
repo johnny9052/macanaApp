@@ -9,13 +9,18 @@ import { LogInPageRoutingModule } from './log-in-routing.module';
 import { LogInPage } from './log-in.page';
 import { ComponentsModule } from '../../components/components.module';
 
+
+/*Necesario para las opciones de la parte superior del idioma tipo popover*/
+import { TranslateModule } from '@ngx-translate/core';
+
 @NgModule({
   imports: [
     CommonModule,
     FormsModule,
     IonicModule,
     LogInPageRoutingModule,
-    ComponentsModule
+    ComponentsModule,
+    TranslateModule
   ],
   declarations: [LogInPage]
 })
