@@ -1,8 +1,34 @@
 <app-header titulo="{{ 'usuarios' | translate }}"></app-header>
 
-<ion-content>
+  <ion-content>
+
+    <ion-button color="macana" fill="outline" expand="full"
+    >Crear usuario</ion-button>
 
 
-<ion-content>
+    <ion-refresher slot="fixed" (ionRefresh)="refreshPost($event)">
+      <ion-refresher-content></ion-refresher-content>
+    </ion-refresher>
 
-</ion-content>
+    <br />
+
+    <ion-item
+      *ngFor="let usuario of usuarios"
+      (click)="viewUser(usuario.id,usuario.primer_nombre,usuario.segundo_nombre,
+      usuario.primer_apellido,usuario.segundo_apellido,usuario.cedula,usuario.correo,usuario.celular,usuario.foto,usuario.usuario,
+      usuario.rol_id,usuario.descripcion)"
+    >
+      <ion-avatar slot="start">
+        <img
+          src="http://localhost/MacapaAppBackend/Resource/Images/Users/{{(usuario.foto !== '' &&  usuario.foto !==null)? usuario.foto: 'avatar_2x.png' }}"
+        />
+      </ion-avatar>
+      <ion-label>
+        <h3 slot="start">
+          {{usuario.primer_nombre}} {{usuario.primer_apellido}}
+        </h3>
+        <p>{{usuario.usuario}}</p>
+        <p>{{usuario.rol_nombre}}</p>
+      </ion-label>
+    </ion-item>
+  </ion-content>

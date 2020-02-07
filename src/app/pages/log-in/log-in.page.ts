@@ -24,8 +24,13 @@ export class LogInPage implements OnInit {
   }
 
   identify() {
-    // this.securityService.logInUser(this.userDataLogIn);
-    this.navCtrl.navigateForward('/master-page');
+    // tslint:disable-next-line: prefer-const
+    let postDataObj = new FormData();
+    postDataObj.append('username' , this.userDataLogIn.username);
+    postDataObj.append('password' , this.userDataLogIn.password);
+    postDataObj.append('action' , 'logIn');
+
+    this.securityService.logInUser(postDataObj);
   }
 
   openPage(url: string) {

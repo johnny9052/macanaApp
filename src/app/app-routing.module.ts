@@ -68,6 +68,14 @@ const routes: Routes = [
     path: 'vacas',
     loadChildren: () => import('./pages/vacas/vacas.module').then( m => m.VacasPageModule)
   },
+  {
+    path: 'usuarios-detail',
+    loadChildren: () => import('./pages/usuarios-detail/usuarios-detail.module').then( m => m.UsuariosDetailPageModule)
+  },
+  {
+    path: 'roles-detail',
+    loadChildren: () => import('./pages/roles-detail/roles-detail.module').then( m => m.RolesDetailPageModule)
+  },
 ];
 
 @NgModule({

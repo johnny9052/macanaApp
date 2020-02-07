@@ -76,11 +76,12 @@ redireccionara al login*/
   /*Funcion que se encarga de identificar al usuario, recibiendo por parametro
 sus datos de acceso*/
   logInUser(postData: any) {
-    const urlLogIn = 'https://flylinkers.com/es/login_user_app/';
+    const urlLogIn = 'http://localhost/MacapaAppBackend/Controller/Security/CtlLogIn.php';
     /*Se muestra una barra de carga*/
     this.helperService.mostrarBarraDeCarga(this.translate.instant('espere'));
+
     /*Se envian los datos al servidor, enviando la url y los datos*/
-    this.http.post(urlLogIn, postData, { headers: this.headersPost }).subscribe(
+    this.http.post(urlLogIn, postData).subscribe(
       data => {
         /*Se Oculta la barra de carga tan pronto se recibe una respuesta*/
         this.helperService.ocultarBarraCarga();
@@ -91,21 +92,22 @@ sus datos de acceso*/
         if (res.code === '1') {
           // console.log(res);
           /*Se almacena de manera local el identificador del usuario*/
-          this.helperService.saveLocalData('profilePk', res.userPk);
+          this.helperService.saveLocalData('profilePk', res.profilePk);
           this.helperService.saveLocalData('firstName', res.firstName);
           this.helperService.saveLocalData('lastName', res.lastName);
+          this.helperService.saveLocalData('typeUser', res.typeUser);
           this.helperService.saveLocalData('image_perfil', res.image_perfil);
-          this.helperService.saveLocalData('profileUser', res.perfil);
+          this.helperService.saveLocalData('typeUserName', res.typeUserName);
 
           /*Se activa el evento user:logIn, el cual se registro en el menu, para que tan pronto se identique
-un usuario, se actualice la informacion en pantalla*/
+          un usuario, se actualice la informacion en pantalla*/
           this.events.publish('user:logIn');
 
           if (res.perfil !== '-1') {
-            console.log('***********************************************');
-            console.log(res.perfil);
+            /* console.log('***********************************************');
+            console.log(res.perfil); */
             /*Se valida si el usuario ya actualizo los datos del perfil o no para saber si se manda al home o
-a actualizar los datos de perfil*/
+              a actualizar los datos de perfil*/
             // tslint:disable-next-line: max-line-length
             this.helperService.showAlertRedirect(
               this.translate.instant('exitoTitulo'),

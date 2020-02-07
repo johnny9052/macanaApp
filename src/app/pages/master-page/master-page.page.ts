@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { BlockAccessService } from 'src/app/util/blockAccess';
 
 @Component({
   selector: 'app-master-page',
@@ -7,7 +8,7 @@ import { Component, OnInit } from '@angular/core';
 })
 export class MasterPagePage implements OnInit {
 
-  constructor() { }
+  constructor(private blockAccess: BlockAccessService) { }
 
   ngOnInit() {
   }

@@ -1,0 +1,86 @@
+<app-header titulo="{{ 'roles' | translate }}"></app-header>
+
+<ion-content padding="padding">
+  <form #formulario="ngForm" (ngSubmit)="saveRolData()">
+    <ion-list>
+
+
+      <ion-item>
+        <ion-label position="floating">{{ 'nombreRol' | translate }}*</ion-label>
+
+        <ion-input
+          type="text"
+          name="nombreRol"
+          required="required"
+          [(ngModel)]="rolData.nombre_rol"
+        ></ion-input>
+      </ion-item>
+
+      <ion-item>
+        <ion-label position="floating"
+          >{{ 'descripcionRol' | translate }}</ion-label
+        >
+
+        <ion-input
+          type="text"
+          name="descripcion"
+          [(ngModel)]="rolData.descripcion"
+        ></ion-input>
+      </ion-item>
+
+   
+    </ion-list>
+
+    <ion-grid fixed="fixed">
+      <ion-row class="ion-text-center">
+        <ion-col size="12" *ngIf="!this.helperService.isValidValue(rolData.id)">
+          <ion-button
+            color="macana"
+            type="submit"
+            [disabled]="formulario.invalid"
+            fill="outline"
+            expand="full"
+            >{{ 'guardar' | translate }}</ion-button
+          >
+        </ion-col>
+
+
+        <ion-col size="12" *ngIf="this.helperService.isValidValue(rolData.id)">
+            <ion-button
+              color="macana"
+              type="submit"
+              [disabled]="formulario.invalid"
+              fill="outline"
+              expand="full"
+              >{{ 'editar' | translate }}</ion-button
+            >
+          </ion-col>
+
+
+          
+        <ion-col size="12" *ngIf="this.helperService.isValidValue(rolData.id)">
+            <ion-button
+              color="macana"
+              [disabled]="formulario.invalid"
+              fill="outline"
+              expand="full"
+              (click)="deleteRolData();"
+              >{{ 'eliminar' | translate }}</ion-button
+            >
+          </ion-col>
+
+        <ion-col size="12">
+            <ion-button
+              color="macana"
+              fill="outline"
+              routerLink="/roles"
+              expand="full"
+              >{{ 'regresar' | translate }}</ion-button
+            >
+          </ion-col>
+      </ion-row>
+
+    
+    </ion-grid>
+  </form>
+</ion-content>

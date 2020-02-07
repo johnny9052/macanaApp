@@ -1,8 +1,29 @@
 <app-header titulo="{{ 'roles' | translate }}"></app-header>
 
 <ion-content>
+  <ion-content>
+    <ion-button color="macana" fill="outline" expand="full" routerLink="/roles-detail"
+      >Crear rol</ion-button
+    >
 
+    <ion-refresher slot="fixed" (ionRefresh)="refreshPost($event)">
+      <ion-refresher-content></ion-refresher-content>
+    </ion-refresher>
 
-<ion-content>
+    <br />
 
+    <ion-item *ngFor="let rol of roles" (click)="viewRol(rol.id,rol.nombre_rol,rol.descripcion)">
+      <ion-avatar slot="start">
+        <img
+          src="http://localhost/MacapaAppBackend/Resource/Images/Users/avatar_2x.png"
+        />
+      </ion-avatar>
+      <ion-label>
+        <h3 slot="start">
+          {{rol.nombre_rol}}
+        </h3>
+        <p>{{rol.descripcion}}</p>
+      </ion-label>
+    </ion-item>
+  </ion-content>
 </ion-content>

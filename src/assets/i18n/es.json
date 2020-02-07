@@ -10,6 +10,7 @@
     "***************GENERICOS**********************": "",
 
     "macanaTitulo": "Macana",
+    "regresar":"Regresar",
 
     "***************Log-In**********************": "",
   
@@ -19,6 +20,7 @@
     "acceder":"Ingresar", 
     "olvidoContrasena":"Olvido su contraseña",
     "ingreseCorreo":"Ingrese su correo",
+    "ingreseUsuario":"Ingrese su usuario",
     "ingresePassword":"Ingrese su contraseña",
 
     "identificacion": "Identificación",
@@ -28,6 +30,7 @@
     "deseaDesconectarse":"¿Esta seguro que desea desconectarse?",
 
     "***************MENU**********************": "",
+    "inicio":"Inicio",
     "usuarios":"Usuarios",
     "roles":"Roles",
     "permisos":"Permisos",
@@ -43,5 +46,38 @@
     "reportes":"Reportes",
     "planManejo":"Plan de manejo",
     "analisis":"Analisis",
-    "informes":"Informes"
+    "informes":"Informes",
+
+    "***************MENSAJES DE ACCION**********************": "",
+
+  "espere":"Espere por favor",
+
+  "exitoTransaccion": "Transaccion exitosa",
+  "errorTransaccion": "Error procesando la transaccion",
+  "exitoTitulo": "Exito",
+  "errorTitulo": "Error",
+  "aceptar": "Aceptar",
+  "borrar": "Borrar",
+  "eliminar": "Eliminar",
+  "editar": "Editar",
+  "cancelar": "Cancelar",
+  "compartir": "Compartir",
+  "seleccionar":"Seleccionar",
+  "seleccione":"Seleccione",
+  "cambiar":"Cambiar",
+  "ok": "Aceptar",
+  "crear": "Crear",
+  "enviar": "Enviar",
+  "opciones":"Opciones",
+  "info":"Informacion",
+
+  "alerta": "Alerta",
+
+  "errorCargandoInformacion": "Error cargando la informacion",
+
+  "***************GESTION ROLES**********************": "",
+  "nombreRol":"Nombre del rol",
+  "descripcionRol":"Descripcion del rol",
+  "guardarRol":"Guardar rol",
+  "rolGuardado":"Rol guardado exitosamente"
 }
