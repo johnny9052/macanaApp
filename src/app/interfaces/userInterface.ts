@@ -10,6 +10,7 @@ export interface ModelUserData {
   foto: string;
   usuario: string;
   password: string;
+  confirmarPassword: string;
   rol_nombre: string;
   rol_id: string;
   descripcion: string;

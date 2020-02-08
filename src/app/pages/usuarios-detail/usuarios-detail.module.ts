@@ -9,6 +9,7 @@ import { UsuariosDetailPageRoutingModule } from './usuarios-detail-routing.modul
 import { UsuariosDetailPage } from './usuarios-detail.page';
 import { ComponentsModule } from '../../components/components.module';
 import { TranslateModule } from '@ngx-translate/core';
+import { PipesModule } from '../../pipes/pipes.module';
 
 @NgModule({
   imports: [
@@ -17,7 +18,8 @@ import { TranslateModule } from '@ngx-translate/core';
     IonicModule,
     UsuariosDetailPageRoutingModule,
     ComponentsModule,
-    TranslateModule
+    TranslateModule,
+    PipesModule
   ],
   declarations: [UsuariosDetailPage]
 })

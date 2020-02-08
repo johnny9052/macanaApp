@@ -16,6 +16,12 @@ import { HttpClient, HttpClientModule } from '@angular/common/http';
 import { ComponentsModule } from './components/components.module';
 
 
+/*Se importa de manera global el uso de la camara*/
+import { Camera } from '@ionic-native/camera/ngx';
+
+/*Se importa de manera global el uso del plugin para CODIFICAR A BASE64 */
+import { Base64 } from '@ionic-native/base64/ngx';
+
 /*Import necesario para el almacenamiento local*/
 import { IonicStorageModule } from '@ionic/storage';
 
@@ -52,6 +58,8 @@ npm install @ionic-native/http*/
   providers: [
     StatusBar,
     SplashScreen,
+    Camera,
+    Base64,
     { provide: RouteReuseStrategy, useClass: IonicRouteStrategy }
   ],
   bootstrap: [AppComponent]

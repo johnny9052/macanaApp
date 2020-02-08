@@ -90,15 +90,15 @@ export class UsuariosPage implements OnInit {
   }
 
 
-  viewUser(pk: string, primerNombre: string, segundoNombre: string, primerApellido: string,
+  viewUser(id: string, primerNombre: string, segundoNombre: string, primerApellido: string,
            segundoApellido: string, cedula: string, correo: string, celular: string, foto: string,
            usuario: string, rolId: string, descripcion: string) {
 
-     console.log(pk);
+     console.log(id);
 
      const data: NavigationExtras = {
       state: {
-        pk,
+        id,
         primerNombre,
         segundoNombre,
         primerApellido,

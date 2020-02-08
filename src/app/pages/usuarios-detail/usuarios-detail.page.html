@@ -1,5 +1,255 @@
 <app-header titulo="{{ 'usuarios' | translate }}"></app-header>
 
-<ion-content>
 
+<ion-content padding="padding">
+
+    
+    <form
+        #formulario="ngForm"
+        (ngSubmit)="saveUserData()"
+    >
+        <ion-list>
+            <ion-item>
+                <ion-grid fixed="fixed">
+                    <ion-row class="ion-text-center">
+                        <ion-col size="12">
+                            <div class="bordeado">
+                                <!--SI NO TIENE IMAGEN DE PERFIL-->
+                                <ion-avatar *ngIf="!this.helperService.isValidValue(userData.foto)" class="image-center top-margin-20">
+                                    <img src="http://localhost/MacapaAppBackend/Resource/Images/Users/avatar_2x.png">
+                                </ion-avatar>
+
+                                <!--SI TIENE IMAGEN DE PERFIL-->
+                                <ion-avatar *ngIf="this.helperService.isValidValue(userData.foto)" class="image-center top-margin-20">
+                                    <!-- <img [src]="('https://flylinkers.com/media/' + userData.image_perfil) | imageSanitizer"> -->
+                                    <img [src]="userData.foto | imageSanitizer">
+                                </ion-avatar>
+
+                                <br>
+                            </div>
+                        </ion-col>
+                    </ion-row>
+
+                    <ion-row>
+                        <ion-col size="12">
+                            <ion-item lines="none">
+                                <ion-grid fixed="fixed">
+                                    <ion-row class="ion-text-center">
+                                        <ion-col size="3"></ion-col>
+
+                                        <!-- (click)="takePictureBase64()" -->
+                                        <ion-col size="3">
+                                            <ion-icon
+                                                name="camera"
+                                                size="large"                                                
+                                            ></ion-icon>
+                                        </ion-col>
+
+                                        <!-- (click)="loadPictureBase64()" -->
+                                        <ion-col size="3">
+                                            <ion-icon
+                                                name="images"
+                                                size="large"                                                
+                                            ></ion-icon>
+                                        </ion-col>
+
+                                        <ion-col size="3"></ion-col>
+                                    </ion-row>
+                                </ion-grid>
+                            </ion-item>
+                        </ion-col>
+                    </ion-row>
+                </ion-grid>
+            </ion-item>
+
+            <ion-item>
+                <ion-label position="floating">{{ 'primerNombre' | translate }}*</ion-label>
+                <ion-input
+                    type="text"
+                    name="primerNombre"
+                    required="required"
+                    [(ngModel)]="userData.primer_nombre"
+                ></ion-input>
+            </ion-item>
+
+
+            <ion-item>
+                <ion-label position="floating">{{ 'segundoNombre' | translate }}</ion-label>
+                <ion-input
+                    type="text"
+                    name="segundoNombre"
+                    [(ngModel)]="userData.segundo_nombre"
+                ></ion-input>
+            </ion-item>
+
+            <ion-item>
+                <ion-label position="floating">{{ 'primerApellido' | translate }}*</ion-label>
+
+                <ion-input
+                    type="text"
+                    name="primerApellido"
+                    required="required"
+                    [(ngModel)]="userData.primer_apellido"
+                ></ion-input>
+            </ion-item>
+
+
+            <ion-item>
+                <ion-label position="floating">{{ 'segundoApellido' | translate }}</ion-label>
+
+                <ion-input
+                    type="text"
+                    name="segundoApellido"
+                    [(ngModel)]="userData.segundo_apellido"
+                ></ion-input>
+            </ion-item>
+
+
+            <ion-item>
+                <ion-label position="floating">{{ 'cedula' | translate }}*</ion-label>
+
+                <ion-input
+                    type="number"
+                    name="cedula"
+                    required="required"
+                    [(ngModel)]="userData.cedula"
+                ></ion-input>
+            </ion-item>
+
+
+            <ion-item>
+                <ion-label position="floating">{{ 'correo' | translate }}</ion-label>
+
+                <ion-input
+                    type="email"
+                    name="correo"
+                    pattern="^([a-zA-Z0-9_\-\.]+)@([a-zA-Z0-9_\-\.]+)\.([a-zA-Z]{2,5})$"
+                    [(ngModel)]="userData.correo"
+                ></ion-input>
+            </ion-item>
+
+
+            <ion-item>
+                <ion-label position="floating">{{ 'celular' | translate }}</ion-label>
+
+                <ion-input
+                    type="number"
+                    name="celular"
+                    [(ngModel)]="userData.celular"
+                ></ion-input>
+            </ion-item>
+
+
+            <ion-item>
+                <ion-label position="floating">{{ 'usuario' | translate }}*</ion-label>
+
+                <ion-input
+                    type="text"
+                    name="usuario"
+                    required="required"
+                    [(ngModel)]="userData.usuario"
+                ></ion-input>
+            </ion-item>
+
+
+            <ion-item *ngIf="!this.helperService.isValidValue(userData.id)">
+                <ion-label position="floating">{{ 'password' | translate }}*</ion-label>
+                <ion-input
+                    type="password"
+                    name="password"
+                    [(ngModel)]="userData.password"
+                ></ion-input>
+            </ion-item>
+
+
+            <ion-item *ngIf="!this.helperService.isValidValue(userData.id)">
+                <ion-label position="floating">{{ 'confirmarPassword' | translate }}*</ion-label>
+                <ion-input
+                    type="password"
+                    name="password"
+                    [(ngModel)]="userData.confirmarPassword
+                    "
+                ></ion-input>
+            </ion-item>
+
+            <ion-item>
+                <ion-label>{{ 'rol' | translate }}*</ion-label>
+
+                <ion-select
+                    placeholder="Seleccione"
+                    [(ngModel)]="userData.rol_id"
+                    name="rol"
+                >
+                    <ion-select-option *ngFor="let rol of roles" value="{{rol.id}}">{{rol.nombre_rol}}</ion-select-option>
+
+                </ion-select>
+            </ion-item>
+        </ion-list>
+
+<!-- (click)="changePassword()" -->
+<ion-grid fixed="fixed">
+    <ion-row class="ion-text-center">
+      <ion-col size="12" *ngIf="!this.helperService.isValidValue(userData.id)">
+        <ion-button
+          color="macana"
+          type="submit"
+          [disabled]="formulario.invalid"
+          fill="outline"
+          expand="full"
+          >{{ 'guardar' | translate }}</ion-button
+        >
+      </ion-col>
+
+
+      <ion-col size="12" *ngIf="this.helperService.isValidValue(userData.id)">
+          <ion-button
+            color="macana"
+            type="submit"
+            [disabled]="formulario.invalid"
+            fill="outline"
+            expand="full"
+            >{{ 'editar' | translate }}</ion-button
+          >
+        </ion-col>
+
+
+        <ion-col size="12" *ngIf="this.helperService.isValidValue(userData.id)">
+            <ion-button
+              color="macana"
+              fill="outline"
+              expand="full" 
+              (click)="restablecerPassword();"
+              >{{ 'restablecerPassword' | translate }}</ion-button
+            >
+          </ion-col>
+
+
+        
+      <ion-col size="12" *ngIf="this.helperService.isValidValue(userData.id)">
+        
+        <ion-button
+            color="macana"
+            fill="outline"
+            expand="full"
+            (click)="deleteUserData();"
+            >{{ 'eliminar' | translate }}</ion-button
+          >
+        </ion-col>
+
+      <ion-col size="12">
+          <ion-button
+            color="macana"
+            fill="outline"
+            routerLink="/usuarios"
+            expand="full"
+            >{{ 'regresar' | translate }}</ion-button
+          >
+        </ion-col>
+    </ion-row>
+
+  
+  </ion-grid>
+
+       
+    </form>
 </ion-content>

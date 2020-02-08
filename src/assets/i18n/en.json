@@ -18,14 +18,14 @@
     "logInTitulo": "Spanish",
     "ingresar": "Ingresar",
     "acceder":"Ingresar", 
-    "olvidoContrasena":"Olvido su contraseña",
+    "olvidoContrasena":"Olvido su password",
     "ingreseUsuario":"Ingrese su usuario",
     "ingreseCorreo":"Ingrese su correo",
-    "ingresePassword":"Ingrese su contraseña",
+    "ingresePassword":"Ingrese su password",
 
     "identificacion": "Identificación",
     "usuarioIdentificado": "Usuario identificado correctamente",
-    "usuarioNoExiste": "Usuario o contraseña invalidos", 
+    "usuarioNoExiste": "Usuario o password invalidos", 
     "desconectarse":"Desconectarse",
     "deseaDesconectarse":"¿Esta seguro que desea desconectarse?",
 
@@ -56,6 +56,8 @@
   "errorTransaccion": "Error procesando la transaccion",
   "exitoTitulo": "Exito",
   "errorTitulo": "Error",
+  "alertaTitulo":"Alerta",
+  "passwordNoCoiciden":"Los password no coinciden",
   "aceptar": "Aceptar",
   "borrar": "Borrar",
   "eliminar": "Eliminar",
@@ -79,5 +81,20 @@
   "nombreRol":"Nombre del rol",
   "descripcionRol":"Descripcion del rol",
   "guardarRol":"Guardar rol",
-  "rolGuardado":"Rol guardado exitosamente"
+  "rolGuardado":"Rol guardado exitosamente",
+
+  "***************GESTION USUARIOS**********************": "",
+  "primerNombre":"Primer nombre",
+  "segundoNombre":"Segundo nombre",
+  "primerApellido":"Primer apellido",
+  "segundoApellido":"Segundo apellido",
+  "cedula":"Cedula",
+  "correo":"Correo",
+  "celular":"Celular",
+  "usuario":"Usuario",
+  "password":"password",
+  "confirmarPassword":"Confirme su password",
+  "rol":"Rol",
+  "seleccioneRol":"Seleccione un rol",
+  "restablecerPassword":"Restablecer password"
 }
