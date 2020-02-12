@@ -1,14 +1,18 @@
-import { Injectable } from '@angular/core';
+import { Injectable, ɵConsole } from '@angular/core';
 import { HttpHeaders, HttpClient } from '@angular/common/http';
 import { HelperService } from '../util/HelperService';
 import { NavController } from '@ionic/angular';
 import { TranslateService } from '@ngx-translate/core';
 import { ModelUserData } from '../interfaces/userInterface';
+import { environment } from '../../environments/environment';
 
 @Injectable({
   providedIn: 'root'
 })
 export class UsuariosService {
+
+  baseUrl = environment.baseUrl;
+
   /*Definicion del header funcional para envios via post*/
   private headersPost = new HttpHeaders({
     'Content-Type': 'application/x-www-form-urlencoded'
@@ -23,7 +27,7 @@ export class UsuariosService {
 
   getUsuarios() {
     return this.http.get<ModelUserData>(
-      'http://localhost/MacapaAppBackend/Controller/Configuration/CtlUser.php?action=list'
+      this.baseUrl + 'Controller/Configuration/CtlUser.php?action=list'
     );
   }
 
@@ -31,13 +35,13 @@ export class UsuariosService {
    /*Funcion que se encarga de registrar al usuario, recibiendo por parametro
   los datos del usuario*/
   saveUserDataService( postData: any) {
-    // console.log(postData);
     /*URL del web service*/
-    const url = 'http://localhost/MacapaAppBackend/Controller/Configuration/CtlUser.php';
+    const url = this.baseUrl + 'Controller/Configuration/CtlUser.php';
     /*Se muestra una barra de carga*/
     this.helperService.mostrarBarraDeCarga(this.translate.instant('espere'));
     /*Se envian los datos al servidor, enviando la url, los datos y la configuracion necesaria del header*/
     this.http.post(url, postData).subscribe(data => {
+      console.log(data);
       /*Se Oculta la barra de carga tan pronto se recibe una respuesta*/
       this.helperService.ocultarBarraCarga();
       /*Se define una variable local para recibir la respuesta*/
@@ -72,9 +76,8 @@ export class UsuariosService {
    /*Funcion que se encarga de registrar al usuario, recibiendo por parametro
   los datos del usuario*/
   deleteUserDataService( postData: any) {
-    // console.log(postData);
     /*URL del web service*/
-    const url = 'http://localhost/MacapaAppBackend/Controller/Configuration/CtlUser.php';
+    const url = this.baseUrl + 'Controller/Configuration/CtlUser.php';
     /*Se muestra una barra de carga*/
     this.helperService.mostrarBarraDeCarga(this.translate.instant('espere'));
     /*Se envian los datos al servidor, enviando la url, los datos y la configuracion necesaria del header*/
@@ -112,9 +115,8 @@ export class UsuariosService {
   /*Funcion que se encarga de registrar al usuario, recibiendo por parametro
   los datos del usuario*/
   updateUserPasswordService( postData: any) {
-    // console.log(postData);
     /*URL del web service*/
-    const url = 'http://localhost/MacapaAppBackend/Controller/Configuration/CtlUser.php';
+    const url = this.baseUrl + 'Controller/Configuration/CtlUser.php';
     /*Se muestra una barra de carga*/
     this.helperService.mostrarBarraDeCarga(this.translate.instant('espere'));
     /*Se envian los datos al servidor, enviando la url, los datos y la configuracion necesaria del header*/

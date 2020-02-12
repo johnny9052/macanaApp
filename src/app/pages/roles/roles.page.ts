@@ -6,6 +6,7 @@ import { Router, NavigationExtras } from '@angular/router';
 import { TranslateService } from '@ngx-translate/core';
 import { RolesService } from 'src/app/services/roles.service';
 import { ModelRol } from 'src/app/interfaces/rolInterface';
+import { environment } from '../../../environments/environment';
 
 @Component({
   selector: 'app-roles',
@@ -13,6 +14,8 @@ import { ModelRol } from 'src/app/interfaces/rolInterface';
   styleUrls: ['./roles.page.scss'],
 })
 export class RolesPage implements OnInit {
+
+  baseUrl = environment.baseUrl;
 
   roles: ModelRol[] = [];
 

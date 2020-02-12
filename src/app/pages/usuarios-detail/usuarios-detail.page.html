@@ -16,7 +16,7 @@
                             <div class="bordeado">
                                 <!--SI NO TIENE IMAGEN DE PERFIL-->
                                 <ion-avatar *ngIf="!this.helperService.isValidValue(userData.foto)" class="image-center top-margin-20">
-                                    <img src="http://localhost/MacapaAppBackend/Resource/Images/Users/avatar_2x.png">
+                                    <img src="{{baseUrl}}Resource/Images/Users/avatar_2x.png">
                                 </ion-avatar>
 
                                 <!--SI TIENE IMAGEN DE PERFIL-->
@@ -37,19 +37,20 @@
                                     <ion-row class="ion-text-center">
                                         <ion-col size="3"></ion-col>
 
-                                        <!-- (click)="takePictureBase64()" -->
+                                        
                                         <ion-col size="3">
                                             <ion-icon
                                                 name="camera"
-                                                size="large"                                                
+                                                size="large"  
+                                                (click)="takePictureBase64()"                                              
                                             ></ion-icon>
                                         </ion-col>
 
-                                        <!-- (click)="loadPictureBase64()" -->
                                         <ion-col size="3">
                                             <ion-icon
                                                 name="images"
-                                                size="large"                                                
+                                                size="large" 
+                                                (click)="loadPictureBase64()"                                               
                                             ></ion-icon>
                                         </ion-col>
 

@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Events } from '@ionic/angular';
 import { HelperService } from 'src/app/util/HelperService';
+import { environment } from '../../../environments/environment';
 
 @Component({
   selector: 'app-menu',
@@ -13,6 +14,9 @@ export class MenuComponent implements OnInit {
   firstName = '';
   lastName = '';
   imagePerfil = '';
+
+  baseUrl = environment.baseUrl;
+
 
   constructor(public helperService: HelperService, public events: Events) {
 

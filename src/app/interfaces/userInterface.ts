@@ -8,6 +8,9 @@ export interface ModelUserData {
   correo: string;
   celular: string;
   foto: string;
+  foto_copia_ruta_original: string;
+  fotoBase64: string;
+  fotoNombreBase64: string;
   usuario: string;
   password: string;
   confirmarPassword: string;

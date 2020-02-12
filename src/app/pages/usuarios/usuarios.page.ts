@@ -6,6 +6,7 @@ import { HelperService } from 'src/app/util/HelperService';
 import { Router, NavigationExtras } from '@angular/router';
 import { TranslateService } from '@ngx-translate/core';
 import { UsuariosService } from 'src/app/services/usuarios.service';
+import { environment } from '../../../environments/environment';
 
 @Component({
   selector: 'app-usuarios',
@@ -13,6 +14,8 @@ import { UsuariosService } from 'src/app/services/usuarios.service';
   styleUrls: ['./usuarios.page.scss'],
 })
 export class UsuariosPage implements OnInit {
+
+  baseUrl = environment.baseUrl;
 
   usuarios: ModelUserData[] = [];
 
@@ -60,7 +63,7 @@ export class UsuariosPage implements OnInit {
 
       let res: any;
       res = data;
-      // console.log(JSON.parse(res.data));
+      console.log(JSON.parse(res.data));
       this.usuarios = JSON.parse(res.data);
       this.helperService.ocultarBarraCarga();
     },
@@ -91,10 +94,10 @@ export class UsuariosPage implements OnInit {
 
 
   viewUser(id: string, primerNombre: string, segundoNombre: string, primerApellido: string,
-           segundoApellido: string, cedula: string, correo: string, celular: string, foto: string,
+           segundoApellido: string, cedula: string, correo: string, celular: string, foto: string, fotoCopiaRutaOriginal: string,
            usuario: string, rolId: string, descripcion: string) {
 
-     console.log(id);
+     console.log(fotoCopiaRutaOriginal);
 
      const data: NavigationExtras = {
       state: {
@@ -107,6 +110,7 @@ export class UsuariosPage implements OnInit {
         correo,
         celular,
         foto,
+        fotoCopiaRutaOriginal,
         usuario,
         rolId,
         descripcion

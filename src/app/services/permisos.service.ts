@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { ModelRol } from '../interfaces/rolInterface';
+import { ModelPermisos } from '../interfaces/permisosInterface';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { HelperService } from '../util/HelperService';
 import { NavController } from '@ionic/angular';
@@ -9,7 +9,7 @@ import { environment } from '../../environments/environment';
 @Injectable({
   providedIn: 'root'
 })
-export class RolesService {
+export class PermisosService {
 
   baseUrl = environment.baseUrl;
 
@@ -25,9 +25,17 @@ export class RolesService {
     private translate: TranslateService
   ) {}
 
-  getRoles() {
-    return this.http.get<ModelRol>(
-      this.baseUrl + 'Controller/Configuration/CtlRol.php?action=list'
+
+  getPermisos() {
+    return this.http.get<ModelPermisos>(
+      this.baseUrl + 'Controller/Configuration/CtlPermission.php?action=loadSimple'
+    );
+  }
+
+
+  getPermisosAsignados(idRol: any) {
+    return this.http.get<ModelPermisos>(
+      this.baseUrl + 'Controller/Configuration/CtlPermission.php?action=loadPermissionSimple&&id=' + idRol
     );
   }
 
@@ -108,7 +116,4 @@ export class RolesService {
       this.helperService.showAlert(this.translate.instant('errorTitulo'), this.translate.instant('errorTransaccion'));
     });
   }
-
-
-
 }

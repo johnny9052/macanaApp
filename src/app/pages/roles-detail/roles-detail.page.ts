@@ -70,7 +70,7 @@ getProfilePk() {
     let postDataObj = new FormData();
     postDataObj.append('id' , this.rolData.id);
     postDataObj.append('name' , this.rolData.nombre_rol);
-    postDataObj.append('description' , this.rolData.descripcion);
+    postDataObj.append('description' , this.helperService.fixNotRequiredValue(this.rolData.descripcion));
 
     if ( this.helperService.isValidValue(this.rolData.id)) {
       postDataObj.append('action' , 'update');

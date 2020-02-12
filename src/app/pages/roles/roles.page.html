@@ -15,7 +15,7 @@
     <ion-item *ngFor="let rol of roles" (click)="viewRol(rol.id,rol.nombre_rol,rol.descripcion)">
       <ion-avatar slot="start">
         <img
-          src="http://localhost/MacapaAppBackend/Resource/Images/Users/avatar_2x2.png"
+          src="{{baseUrl}}Resource/Images/Users/avatar_2x2.png"
         />
       </ion-avatar>
       <ion-label>

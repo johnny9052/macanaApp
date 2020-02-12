@@ -3,11 +3,15 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { AlertController, Events } from '@ionic/angular';
 import { HelperService } from '../util/HelperService';
 import { TranslateService } from '@ngx-translate/core';
+import { environment } from '../../environments/environment';
 
 @Injectable({
   providedIn: 'root'
 })
 export class SecurityService {
+
+  baseUrl = environment.baseUrl;
+
   /*Dependencias del servicio
   http: Dependencia para las peticiones al servidor
   alertCtrl: Depedencia para los modales,
@@ -26,63 +30,32 @@ export class SecurityService {
     'Content-Type': 'application/x-www-form-urlencoded'
   });
 
-  /*Funcion que se encarga de registrar al usuario, recibiendo por parametro
-los datos del usuario*/
-  registerUser(postData: any) {
-    /*URL del web service*/
-    const urlRegister = 'https://flylinkers.com/es/registerApp/';
-    /*Se muestra una barra de carga*/
-    this.helperService.mostrarBarraDeCarga(this.translate.instant('espere'));
-    /*Se envian los datos al servidor, enviando la url, los datos y la configuracion necesaria del header*/
-    this.http
-      .post(urlRegister, postData, { headers: this.headersPost })
-      .subscribe(
-        data => {
-          /*Se Oculta la barra de carga tan pronto se recibe una respuesta*/
-          this.helperService.ocultarBarraCarga();
-          /*Se define una variable local para recibir la respuesta*/
-          let res: any;
-          res = data;
-          /*Si el codigo enviado por el servidor es 1, es porque fue exitoso el registro*/
-          if (res.code === '1') {
-            /*Se muestra un modal indicando que el registro fue exitoso, el cual al ser presionado
-redireccionara al login*/
-            // tslint:disable-next-line: max-line-length
-            this.helperService.showAlertRedirect(
-              this.translate.instant('exitoTitulo'),
-              this.translate.instant('nuevoUsuarioExito'),
-              '/identify'
-            );
-          } else {
-            /*Si no retorna uno es porque el usuario ya existe*/
-            this.helperService.showAlert(
-              this.translate.instant('errorTitulo'),
-              this.translate.instant('nuevoUsuarioExistente')
-            );
-          }
-        },
-        error => {
-          /*Se Oculta la barra de carga tan pronto se recibe una respuesta*/
-          this.helperService.ocultarBarraCarga();
-          /*Sino es porque se genero un error en el servidor*/
-          this.helperService.showAlert(
-            this.translate.instant('errorTitulo'),
-            this.translate.instant('errorTransaccion')
-          );
-        }
-      );
-  }
+
 
   /*Funcion que se encarga de identificar al usuario, recibiendo por parametro
-sus datos de acceso*/
+  sus datos de acceso*/
   logInUser(postData: any) {
-    const urlLogIn = 'http://localhost/MacapaAppBackend/Controller/Security/CtlLogIn.php';
+    const urlLogIn = this.baseUrl + 'Controller/Security/CtlLogIn.php';
+
+
+    console.log('*******************************************************');
+    console.log('*************VAMOS A MANDAR DATOS***********************');
+    console.log(urlLogIn);
+    console.log(postData);
+    console.log('*******************************************************');
+
+
     /*Se muestra una barra de carga*/
     this.helperService.mostrarBarraDeCarga(this.translate.instant('espere'));
 
     /*Se envian los datos al servidor, enviando la url y los datos*/
     this.http.post(urlLogIn, postData).subscribe(
       data => {
+
+
+        console.log('*******************************************************');
+        console.log('*************LLEGO RESPUESTA***********************');
+
         /*Se Oculta la barra de carga tan pronto se recibe una respuesta*/
         this.helperService.ocultarBarraCarga();
         /*Se define una variable local para recibir la respuesta*/
@@ -131,6 +104,11 @@ sus datos de acceso*/
         }
       },
       error => {
+
+
+        console.log('*******************************************************');
+        console.log('*************SE GENERO UN ERROR***********************');
+
         /*Se Oculta la barra de carga tan pronto se recibe una respuesta*/
         this.helperService.ocultarBarraCarga();
         /*Sino es porque se genero un error en el servidor*/

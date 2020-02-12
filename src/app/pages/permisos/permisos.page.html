@@ -1,8 +1,58 @@
 <app-header titulo="{{ 'permisos' | translate }}"></app-header>
 
-<ion-content>
+<ion-content padding>
+  <ion-content>
+    <ion-item>
+      <ion-label>Seleccione un rol para otorgar permisos</ion-label>
 
+      <ion-select
+        placeholder="Seleccione"
+        [(ngModel)]="userData.rol_id"
+        name="rol"
+        (ionChange)="onSelectChange($event)"
+      >
+        <ion-select-option *ngFor="let rol of roles" value="{{rol.id}}" 
+        
+          >{{rol.nombre_rol}}</ion-select-option
+        >
+      </ion-select>
+    </ion-item>
 
-<ion-content>
+    <br>
 
+    <ion-button
+      color="macana"
+      fill="outline"
+      expand="full"
+      routerLink="/roles-detail"
+      *ngIf="this.helperService.isValidValue(userData.rol_id)"
+      >Actualizar permisos</ion-button
+    >
+
+    <!--  <ion-refresher slot="fixed" (ionRefresh)="refreshPost($event)">
+        <ion-refresher-content></ion-refresher-content>
+      </ion-refresher>
+   -->
+
+    <br />
+
+    <!-- (click)="viewRol(rol.id,rol.nombre_rol,rol.descripcion)" -->
+    <div *ngIf="this.helperService.isValidValue(userData.rol_id)">
+      <ion-item *ngFor="let permiso of permisos">
+        <ion-checkbox
+          required="required"
+          name="estadoTerminosCondiciones"
+          color="primary"
+          [(ngModel)]="permiso.activo"
+        >
+        </ion-checkbox>
+        <ion-label style="padding-left: 10px;">
+          <h3 slot="start">
+            {{permiso.nombre}}
+          </h3>
+          <p>{{permiso.descripcion}}</p>
+        </ion-label>
+      </ion-item>
+    </div>
+  </ion-content>
 </ion-content>

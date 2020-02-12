@@ -148,6 +148,15 @@ export class HelperService {
   }
 
 
+  fixNotRequiredValue(val: string) {
+    if (val !== undefined && val !== 'undefined' && val !== null && val !== 'null' && val !== '') {
+      return val;
+    } else {
+      return '';
+    }
+  }
+
+
   public cambiarLenguaje(lang) {
     this.saveLocalData('language', lang);
     this.activeLang = lang;
