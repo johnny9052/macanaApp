@@ -9,17 +9,22 @@ import { NavController } from '@ionic/angular';
 export class HeaderLoginComponent implements OnInit {
 
 
+  /* Se recibe el titulo a monstrar desde el llamado del componente */
   @Input() titulo: string;
+  /* Se recibe si se desea mostrar un boton de regreso desde el llamado del componente*/
   @Input() botonRegreso: boolean;
-  @Input() botonIngreso: boolean;
 
+  /* Variable ocultar global */
   ocultar = '';
 
+
+  /* AlertController: Dependencia para mostrar mensajes emergentes con algun tipo de accion */
   constructor( private navCtrl: NavController) { }
 
   ngOnInit() {}
 
 
+  /* Metodo para ocultar el banner para que no se genera el error de transicion en IOS*/
   ocultarRegresar() {
 
     this.ocultar = 'ocultarElemento';

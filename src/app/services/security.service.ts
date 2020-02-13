@@ -10,13 +10,16 @@ import { environment } from '../../environments/environment';
 })
 export class SecurityService {
 
+  /* Se obtiene la url global definida en el archivo environment*/
   baseUrl = environment.baseUrl;
 
   /*Dependencias del servicio
   http: Dependencia para las peticiones al servidor
   alertCtrl: Depedencia para los modales,
-  HelperService: Clase utilitaria
-  */
+  HelperService: Clase utilitaria,
+  TranslateService: Servicio para internacionalizacion,
+  Events: Dependencia que permite ejecutar eventos, en este caso el definido
+          en el componente Menu*/
   constructor(
     private http: HttpClient,
     public alertCtrl: AlertController,
@@ -25,7 +28,8 @@ export class SecurityService {
     public events: Events
   ) {}
 
-  /*Definicion del header funcional para envios via post*/
+  /*Definicion del header funcional para envios via post, utilizado cuando se va a
+  consumir un API REST, pero no es necesario para un webService con peticiones HTTP*/
   private headersPost = new HttpHeaders({
     'Content-Type': 'application/x-www-form-urlencoded'
   });
@@ -35,15 +39,9 @@ export class SecurityService {
   /*Funcion que se encarga de identificar al usuario, recibiendo por parametro
   sus datos de acceso*/
   logInUser(postData: any) {
+
+    /* Se define la url del WebService*/
     const urlLogIn = this.baseUrl + 'Controller/Security/CtlLogIn.php';
-
-
-    console.log('*******************************************************');
-    console.log('*************VAMOS A MANDAR DATOS***********************');
-    console.log(urlLogIn);
-    console.log(postData);
-    console.log('*******************************************************');
-
 
     /*Se muestra una barra de carga*/
     this.helperService.mostrarBarraDeCarga(this.translate.instant('espere'));
@@ -51,10 +49,6 @@ export class SecurityService {
     /*Se envian los datos al servidor, enviando la url y los datos*/
     this.http.post(urlLogIn, postData).subscribe(
       data => {
-
-
-        console.log('*******************************************************');
-        console.log('*************LLEGO RESPUESTA***********************');
 
         /*Se Oculta la barra de carga tan pronto se recibe una respuesta*/
         this.helperService.ocultarBarraCarga();
@@ -76,25 +70,15 @@ export class SecurityService {
           un usuario, se actualice la informacion en pantalla*/
           this.events.publish('user:logIn');
 
-          if (res.perfil !== '-1') {
-            /* console.log('***********************************************');
-            console.log(res.perfil); */
-            /*Se valida si el usuario ya actualizo los datos del perfil o no para saber si se manda al home o
-              a actualizar los datos de perfil*/
+           /*Se llama el metodo utilitario showAlertRedirect, que muestra un modal informativo y cuando se cierra 
+            redirecciona*/
             // tslint:disable-next-line: max-line-length
-            this.helperService.showAlertRedirect(
+          this.helperService.showAlertRedirect(
               this.translate.instant('exitoTitulo'),
               this.translate.instant('usuarioIdentificado'),
               '/master-page'
             );
-          } else {
-            // tslint:disable-next-line: max-line-length
-            this.helperService.showAlertRedirect(
-              this.translate.instant('exitoTitulo'),
-              this.translate.instant('usuarioIdentificado'),
-              '/profile-edit'
-            );
-          }
+
         } else {
           /*Si no retorna uno es porque el usuario no existe*/
           this.helperService.showAlert(
@@ -104,11 +88,6 @@ export class SecurityService {
         }
       },
       error => {
-
-
-        console.log('*******************************************************');
-        console.log('*************SE GENERO UN ERROR***********************');
-
         /*Se Oculta la barra de carga tan pronto se recibe una respuesta*/
         this.helperService.ocultarBarraCarga();
         /*Sino es porque se genero un error en el servidor*/
@@ -116,7 +95,6 @@ export class SecurityService {
           this.translate.instant('errorTitulo'),
           this.translate.instant('errorTransaccion')
         );
-        // this.helperService.showAlertRedirect('Exito', 'Usuario identificado correctamente', '/profile-edit');
       }
     );
   }

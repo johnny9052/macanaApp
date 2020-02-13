@@ -1,5 +1,6 @@
 <!-- Con el contentId se define donde se renderizara el contenido seleccionado 
-    del menu, en este caso en ion-router-outlet el cual tiene tiene ese id -->
+    del menu, en este caso en ion-router-outlet el cual tiene tiene ese id, este 
+  se encuentra definido en el componente header -->
 
 <!--El SWIPEGESTURE BLOQUEA QUE EL MENU SE MUESTRE AL HACER EL SLIDE CON EL DEDO DESDE LA DERECHA-->
 <ion-menu
@@ -13,17 +14,20 @@
       <ion-chip
         color="macana"
       >
+        <!-- Imagen del usuario que se indifica en el sistema -->
         <ion-avatar>
           <img
           src="{{baseUrl}}{{(imagePerfil !== '' &&  imagePerfil !==null)? imagePerfil: 'Resource/Images/Users/avatar_2x.png' }}"
           />
         </ion-avatar>
 
+        <!-- Nombre del usuario que se identifica en el sistema -->
         <ion-label color="macanaBlanco">{{firstName}} {{lastName}} </ion-label>
       </ion-chip>
     </ion-toolbar>
   </ion-header>
 
+  <!-- Listado de opciones del menu -->
   <ion-content>
     <ion-list>
       <ion-menu-toggle>
@@ -192,11 +196,6 @@
         </ion-item>
       </ion-menu-toggle>
 
-
-
-
-
-
       <ion-menu-toggle>
         <ion-item routerLink="/plan-manejo">
           <ion-icon
@@ -209,12 +208,6 @@
         </ion-item>
       </ion-menu-toggle>
 
-
-
-
-
-
-
       <ion-menu-toggle>
         <ion-item routerLink="/analisis">
           <ion-icon
@@ -226,10 +219,6 @@
           <ion-label>{{ 'analisis' | translate }}</ion-label>
         </ion-item>
       </ion-menu-toggle>
-
-
-
-
 
       <ion-menu-toggle>
         <ion-item routerLink="/informe">

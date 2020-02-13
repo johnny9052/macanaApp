@@ -5,13 +5,15 @@ import { CommonModule } from '@angular/common';
 import { MenuComponent } from './menu/menu.component';
 import { HeaderLoginComponent } from './header-login/header-login.component';
 import { FooterLoginComponent } from './footer-login/footer-login.component';
+import { HeaderComponent } from './header/header.component';
 /*END Import de los diferentes componentes creados*/
 
 import { IonicModule } from '@ionic/angular';
 import { RouterModule } from '@angular/router';
 
+/* Import para hacer uso del sistema de internacionalizacion */
 import { TranslateModule } from '@ngx-translate/core';
-import { HeaderComponent } from './header/header.component';
+/* END Import para hacer uso del sistema de internacionalizacion */
 
 
 @NgModule({
@@ -35,6 +37,7 @@ import { HeaderComponent } from './header/header.component';
     IonicModule,
     /*Import necesario para redireccionar*/
     RouterModule,
+    /* Import necesario para la internacionalizacion */
     TranslateModule
   ]
 })

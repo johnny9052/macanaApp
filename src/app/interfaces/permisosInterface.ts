@@ -1,4 +1,4 @@
-
+/* Modelo del objeto permisos*/
 export interface ModelPermisos {
     nombre: string;
     codigo: string;

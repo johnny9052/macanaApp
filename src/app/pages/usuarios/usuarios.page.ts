@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ModelUserData } from 'src/app/interfaces/userInterface';
 import { BlockAccessService } from 'src/app/util/blockAccess';
-import { ActionSheetController, Events } from '@ionic/angular';
 import { HelperService } from 'src/app/util/HelperService';
 import { Router, NavigationExtras } from '@angular/router';
 import { TranslateService } from '@ngx-translate/core';
@@ -25,12 +24,10 @@ export class UsuariosPage implements OnInit {
   tiempoEspera = 1000;
 
   constructor(private blockAccess: BlockAccessService,
-              private actionSheetCtrl: ActionSheetController,
               private usuariosService: UsuariosService,
               public helperService: HelperService,
               private router: Router,
-              private translate: TranslateService,
-              private events: Events) { }
+              private translate: TranslateService) { }
 
   ngOnInit() {
 
@@ -70,25 +67,22 @@ export class UsuariosPage implements OnInit {
     error => {
       this.helperService.ocultarBarraCarga();
       this.helperService.showAlert(this.translate.instant('errorTitulo'), this.translate.instant('errorCargandoInformacion'));
-      // console.log('oops', error);
     }
   );
   }
 
 
 
-  refreshPost(event) {
+  refrescar(event) {
     this.usuariosService.getUsuarios().subscribe(data => {
       let res: any;
       res = data;
-      // console.log(JSON.parse(res.data));
       this.usuarios = JSON.parse(res.data);
       event.target.complete();
     },
     error => {
       event.target.complete();
       this.helperService.showAlert(this.translate.instant('error'), this.translate.instant('errorCargandoInformacion'));
-      // console.log('oops', error);
     });
   }
 

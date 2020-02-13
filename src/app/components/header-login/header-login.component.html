@@ -1,29 +1,27 @@
+<!-- La clase ocultar, oculta los elementos si se requiere de manera dinamica, esto 
+con el fin de que en IOS, no se genere el efecto de que se oculta y se muestra 
+de manera no coordinada -->
 <ion-header
   no-border="no-border" 
   [ngClass]="ocultar"
 >
+  
   <ion-toolbar color="macana">
+    <!-- Si se recibe que se debe tener un boton de regreso se coloca -->
     <ion-buttons
       slot="end"
       *ngIf="botonRegreso"
     >
-
       <ion-button fill="clear" (click)="ocultarRegresar()">
         <ion-icon name="arrow-back"></ion-icon>
         {{ 'regresar' | translate }}
       </ion-button>
     </ion-buttons>
 
-    <ion-buttons slot="end"  *ngIf="botonIngreso">
-      <ion-button routerLink="/identify" fill="clear">
-        <ion-icon name="person"></ion-icon>
-      </ion-button>
-    </ion-buttons>
-
-
-
+    <!-- Se coloca el titulo recibido en el banner -->
     <ion-title >{{titulo}}</ion-title >
 
+    <!-- Logo de la aplicacion -->
     <ion-thumbnail slot="start" class="imageLogoBanner">
       <img src="/assets/images/logo.png">
     </ion-thumbnail>

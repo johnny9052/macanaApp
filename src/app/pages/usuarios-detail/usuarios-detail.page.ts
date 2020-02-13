@@ -48,7 +48,6 @@ export class UsuariosDetailPage implements OnInit {
     public helperService: HelperService,
     public usuariosService: UsuariosService,
     public alertCtrl: AlertController,
-    private modalCtrl: ModalController,
     private translate: TranslateService,
     private route: ActivatedRoute,
     private router: Router,
@@ -84,7 +83,7 @@ export class UsuariosDetailPage implements OnInit {
   ionViewWillEnter() {
     this.editoImagen = false;
     this.imagenesEliminar = new Array();
-    // Se obtiene el identidicador del usuario que ingreso al sistema
+    // Se obtiene los roles de la base de datos para ser cargados en el select
     this.getRoles();
   }
 
@@ -116,15 +115,16 @@ export class UsuariosDetailPage implements OnInit {
           this.translate.instant('errorTitulo'),
           this.translate.instant('errorCargandoInformacion')
         );
-        // console.log('oops', error);
       }
     );
   }
 
-  /*Funcion que se encarga de almacenar la informacion del rol*/
+  /*Funcion que se encarga de almacenar la informacion del usuario*/
   saveUserData() {
     // tslint:disable-next-line: prefer-const
     let postDataObj = new FormData();
+
+    /*Se anexa la informacion basica del usuario*/
     postDataObj.append('id', this.userData.id);
     postDataObj.append('primerNombre', this.userData.primer_nombre);
     postDataObj.append('segundoNombre', this.helperService.fixNotRequiredValue(this.userData.segundo_nombre));
@@ -134,42 +134,40 @@ export class UsuariosDetailPage implements OnInit {
     postDataObj.append('correo', this.helperService.fixNotRequiredValue(this.userData.correo));
     postDataObj.append('celular', this.helperService.fixNotRequiredValue(this.userData.celular));
     postDataObj.append('usuario', this.userData.usuario);
+    postDataObj.append('descripcion', this.userData.descripcion);
 
+
+    /*************SECCION DE INFORMACION DE LAS FOTOS************************************/
+
+    /*Se anexa la informacion de la foto, esta almacena la ruta de la foto*/
     postDataObj.append('foto', this.helperService.fixNotRequiredValue(this.userData.foto));
-    // tslint:disable-next-line: max-line-length
-    console.log('***************EL VALOR DE LA FOTO ES *********************** ' + this.helperService.fixNotRequiredValue(this.userData.foto));
-
+    /*Esta variable se utiliza como una copia de la ruta original de la foto, ya que una es la ruta que queda en
+    la base de datos, y otra la que se estructura para cargar la imagen desde el app*/
     postDataObj.append('fotoCopiaRutaOriginal', this.helperService.fixNotRequiredValue(this.userData.foto_copia_ruta_original));
-    // tslint:disable-next-line: max-line-length
-    console.log('***************EL VALOR DE LA FOTO COPIA ORIGINAL ES ***********************' + this.helperService.fixNotRequiredValue(this.userData.foto_copia_ruta_original));
-
+    /*Valor boleando que indica si se actualizo o no una foto*/
     postDataObj.append('seActualizoFoto', this.editoImagen.toString());
-    console.log('***************EL VALOR DE SI SE ACTUALIZO FOTO O NO ES ***********************' + this.editoImagen.toString());
-
-     // tslint:disable-next-line: max-line-length
+    /*Se valida si se genero una foto a base64, sino es asi se reemplaza por un -1*/
     this.userData.fotoBase64 = (this.helperService.isValidValue(this.userData.fotoBase64)) ? this.userData.fotoBase64 : '-1';
+    /*Dicha variable se almacena en una variable llamada base64File0, y el ultimo numero lo que hace es referenciar si es
+    la imagen 1 o la X, debido a que el web Service puede recibir N imagenes. Ademas se reemplaza el texto del metodo ya que
+    angular cuando lo codifica genera esa seccion de ruido*/
     postDataObj.append('base64File' + '0', this.userData.fotoBase64.replace('data:image/*;charset=utf-8;base64,', ''));
-    // tslint:disable-next-line: max-line-length
-    console.log('***************LO QUE TIENE CODIFICADO A BASE64 ES *********************** ' + this.userData.fotoBase64.replace('data:image/*;charset=utf-8;base64,', ''));
+    /*Al igual que el anterior, se almacena el nombre del archivo convertido en base64 para ser generado en el lado del 
+    servidor*/
     // tslint:disable-next-line: max-line-length
     postDataObj.append('nameFile' + '0', (this.helperService.isValidValue(this.userData.fotoNombreBase64)) ? this.userData.fotoNombreBase64 : '-1');
-    // tslint:disable-next-line: max-line-length
-    console.log('***************EL NOMBRE DEL ARCHIVO A CREAR ES*********************** ' + (this.helperService.isValidValue(this.userData.fotoNombreBase64)) ? this.userData.fotoNombreBase64 : '-1');
-
-    console.log('***************VAMOS A EVALUAR SI HAY IMAGENES PARA ELIMINAR***********************');
+    /*Cada vez que se elimina o actualiza una imagen, se anaden al array imagenesEliminar, aqui se recorre una a una
+    para anadirlas dinamicamente y se eliminan todas en el webService*/
     // tslint:disable-next-line: prefer-for-of
     for (let x = 0; x < this.imagenesEliminar.length; x++) {
-      // tslint:disable-next-line: max-line-length
-      console.log('***************SI, Y LA QUE VAMOS A ELIMINAR ES: ' + 'nameFileDelete' + x + ': ' + this.imagenesEliminar[x] + ' ***********************');
       postDataObj.append('nameFileDelete' + x, this.imagenesEliminar[x]);
     }
 
-    // tslint:disable-next-line: max-line-length
-    // postDataObj.append('nameFileDelete' + '0', this.userData.foto_copia_ruta_original);
-    // tslint:disable-next-line: max-line-length
-    // postDataObj.append('base64File' + '0', 'iVBORw0KGgoAAAANSUhEUgAAACgAAAAoCAQAAAAm93DmAAAAZ0lEQVRIx+3WsQ3AMAhE0T+CR2FURmGUjMIGpLWUKLFErDQnNxzFqwCZ4tuHQIEbQOq+FvgbeG21wecscAFMbEpGdkEnphR4FxwcBFZgBAejP9gDJykSf+eWz9fKjggUKFB/G4FbwRP2Ki+RPHxKFgAAAABJRU5ErkJggg==');
-    // postDataObj.append('nameFile' + '0', 'plugin22');
+    /*************END SECCION DE INFORMACION DE LAS FOTOS************************************/
 
+
+
+    /*Se valida si se ha seleccionado un rol en el select, para saber si se le solicita al usuario*/
     if (this.helperService.isValidValue(this.userData.rol_id)) {
       postDataObj.append('rolId', this.userData.rol_id);
     } else {
@@ -180,11 +178,13 @@ export class UsuariosDetailPage implements OnInit {
       return;
     }
 
-    postDataObj.append('descripcion', this.userData.descripcion);
 
+    /*Se valida si se tiene o no un ID, si se tiene es porque se cargo un registro y se esta actualizando, 
+    sino es porque se va a guardar*/
     if (this.helperService.isValidValue(this.userData.id)) {
       postDataObj.append('action', 'update');
     } else {
+      /*Se valida si las contrasenas coinciden*/
       if (this.helperService.isValidValue(this.userData.password)) {
         if (this.userData.password === this.userData.confirmarPassword) {
           postDataObj.append('password', this.userData.password);
@@ -206,11 +206,14 @@ export class UsuariosDetailPage implements OnInit {
       }
     }
 
+    /*Se llama al metodo del servicio que se encarga de consumir el webService*/
     this.usuariosService.saveUserDataService(postDataObj);
   }
 
-  /*Funcion que se encarga de almacenar la informacion del rol*/
+
+  /*Funcion que se encarga de eliminar un usuario*/
   deleteUserData() {
+    /*Se indica que la foto actual se debe eliminar al lado del servidor*/
     this.agregarImagenEliminar();
 
     // tslint:disable-next-line: prefer-const
@@ -219,11 +222,11 @@ export class UsuariosDetailPage implements OnInit {
     postDataObj.append('action', 'delete');
 
 
-    console.log('***************VAMOS A EVALUAR SI HAY IMAGENES PARA ELIMINAR***********************');
+    /*Se agrega la imagen a eliminar*/
+
     // tslint:disable-next-line: prefer-for-of
     for (let x = 0; x < this.imagenesEliminar.length; x++) {
       // tslint:disable-next-line: max-line-length
-      console.log('***************SI, Y LA QUE VAMOS A ELIMINAR ES: ' + 'nameFileDelete' + x + ': ' + this.imagenesEliminar[x] + ' ***********************');
       postDataObj.append('nameFileDelete' + x, this.imagenesEliminar[x]);
     }
 
@@ -236,7 +239,6 @@ export class UsuariosDetailPage implements OnInit {
   async restablecerPassword() {
     const input = await this.alertCtrl.create({
       header: this.translate.instant('restablecerPassword'),
-      // message: 'Ingrese su nueva skill',
       inputs: [
         {
           name: 'nuevoPassword',
@@ -351,6 +353,8 @@ export class UsuariosDetailPage implements OnInit {
   }
 
 
+  /*Metodo que se ejecuta cuando se esta editando una foto, para registrar que se actualizo, 
+  y se manda su ruta original para ser eliminada en el servidor*/
   agregarImagenEliminar() {
     // Si se cargo la info para editarla
     if (this.helperService.isValidValue(this.userData.id)) {

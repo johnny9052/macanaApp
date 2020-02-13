@@ -2,7 +2,6 @@ import { Injectable } from '@angular/core';
 import { ModelRol } from '../interfaces/rolInterface';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { HelperService } from '../util/HelperService';
-import { NavController } from '@ionic/angular';
 import { TranslateService } from '@ngx-translate/core';
 import { environment } from '../../environments/environment';
 
@@ -21,9 +20,9 @@ export class RolesService {
   constructor(
     private http: HttpClient,
     public helperService: HelperService,
-    private navCtrl: NavController,
     private translate: TranslateService
   ) {}
+
 
   getRoles() {
     return this.http.get<ModelRol>(
@@ -33,10 +32,9 @@ export class RolesService {
 
 
 
-   /*Funcion que se encarga de registrar al usuario, recibiendo por parametro
-  los datos del usuario*/
+   /*Funcion que se encarga de registrar al rol, recibiendo por parametro
+  los datos del rol*/
   saveRolDataService( postData: any) {
-    // console.log(postData);
     /*URL del web service*/
     const url = this.baseUrl + 'Controller/Configuration/CtlRol.php';
     /*Se muestra una barra de carga*/
@@ -73,10 +71,9 @@ export class RolesService {
 
 
 
-   /*Funcion que se encarga de registrar al usuario, recibiendo por parametro
-  los datos del usuario*/
+   /*Funcion que se encarga de eliminar rol, recibiendo por parametro
+  el id*/
   deleteRolDataService( postData: any) {
-    // console.log(postData);
     /*URL del web service*/
     const url = this.baseUrl + 'Controller/Configuration/CtlRol.php';
     /*Se muestra una barra de carga*/
@@ -98,7 +95,7 @@ export class RolesService {
           '/roles'
         );
       } else {
-        /*Si no retorna uno es porque el usuario ya existe*/
+        /*Si no retorna uno es porque el rol ya existe*/
         this.helperService.showAlert(this.translate.instant('errorTitulo'), this.translate.instant('errorTransaccion'));
       }
     }, error => {

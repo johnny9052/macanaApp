@@ -1,3 +1,4 @@
+/* Modelo del objeto usuarios*/
 export interface ModelUserData {
   id: string;
   primer_nombre: string;

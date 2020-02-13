@@ -30,8 +30,6 @@ export class RolesDetailPage implements OnInit {
                 public helperService: HelperService,
                 public profileService: RolesService,
                 public alertCtrl: AlertController,
-                private modalCtrl: ModalController,
-                private translate: TranslateService,
                 private route: ActivatedRoute,
                 private router: Router
 ) {
@@ -43,8 +41,6 @@ export class RolesDetailPage implements OnInit {
       this.rolData.nombre_rol = this.router.getCurrentNavigation().extras.state.nombreRol;
       this.rolData.descripcion = this.router.getCurrentNavigation().extras.state.descripcion;
 
-      // console.log('Llego dato!!');
-      // console.log(this.codeUserOnlyDetail);
     }
   });
 

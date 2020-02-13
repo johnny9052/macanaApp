@@ -1,3 +1,5 @@
+<!-- Componente del header que recibe el titulo que se mostrara, para que este sea reconocido, en el modulo 
+se debe agregar el components-->
 <app-header-login
   titulo="{{ 'macanaTitulo' | translate }}"
 ></app-header-login>
@@ -5,16 +7,19 @@
 
 <ion-content padding="padding">
   <!-- Con el position floating da el efecto de materalized, en 
-            donde se selecciona la caja de texto, y sube el texto como el placeholder -->
+  donde se selecciona la caja de texto, y sube el texto como el placeholder -->
 
+  <!-- Cuando se hace un submit, se ejecuta el metodo identify -->
   <form
     #formulario="ngForm"
     (ngSubmit)="identify()"
   >
+    <!-- Inicio del formulario del logIn -->
     <ion-list>
       <ion-item>
         <ion-label position="floating">{{ 'ingreseUsuario' | translate }}</ion-label>
 
+        <!-- El ngModel asocia el campo al atributo definido en el .ts -->
         <ion-input
           name="username"
           type="text"
@@ -35,9 +40,9 @@
       </ion-item>
     </ion-list>
 
-    <!-- El fixed agrega unos espacios y margenes a los lados del GRID o 
-  tabla -->
-
+    <!-- El fixed agrega unos espacios y margenes a los lados del GRID o  tabla. 
+    El disabled, hace en este caso que el boton solo se active cuando el formulario 
+    es valido -->
     <ion-grid fixed="fixed">
       <ion-row>
         <ion-col size="12">
@@ -50,13 +55,6 @@
         </ion-col>
       </ion-row>
 
-      <ion-row>
-        <ion-col size="12" (click)="openPage('https://google.com')">
-          <div class="ion-text-center">
-            <ion-label>{{ 'olvidoContrasena' | translate }}</ion-label>
-          </div>
-        </ion-col>
-      </ion-row>
     </ion-grid>
   </form>
 </ion-content>

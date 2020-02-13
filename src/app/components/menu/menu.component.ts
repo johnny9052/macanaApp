@@ -10,19 +10,22 @@ import { environment } from '../../../environments/environment';
 })
 export class MenuComponent implements OnInit {
 
+  /* Datos que son almacenados localmente, y que se obtienen para ser mostrados en el menu*/
   codeUser = '';
   firstName = '';
   lastName = '';
   imagePerfil = '';
 
+  /*Se obtiene la url del servidor para ser utilizado en el formulario*/
   baseUrl = environment.baseUrl;
 
 
+  /* HelperService: Servicio generico que ofrece funcionalidades adicionales */
   constructor(public helperService: HelperService, public events: Events) {
 
     /*Se registra el evento user:login, para que cuando este sea llamado cuando el
     usuario se identifica correctamente, se actualice la informacion del menu, y
-    toca ejecutarlo 1 segundo despues, dando tiempo que la informacion sea 
+    toca ejecutarlo 1 segundo despues, dando tiempo que la informacion sea
     almacenada de manera local*/
     events.subscribe('user:logIn', () => {
       setTimeout(() => {
@@ -36,7 +39,8 @@ export class MenuComponent implements OnInit {
   }
 
   ngOnInit() {
-    // // console.log('Init desde el menu');
+    /* Cuando se ejecuta la primera vez, se obtiene la informacion almacenada
+    de forma local para ser mostrada en el menu*/
     this.getProfilePk();
     this.getProfileFirstName();
     this.getProfileLastName();
@@ -44,7 +48,8 @@ export class MenuComponent implements OnInit {
   }
 
   ionViewWillEnter() {
-    // // console.log('Init desde el menu');
+    /* Cada vez que se carga el menu, se obtiene la informacion almacenada
+    de forma local para ser mostrada en el menu*/
     this.getProfilePk();
     this.getProfileFirstName();
     this.getProfileLastName();
@@ -55,8 +60,6 @@ export class MenuComponent implements OnInit {
   getProfilePk() {
     // Se obtiene el identificador del usuario que ingreso al sistema
     this.helperService.getLocalData('profilePk').then(response => {
-      // console.log('El id es ' + response);
-      // console.log(response);
       this.codeUser = response;
     });
   }
@@ -64,7 +67,6 @@ export class MenuComponent implements OnInit {
   getProfileFirstName() {
     // Se obtiene el identificador del usuario que ingreso al sistema
     this.helperService.getLocalData('firstName').then(response => {
-      // console.log('El nombre es ' + response);
       this.firstName = response;
     });
   }
@@ -72,7 +74,6 @@ export class MenuComponent implements OnInit {
   getProfileLastName() {
     // Se obtiene el identificador del usuario que ingreso al sistema
     this.helperService.getLocalData('lastName').then(response => {
-      // console.log('El apellido es ' + response);
       this.lastName = response;
     });
   }
@@ -80,7 +81,6 @@ export class MenuComponent implements OnInit {
   getProfileImage() {
     // Se obtiene el identificador del usuario que ingreso al sistema
     this.helperService.getLocalData('image_perfil').then(response => {
-      // console.log('La imagen de perfil es ' + response);
       this.imagePerfil = response;
     });
   }
