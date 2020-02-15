@@ -96,5 +96,11 @@
   "confirmarPassword":"Confirme su password",
   "rol":"Rol",
   "seleccioneRol":"Seleccione un rol",
-  "restablecerPassword":"Restablecer password"
+  "restablecerPassword":"Restablecer password",
+
+  
+
+  "***************ESTADO CLIMATOLOGICO**********************": "",
+  "climatologico":"Estado climatologico",
+  "crearClimatologico":"Crear estado climatologico"
 }

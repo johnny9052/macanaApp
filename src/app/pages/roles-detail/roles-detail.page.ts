@@ -24,11 +24,11 @@ export class RolesDetailPage implements OnInit {
 
     /********************INYECCION DE DEPENDENCIAS********* */
   /*HelperService: Servicio generico para funcionalidades ya implementadas
-    ProfileService: Servicio para el consumo de web services del perfil
+    rolService: Servicio para el consumo de web services del perfil
     AlertController: Permite mostrar alerts emergentes en pantalla */
     constructor(private blockAccess: BlockAccessService,
                 public helperService: HelperService,
-                public profileService: RolesService,
+                public rolService: RolesService,
                 public alertCtrl: AlertController,
                 private route: ActivatedRoute,
                 private router: Router
@@ -74,7 +74,7 @@ getProfilePk() {
       postDataObj.append('action' , 'save');
     }
 
-    this.profileService.saveRolDataService(postDataObj);
+    this.rolService.saveRolDataService(postDataObj);
   }
 
 
@@ -85,7 +85,7 @@ getProfilePk() {
       postDataObj.append('id' , this.rolData.id);
       postDataObj.append('action' , 'delete');
 
-      this.profileService.deleteRolDataService(postDataObj);
+      this.rolService.deleteRolDataService(postDataObj);
     }
 
 }

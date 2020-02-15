@@ -76,6 +76,14 @@ const routes: Routes = [
     path: 'roles-detail',
     loadChildren: () => import('./pages/roles-detail/roles-detail.module').then( m => m.RolesDetailPageModule)
   },
+  {
+    path: 'estado-climatologico',
+    loadChildren: () => import('./pages/estado-climatologico/estado-climatologico.module').then( m => m.EstadoClimatologicoPageModule)
+  },
+  {
+    path: 'estado-climatologico-detail',
+    loadChildren: () => import('./pages/estado-climatologico-detail/estado-climatologico-detail.module').then( m => m.EstadoClimatologicoDetailPageModule)
+  },
 ];
 
 @NgModule({

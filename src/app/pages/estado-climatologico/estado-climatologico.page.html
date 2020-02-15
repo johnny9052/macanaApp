@@ -1,0 +1,39 @@
+<app-header titulo="{{ 'climatologico' | translate }}"></app-header>
+
+
+<ion-content>
+    <ion-content>
+  
+      <ion-button color="macana" fill="outline" expand="full" routerLink="/estado-climatologico-detail"
+        >{{ 'crearClimatologico' | translate }}</ion-button
+      >
+
+      
+  
+      <!-- Este seccion permite que cuando con el dedo desde la parte superior se desliza hacia abajo, 
+      entonces se refresque la lista, llamando al metodo refrescar-->
+      <ion-refresher slot="fixed" (ionRefresh)="refrescar($event)">
+        <ion-refresher-content></ion-refresher-content>
+      </ion-refresher>
+  
+      <br />
+  
+      <!-- Por cada uno de los roles en el listado de roles, se va a generar cada elemento del listado, ademas se
+      genera dinamicamente un evento click con todos los datos que se cargaran visualmente -->
+      <!-- -->
+      <ion-item *ngFor="let climatologico of climatologicos"  (click)="viewClimatologico(climatologico.id, climatologico.fecha,climatologico.nubosidad,climatologico.pluviometria,climatologico.observaciones)">
+        <ion-avatar slot="start">
+          <img
+            src="{{baseUrl}}Resource/Images/Users/avatar_2x2.png"
+          />
+        </ion-avatar>
+        <ion-label>
+          <h3 slot="start">
+            {{climatologico.fecha}}
+          </h3>
+          <p>{{climatologico.observaciones}}</p>
+        </ion-label>
+      </ion-item>
+    </ion-content>
+  </ion-content>
+  

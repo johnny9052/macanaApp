@@ -24,7 +24,7 @@
       color="macana"
       fill="outline"
       expand="full"
-      routerLink="/roles-detail"
+      (click)="actualizarPermisos()"
       *ngIf="this.helperService.isValidValue(userData.rol_id)"
       >Actualizar permisos</ion-button
     >
