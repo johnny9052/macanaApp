@@ -1,0 +1,166 @@
+<app-header titulo="{{ 'vacas' | translate }}"></app-header>
+
+
+<ion-content padding="padding">
+  <form #formulario="ngForm" (ngSubmit)="saveVacaData()">
+    <ion-list>
+
+
+
+      <ion-item>
+        <ion-label position="floating">{{ 'numeroVaca' | translate }}*</ion-label>
+        <ion-input
+          type="number"
+          name="numeroVaca"
+          required="required"
+          [(ngModel)]="vacaData.numero"
+        ></ion-input>
+      </ion-item>
+
+
+      <ion-item>
+        <ion-label position="floating">{{ 'nombreVaca' | translate }}*</ion-label>
+        <ion-input
+          type="text"
+          name="nombreVaca"
+          required="required"
+          [(ngModel)]="vacaData.nombre"
+        ></ion-input>
+      </ion-item>
+
+
+
+
+      
+      <ion-item>
+        <ion-label>{{ 'rotacion' | translate }}*</ion-label>
+
+        <ion-select
+          placeholder="Seleccione"
+          [(ngModel)]="vacaData.idrotacion"
+          name="rotacion"
+        >
+          <ion-select-option *ngFor="let rotacion of rotaciones" value="{{rotacion.id}}"
+            >{{rotacion.nombre}}</ion-select-option
+          >
+        </ion-select>
+      </ion-item>
+
+
+      <ion-item>
+        <ion-label>{{ 'sexoVaca' | translate }}*</ion-label>
+
+        <ion-select
+          placeholder="Seleccione"
+          [(ngModel)]="vacaData.sexo"
+          name="sexo"
+        >
+          <ion-select-option *ngFor="let sexo of sexos" value="{{sexo.id}}"
+            >{{sexo.nombre}}</ion-select-option
+          >
+        </ion-select>
+      </ion-item>
+
+
+      <ion-item>
+        <ion-label>{{ 'razaVaca' | translate }}*</ion-label>
+
+        <ion-select
+          placeholder="Seleccione"
+          [(ngModel)]="vacaData.raza"
+          name="raza"
+        >
+          <ion-select-option *ngFor="let raza of razas" value="{{raza.id}}"
+            >{{raza.nombre}}</ion-select-option
+          >
+        </ion-select>
+      </ion-item>
+
+
+
+      <ion-item>
+        <ion-label>{{ 'tipoAnimal' | translate }}*</ion-label>
+
+        <ion-select
+          placeholder="Seleccione"
+          [(ngModel)]="vacaData.tipoanimal"
+          name="tipoAnimal"
+        >
+          <ion-select-option *ngFor="let tipoAnimal of tiposAnimal" value="{{tipoAnimal.id}}"
+            >{{tipoAnimal.nombre}}</ion-select-option
+          >
+        </ion-select>
+      </ion-item>
+
+
+
+
+      <ion-item>
+        <ion-label position="floating">{{ 'edadVaca' | translate }}*</ion-label>
+        <ion-input
+          type="number"
+          name="edadVaca"
+          required="required"
+          [(ngModel)]="vacaData.edad"
+        ></ion-input>
+      </ion-item>
+
+
+
+    
+
+   
+    </ion-list>
+
+    <ion-grid fixed="fixed">
+      <ion-row class="ion-text-center">
+        <ion-col size="12" *ngIf="!this.helperService.isValidValue(vacaData.id)">
+          <ion-button
+            color="macana"
+            type="submit"
+            [disabled]="formulario.invalid"
+            fill="outline"
+            expand="full"
+            >{{ 'guardar' | translate }}</ion-button
+          >
+        </ion-col>
+
+
+        <ion-col size="12" *ngIf="this.helperService.isValidValue(vacaData.id)">
+            <ion-button
+              color="macana"
+              type="submit"
+              [disabled]="formulario.invalid"
+              fill="outline"
+              expand="full"
+              >{{ 'editar' | translate }}</ion-button
+            >
+          </ion-col>
+
+          
+        <ion-col size="12" *ngIf="this.helperService.isValidValue(vacaData.id)">
+            <ion-button
+              color="macana"
+              fill="outline"
+              expand="full"
+              (click)="deleteVacaData();"
+              >{{ 'eliminar' | translate }}</ion-button
+            >
+          </ion-col>
+
+        <ion-col size="12">
+            <ion-button
+              color="macana"
+              fill="outline"
+              routerLink="/vacas"
+              expand="full"
+              >{{ 'regresar' | translate }}</ion-button
+            >
+          </ion-col>
+      </ion-row>
+
+    
+    </ion-grid>
+  </form>
+</ion-content>
+

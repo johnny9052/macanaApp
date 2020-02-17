@@ -4,10 +4,10 @@ import { FormsModule } from '@angular/forms';
 
 import { IonicModule } from '@ionic/angular';
 
-import { LotePageRoutingModule } from './lote-routing.module';
+import { RotacionesPageRoutingModule } from './rotaciones-routing.module';
 
-import { LotePage } from './lote.page';
-import { ComponentsModule } from '../../components/components.module';
+import { RotacionesPage } from './rotaciones.page';
+import { ComponentsModule } from 'src/app/components/components.module';
 import { TranslateModule } from '@ngx-translate/core';
 
 @NgModule({
@@ -15,10 +15,10 @@ import { TranslateModule } from '@ngx-translate/core';
     CommonModule,
     FormsModule,
     IonicModule,
-    LotePageRoutingModule,
+    RotacionesPageRoutingModule,
     ComponentsModule,
     TranslateModule
   ],
-  declarations: [LotePage]
+  declarations: [RotacionesPage]
 })
-export class LotePageModule {}
+export class RotacionesPageModule {}

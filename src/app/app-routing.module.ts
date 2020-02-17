@@ -9,10 +9,6 @@ const routes: Routes = [
     loadChildren: () => import('./pages/master-page/master-page.module').then( m => m.MasterPagePageModule)
   },
   {
-    path: 'lote',
-    loadChildren: () => import('./pages/lote/lote.module').then( m => m.LotePageModule)
-  },
-  {
     path: 'potrero',
     loadChildren: () => import('./pages/potrero/potrero.module').then( m => m.PotreroPageModule)
   },
@@ -83,6 +79,14 @@ const routes: Routes = [
   {
     path: 'estado-climatologico-detail',
     loadChildren: () => import('./pages/estado-climatologico-detail/estado-climatologico-detail.module').then( m => m.EstadoClimatologicoDetailPageModule)
+  },
+  {
+    path: 'vacas-detail',
+    loadChildren: () => import('./pages/vacas-detail/vacas-detail.module').then( m => m.VacasDetailPageModule)
+  },
+  {
+    path: 'rotaciones',
+    loadChildren: () => import('./pages/rotaciones/rotaciones.module').then( m => m.RotacionesPageModule)
   },
 ];
 

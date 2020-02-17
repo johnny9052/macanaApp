@@ -34,7 +34,7 @@
     "usuarios":"Usuarios",
     "roles":"Roles",
     "permisos":"Permisos",
-    "lotes":"Rotacion",
+    "rotaciones":"Rotacion",
     "potreros":"Potreros",
     "aforos":"Aforos",
     "vacas":"Vacas",
@@ -82,6 +82,7 @@
   "descripcionRol":"Descripcion del rol",
   "guardarRol":"Guardar rol",
   "rolGuardado":"Rol guardado exitosamente",
+  "crearRol":"Crear rol",
 
   "***************GESTION USUARIOS**********************": "",
   "primerNombre":"Primer nombre",
@@ -97,9 +98,23 @@
   "rol":"Rol",
   "seleccioneRol":"Seleccione un rol",
   "restablecerPassword":"Restablecer password",
+  "crearUsuario":"Crear usuario",
 
+
+  "***************GESTION PERMISOS**********************": "",
+  "seleccionRolPermisos":"Seleccione un rol para otorgar permisos",
 
   "***************ESTADO CLIMATOLOGICO**********************": "",
   "climatologico":"Estado climatologico",
-  "crearClimatologico":"Crear estado climatologico"
+  "crearClimatologico":"Crear estado climatologico",
+
+  "***************GESTION VACAS**********************": "",
+  "crearVaca":"Crear vaca",
+  "numeroVaca":"Numero de la vaca",
+  "nombreVaca":"Nombre de la vaca",
+  "edadVaca":"Edad de la vaca",
+  "sexoVaca":"Sexo de la vaca",
+  "razaVaca":"Raza de la vaca",
+  "tipoAnimal":"Tipo de la vaca"
+
 }

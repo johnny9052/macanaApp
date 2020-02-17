@@ -61,6 +61,7 @@ export class MenuComponent implements OnInit {
     this.getProfileLastName();
     this.getProfileImage();
     this.getPermisosData();
+    this.getTypeUser();
   }
 
   ionViewWillEnter() {
@@ -70,6 +71,8 @@ export class MenuComponent implements OnInit {
     this.getProfileFirstName();
     this.getProfileLastName();
     this.getProfileImage();
+    this.getPermisosData();
+    this.getTypeUser();
   }
 
 

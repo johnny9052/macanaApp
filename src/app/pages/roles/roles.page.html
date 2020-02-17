@@ -2,11 +2,10 @@
 se debe agregar el components-->
 <app-header titulo="{{ 'roles' | translate }}"></app-header>
 
-<ion-content>
   <ion-content>
 
     <ion-button color="macana" fill="outline" expand="full" routerLink="/roles-detail"
-      >Crear rol</ion-button
+      >{{ 'crearRol' | translate }}</ion-button
     >
 
     <!-- Este seccion permite que cuando con el dedo desde la parte superior se desliza hacia abajo, 
@@ -33,4 +32,3 @@ se debe agregar el components-->
       </ion-label>
     </ion-item>
   </ion-content>
-</ion-content>
