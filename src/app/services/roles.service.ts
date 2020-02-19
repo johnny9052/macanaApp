@@ -52,7 +52,7 @@ export class RolesService {
         redireccionara al login*/
         this.helperService.showAlertRedirect(
           this.translate.instant('exitoTitulo'),
-          this.translate.instant('rolGuardado'),
+          this.translate.instant('exitoTransaccion'),
           '/roles'
         );
       } else {

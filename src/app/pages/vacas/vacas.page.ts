@@ -114,14 +114,20 @@ refrescar(event) {
 
 /*Metodo que envia los datos de un rol seleccionado en particular a otro formulario,
 encapsulando los datos en un NavigationExtras*/
-viewVaca(id: string, nombreRol: string, descripcion: string) {
+viewVaca(id: string ,numero : string,nombre: string ,idrotacion: string ,sexo: string,raza: string,
+         tipoanimal: string,edad: string) {
   /*Se encapsulan los datos en el extra, definiendo un objeto llamado state y su
   variable lo llamamos data*/
    const data: NavigationExtras = {
     state: {
       id,
-      nombreRol,
-      descripcion
+      numero,
+      nombre,
+      idrotacion,
+      sexo,
+      raza,
+      tipoanimal,
+      edad,
     }
   };
 
