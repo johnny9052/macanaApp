@@ -1,7 +1,7 @@
 {
 
     "***************IDIOMAS**********************": "",
-  
+
     "espanol": "Spanish",
     "ingles": "English",
 
@@ -10,44 +10,44 @@
     "***************GENERICOS**********************": "",
 
     "macanaTitulo": "Macana",
-    "regresar":"Regresar",
+    "regresar": "Regresar",
     "verificarSeleccion":"Verifique todos los campos de seleccion",
-
+    
     "***************Log-In**********************": "",
-  
+
 
     "logInTitulo": "Spanish",
     "ingresar": "Ingresar",
-    "acceder":"Ingresar", 
-    "olvidoContrasena":"Olvido su contraseña",
-    "ingreseCorreo":"Ingrese su correo",
-    "ingreseUsuario":"Ingrese su usuario",
-    "ingresePassword":"Ingrese su contraseña",
+    "acceder": "Ingresar",
+    "olvidoContrasena": "Olvido su contraseña",
+    "ingreseCorreo": "Ingrese su correo",
+    "ingreseUsuario": "Ingrese su usuario",
+    "ingresePassword": "Ingrese su contraseña",
 
     "identificacion": "Identificación",
     "usuarioIdentificado": "Usuario identificado correctamente",
-    "usuarioNoExiste": "Usuario o contraseña invalidos", 
-    "desconectarse":"Desconectarse",
-    "deseaDesconectarse":"¿Esta seguro que desea desconectarse?",
+    "usuarioNoExiste": "Usuario o contraseña invalidos",
+    "desconectarse": "Desconectarse",
+    "deseaDesconectarse": "¿Esta seguro que desea desconectarse?",
 
     "***************MENU**********************": "",
-    "inicio":"Inicio",
-    "usuarios":"Usuarios",
-    "roles":"Roles",
-    "permisos":"Permisos",
-    "rotaciones":"Rotacion",
-    "potreros":"Potreros",
-    "aforos":"Aforos",
-    "vacas":"Vacas",
-    "cambioClimatico":"Cambio climatico",
-    "pluviosidad":"Pluviosidad",
-    "plagas":"Plagas",
-    "fertilizacion":"Fertilizacion",
-    "rotacion":"Rotacion",
-    "reportes":"Reportes",
-    "planManejo":"Plan de manejo",
-    "analisis":"Analisis",
-    "informes":"Informes",
+    "inicio": "Inicio",
+    "usuarios": "Usuarios",
+    "roles": "Roles",
+    "permisos": "Permisos",
+    "rotaciones": "Rotacion",
+    "potreros": "Potreros",
+    "aforos": "Aforos",
+    "vacas": "Vacas",
+    "cambioClimatico": "Cambio climatico",
+    "pluviosidad": "Pluviosidad",
+    "plagas": "Plagas",
+    "fertilizacion": "Fertilizacion",
+    "rotacion": "Rotacion",
+    "reportes": "Reportes",
+    "planManejo": "Plan de manejo",
+    "analisis": "Analisis",
+    "informes": "Informes",
 
     "***************MENSAJES DE ACCION**********************": "",
 
@@ -119,6 +119,8 @@
   "tipoAnimal":"Tipo de la vaca",
   
   "***************GESTION AFORO**********************": "",
-  "crearAforo":"Crear aforo"
-
+  "crearAforo":"Crear aforo", 
+  
+  "***************GESTION ROTACION**********************": "",
+    "crearRotacion": "Crear rotacion"
 }

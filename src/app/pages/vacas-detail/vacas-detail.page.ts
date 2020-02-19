@@ -74,7 +74,14 @@ export class VacasDetailPage implements OnInit {
       this.vacaData = this.vacaDataTemp;
     }, 250);
 
+<<<<<<< HEAD
+ionViewWillEnter() {
+  // Se obtiene los roles de la base de datos para ser cargados en el select
+  this.getRotacion();
+}
+=======
   }
+>>>>>>> e7d10bdf45f28d0081a8eaaa3052c46295e8b73b
 
   ngOnInit() {
     // Se obtiene el identidicador del usuario que ingreso al sistema
@@ -170,6 +177,19 @@ export class VacasDetailPage implements OnInit {
     // tslint:disable-next-line: prefer-const
     let postDataObj = new FormData();
 
+<<<<<<< HEAD
+getRotacion() {
+  this.helperService.mostrarBarraDeCarga(this.translate.instant('espere'));
+  this.rotacionesService.getRotacion().subscribe(
+    data => {
+      let res: any;
+      res = data;
+      this.rotaciones = JSON.parse(res.data);
+      this.helperService.ocultarBarraCarga();
+    },
+    error => {
+      this.helperService.ocultarBarraCarga();
+=======
     /*Se anexa la informacion basica del usuario*/
     postDataObj.append("id", this.vacaData.id);
     postDataObj.append("numero", this.vacaData.numero);
@@ -188,6 +208,7 @@ export class VacasDetailPage implements OnInit {
       postDataObj.append("raza", this.vacaData.raza);
       postDataObj.append("tipoanimal", this.vacaData.tipoanimal);
     } else {
+>>>>>>> e7d10bdf45f28d0081a8eaaa3052c46295e8b73b
       this.helperService.showAlert(
         this.translate.instant("alertaTitulo"),
         this.translate.instant("verificarSeleccion")

@@ -89,8 +89,14 @@ const routes: Routes = [
     loadChildren: () => import('./pages/rotaciones/rotaciones.module').then( m => m.RotacionesPageModule)
   },
   {
+
     path: 'aforo-detail',
     loadChildren: () => import('./pages/aforo-detail/aforo-detail.module').then( m => m.AforoDetailPageModule)
+  },
+  {
+    path: 'rotaciones-detail',
+    loadChildren: () => import('./pages/rotaciones-detail/rotaciones-detail.module').then( m => m.RotacionesDetailPageModule)
+
   },
 ];
 
