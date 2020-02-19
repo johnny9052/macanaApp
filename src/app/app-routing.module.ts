@@ -88,6 +88,10 @@ const routes: Routes = [
     path: 'rotaciones',
     loadChildren: () => import('./pages/rotaciones/rotaciones.module').then( m => m.RotacionesPageModule)
   },
+  {
+    path: 'rotaciones-detail',
+    loadChildren: () => import('./pages/rotaciones-detail/rotaciones-detail.module').then( m => m.RotacionesDetailPageModule)
+  },
 ];
 
 @NgModule({

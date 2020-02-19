@@ -66,7 +66,7 @@ export class VacasDetailPage implements OnInit {
 
 ionViewWillEnter() {
   // Se obtiene los roles de la base de datos para ser cargados en el select
-  this.getRotaciones();
+  this.getRotacion();
 }
 
 
@@ -87,9 +87,9 @@ getProfilePk() {
 
 
 
-getRotaciones() {
+getRotacion() {
   this.helperService.mostrarBarraDeCarga(this.translate.instant('espere'));
-  this.rotacionesService.getRotaciones().subscribe(
+  this.rotacionesService.getRotacion().subscribe(
     data => {
       let res: any;
       res = data;
