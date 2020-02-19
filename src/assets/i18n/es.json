@@ -10,7 +10,12 @@
     "***************GENERICOS**********************": "",
 
     "macanaTitulo": "Macana",
+<<<<<<< HEAD
     "regresar": "Regresar",
+=======
+    "regresar":"Regresar",
+    "verificarSeleccion":"Verifique todos los campos de seleccion",
+>>>>>>> e7d10bdf45f28d0081a8eaaa3052c46295e8b73b
 
     "***************Log-In**********************": "",
 

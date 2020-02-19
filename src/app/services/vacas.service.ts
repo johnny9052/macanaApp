@@ -30,7 +30,31 @@ export class VacasService {
     );
   }
 
+  
+  getSexoVaca() {
+    return this.http.get<ModelVaca>(
+      this.baseUrl + 'Controller/General/CtlGeneral.php?action=loadSexoVaca'
+    );
+  }
 
+
+  
+  getRazaVaca() {
+    return this.http.get<ModelVaca>(
+      this.baseUrl + 'Controller/General/CtlGeneral.php?action=loadRazaVaca'
+    );
+  }
+
+
+  getTipoVaca() {
+    return this.http.get<ModelVaca>(
+      this.baseUrl + 'Controller/General/CtlGeneral.php?action=loadTipoVaca'
+    );
+  }
+
+
+
+  
 
    /*Funcion que se encarga de registrar al rol, recibiendo por parametro
   los datos del rol*/
@@ -52,8 +76,8 @@ export class VacasService {
         redireccionara al login*/
         this.helperService.showAlertRedirect(
           this.translate.instant('exitoTitulo'),
-          this.translate.instant('rolGuardado'),
-          '/roles'
+          this.translate.instant('exitoTransaccion'),
+          '/vacas'
         );
       } else {
         /*Si no retorna uno es porque el usuario ya existe*/
@@ -92,7 +116,7 @@ export class VacasService {
         this.helperService.showAlertRedirect(
           this.translate.instant('exitoTitulo'),
           this.translate.instant('exitoTransaccion'),
-          '/roles'
+          '/vacas'
         );
       } else {
         /*Si no retorna uno es porque el rol ya existe*/
