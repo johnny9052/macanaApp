@@ -88,6 +88,10 @@ const routes: Routes = [
     path: 'rotaciones',
     loadChildren: () => import('./pages/rotaciones/rotaciones.module').then( m => m.RotacionesPageModule)
   },
+  {
+    path: 'aforo-detail',
+    loadChildren: () => import('./pages/aforo-detail/aforo-detail.module').then( m => m.AforoDetailPageModule)
+  },
 ];
 
 @NgModule({

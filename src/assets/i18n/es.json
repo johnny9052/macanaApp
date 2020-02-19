@@ -116,6 +116,9 @@
   "edadVaca":"Edad de la vaca",
   "sexoVaca":"Sexo de la vaca",
   "razaVaca":"Raza de la vaca",
-  "tipoAnimal":"Tipo de la vaca"
+  "tipoAnimal":"Tipo de la vaca",
+  
+  "***************GESTION AFORO**********************": "",
+  "crearAforo":"Crear aforo"
 
 }
