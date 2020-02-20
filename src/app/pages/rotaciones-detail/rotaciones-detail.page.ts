@@ -65,7 +65,7 @@ export class RotacionesDetailPage implements OnInit {
       postDataObj.append('id' , this.rotacionData.id);
       postDataObj.append('nombre' , this.rotacionData.nombre);
       postDataObj.append('cantvacas' , this.rotacionData.cantvacas);
-      postDataObj.append('idresponsable' , this.rotacionData.idresponsable);
+      postDataObj.append('idresponsable' , this.codeUser);
 
       if ( this.helperService.isValidValue(this.rotacionData.id)) {
         postDataObj.append('action' , 'update');

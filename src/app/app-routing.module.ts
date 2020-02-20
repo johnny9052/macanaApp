@@ -97,7 +97,11 @@ const routes: Routes = [
     path: 'rotaciones-detail',
     loadChildren: () => import('./pages/rotaciones-detail/rotaciones-detail.module').then( m => m.RotacionesDetailPageModule)
 
+  },  {
+    path: 'potrero-detail',
+    loadChildren: () => import('./pages/potrero-detail/potrero-detail.module').then( m => m.PotreroDetailPageModule)
   },
+
 ];
 
 @NgModule({
