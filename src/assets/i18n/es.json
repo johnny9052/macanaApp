@@ -128,5 +128,33 @@
     "numeroPotrero": "Numero de Potrero",
     "areaPotrero": "Area del Potrero",
     "observacionPotrero": "Observaciones",
-    "idrotacionpotrero": "Rotacion"
+    "idrotacionpotrero": "Rotacion",
+
+    
+
+    "***************GESTION AFOROS**********************": "",
+    "fecha":"Fecha",
+    "potrero":"Potrero",
+    "pastoAlto":"Pasto alto",
+    "pastoMedio":"Pasto medio",
+    "pastoBajo":"Pasto bajo",
+    "lanceAlto":"Lance alto",
+    "lanceMedio":"Lance medio",
+    "lanceBajo":"Lance bajo",
+    "calcularDatos":"Calcular datos",
+    "cantidadLances":"Cantidad de lances",
+    "pesoPastoAlto":"Peso pasto alto",
+    "pesoPastoMedio":"Peso pasto medio",
+    "pesoPastoBajo":"Peso pasto bajo",
+    "cantidadPasto":"Cantidad pasto",
+    "porcentajeAlto":"Porcentaje alto",
+    "porcentajeMedio":"Porcentaje medio",
+    "porcentajeBajo":"Porcentaje bajo",
+    "totalMetroCuadrado":"Total de metro cuadrado",
+    "cantidadPastoPotrero":"Cantidad pasto del potrero",
+    "tiempoPotrero":"Tiempo potrero",
+    "observaciones":"Observaciones",
+
+    "verificarDatosPasto":"Verifique los datos del pasto",
+    "seleccionePotrero":"Seleccione un potrero"
 }

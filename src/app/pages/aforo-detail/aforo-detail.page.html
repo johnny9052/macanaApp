@@ -1,8 +1,436 @@
 <app-header titulo="{{ 'aforos' | translate }}"></app-header>
 
-
 <ion-content padding="padding">
-   
-  </ion-content>
-  
-  
+  <form #formulario="ngForm" (ngSubmit)="saveAforoData()">
+    <ion-list class="ion-text-center">
+      <!-- **************INFORMACION BASICA ***************************** -->
+
+      <ion-item>
+        <ion-label>{{ 'fecha' | translate }}</ion-label>
+
+        <ion-datetime
+          placeholder="{{ 'seleccione' | translate }}"
+          display-format="YYYY MMMM DD"
+          cancelText="{{ 'cancelar' | translate }}"
+          [(ngModel)]="aforoData.fecha"
+          name="fechaAforo"
+          [pickerOptions]="customPickerOptions"
+        ></ion-datetime>
+      </ion-item>
+
+      <ion-item>
+        <ion-label>{{ 'potrero' | translate }}*</ion-label>
+
+        <ion-select
+          placeholder="Seleccione"
+          [(ngModel)]="aforoData.idpotrero"
+          name="potreroAforo"
+        >
+          <ion-select-option
+            *ngFor="let potrero of potreros"
+            value="{{potrero.id}}"
+            >{{potrero.numero}}</ion-select-option
+          >
+        </ion-select>
+      </ion-item>
+
+      <ion-item>
+        <ion-label position="floating"
+          >{{ 'pastoAlto' | translate }}*</ion-label
+        >
+        <ion-input
+          type="number"
+          name="pastoAltoAforo"
+          required="required"
+          [(ngModel)]="aforoData.pastoalto"
+        ></ion-input>
+      </ion-item>
+
+      <ion-item>
+        <ion-label position="floating"
+          >{{ 'pastoMedio' | translate }}*</ion-label
+        >
+        <ion-input
+          type="number"
+          name="pastoMedioAforo"
+          required="required"
+          [(ngModel)]="aforoData.pastomedio"
+        ></ion-input>
+      </ion-item>
+
+      <ion-item>
+        <ion-label position="floating"
+          >{{ 'pastoBajo' | translate }}*</ion-label
+        >
+        <ion-input
+          type="number"
+          name="pastoBajoAforo"
+          required="required"
+          [(ngModel)]="aforoData.pastobajo"
+        ></ion-input>
+      </ion-item>
+      <!-- **************END INFORMACION BASICA ***************************** -->
+
+      <!-- **************VALORES DE LOS LANCES PARA FUTUROS CALCULOS***************************** -->
+
+      <!-- **************LANCE ALTO***************************** -->
+      <ion-row>
+        <ion-col size="2">
+          <ion-button
+            class="top-20"
+            fill="outline"
+            color="macana"
+            (click)="disminuirLanceAlto();"
+            >-</ion-button
+          >
+        </ion-col>
+        <ion-col size="8">
+          <ion-item>
+            <ion-label position="floating"
+              >{{ 'lanceAlto' | translate }}*</ion-label
+            >
+            <ion-input
+              type="number"
+              name="lanceAltoAforo"
+              required="required"
+              disabled
+              [(ngModel)]="aforoData.lancealto"
+            ></ion-input>
+          </ion-item>
+        </ion-col>
+        <ion-col size="2">
+          <ion-button
+            class="top-20"
+            fill="outline"
+            color="macana"
+            (click)="aumentarLanceAlto();"
+            >+</ion-button
+          >
+        </ion-col>
+      </ion-row>
+      <!-- **************END LANCE ALTO***************************** -->
+
+      <!-- **************LANCE MEDIO***************************** -->
+      <ion-row>
+        <ion-col size="2">
+          <ion-button
+            class="top-20"
+            fill="outline"
+            color="macana"
+            (click)="disminuirLanceMedio();"
+            >-</ion-button
+          >
+        </ion-col>
+        <ion-col size="8">
+          <ion-item>
+            <ion-label position="floating"
+              >{{ 'lanceMedio' | translate }}*</ion-label
+            >
+            <ion-input
+              type="number"
+              disabled
+              name="lanceMedioAforo"
+              required="required"
+              [(ngModel)]="aforoData.lancemedio"
+            ></ion-input>
+          </ion-item>
+        </ion-col>
+        <ion-col size="2">
+          <ion-button
+            class="top-20"
+            fill="outline"
+            color="macana"
+            (click)="aumentarLanceMedio();"
+            >+</ion-button
+          >
+        </ion-col>
+      </ion-row>
+      <!-- **************END LANCE MEDIO***************************** -->
+
+      <!-- **************LANCE BAJO***************************** -->
+      <ion-row>
+        <ion-col size="2">
+          <ion-button
+            class="top-20"
+            fill="outline"
+            color="macana"
+            (click)="disminuirLanceBajo();"
+            >-</ion-button
+          >
+        </ion-col>
+        <ion-col size="8">
+          <ion-item>
+            <ion-label position="floating"
+              >{{ 'lanceBajo' | translate }}*</ion-label
+            >
+            <ion-input
+              type="number"
+              disabled
+              name="lanceBajoAforo"
+              required="required"
+              [(ngModel)]="aforoData.lancebajo"
+            ></ion-input>
+          </ion-item>
+        </ion-col>
+        <ion-col size="2">
+          <ion-button
+            class="top-20"
+            fill="outline"
+            color="macana"
+            (click)="aumentarLanceBajo();"
+            >+</ion-button
+          >
+        </ion-col>
+      </ion-row>
+      <!-- **************END LANCE BAJO***************************** -->
+
+      <!-- **************END VALORES DE LOS LANCES PARA FUTUROS CALCULOS***************************** -->
+
+      <br />
+      <br />
+
+      <ion-col size="12">
+        <ion-button
+          color="macana"
+          fill="outline"
+          size="small"
+          (click)="calcularDatos();"
+          >{{ 'calcularDatos' | translate }}</ion-button
+        >
+      </ion-col>
+
+      <br />
+      <br />
+
+      <!-- **************VALORES CALCULADOS AUTOMATICAMENTE***************************** -->
+      <ion-item>
+        <ion-label position="floating"
+          >{{ 'cantidadLances' | translate }}*</ion-label
+        >
+        <ion-input
+          type="number"
+          name="cantidadLancesAforo"
+          required="required"
+          disabled
+          [(ngModel)]="aforoData.cantlances"
+        ></ion-input>
+      </ion-item>
+
+
+      <ion-item>
+        <ion-label position="floating"
+          >{{ 'pesoPastoAlto' | translate }}*</ion-label
+        >
+        <ion-input
+          type="number"
+          name="pesoPastoAltoAforo"
+          required="required"
+          disabled
+          [(ngModel)]="aforoData.pesopastoalto"
+        ></ion-input>
+      </ion-item>
+
+
+
+      <ion-item>
+        <ion-label position="floating"
+          >{{ 'pesoPastoMedio' | translate }}*</ion-label
+        >
+        <ion-input
+          type="number"
+          name="pesoPastoMedioAforo"
+          required="required"
+          disabled
+          [(ngModel)]="aforoData.pesopastomedio"
+        ></ion-input>
+      </ion-item>
+
+
+      <ion-item>
+        <ion-label position="floating"
+          >{{ 'pesoPastoBajo' | translate }}*</ion-label
+        >
+        <ion-input
+          type="number"
+          name="pesoPastoBajoAforo"
+          required="required"
+          disabled
+          [(ngModel)]="aforoData.pesopastobajo"
+        ></ion-input>
+      </ion-item>
+
+
+      <ion-item>
+        <ion-label position="floating"
+          >{{ 'cantidadPasto' | translate }}*</ion-label
+        >
+        <ion-input
+          type="number"
+          name="cantidadPastoAforo"
+          required="required"
+          disabled
+          [(ngModel)]="aforoData.cantpasto"
+        ></ion-input>
+      </ion-item>
+
+
+      <ion-item>
+        <ion-label position="floating"
+          >{{ 'porcentajeAlto' | translate }}*</ion-label
+        >
+        <ion-input
+          type="number"
+          name="porcentajeAltoAforo"
+          required="required"
+          disabled
+          [(ngModel)]="aforoData.porcentajealtro"
+        ></ion-input>
+      </ion-item>
+
+
+      <ion-item>
+        <ion-label position="floating"
+          >{{ 'porcentajeMedio' | translate }}*</ion-label
+        >
+        <ion-input
+          type="number"
+          name="porcentajeMedioAforo"
+          required="required"
+          disabled
+          [(ngModel)]="aforoData.porcentajemedio"
+        ></ion-input>
+      </ion-item>
+
+
+
+      <ion-item>
+        <ion-label position="floating"
+          >{{ 'porcentajeBajo' | translate }}*</ion-label
+        >
+        <ion-input
+          type="number"
+          name="porcentajeAltoBajo"
+          required="required"
+          disabled
+          [(ngModel)]="aforoData.porcentajebajo"
+        ></ion-input>
+      </ion-item>
+
+
+
+      <ion-item>
+        <ion-label position="floating"
+          >{{ 'totalMetroCuadrado' | translate }}*</ion-label
+        >
+        <ion-input
+          type="number"
+          name="totalMetroCuadradoAforo"
+          required="required"
+          disabled
+          [(ngModel)]="aforoData.totalmetrocuadrado"
+        ></ion-input>
+      </ion-item>
+
+
+      <ion-item>
+        <ion-label position="floating"
+          >{{ 'cantidadPastoPotrero' | translate }}*</ion-label
+        >
+        <ion-input
+          type="number"
+          name="cantidadPastoPotreroAforo"
+          required="required"
+          disabled
+          [(ngModel)]="aforoData.cantpastopotrero"
+        ></ion-input>
+      </ion-item>
+
+
+
+      <ion-item>
+        <ion-label position="floating"
+          >{{ 'tiempoPotrero' | translate }}*</ion-label
+        >
+        <ion-input
+          type="number"
+          name="tiempoPotreroAforo"
+          required="required"
+          disabled
+          [(ngModel)]="aforoData.tiempopotrero"
+        ></ion-input>
+      </ion-item>
+
+
+
+
+      <ion-item>
+        <ion-label position="floating"
+          >{{ 'observaciones' | translate }}*</ion-label
+        >
+        <ion-input
+          type="text"
+          name="observacionesAforo"
+          [(ngModel)]="aforoData.observaciones"
+        ></ion-input>
+      </ion-item>
+
+      <!-- **************END VALORES CALCULADOS AUTOMATICAMENTE***************************** -->
+
+    </ion-list>
+
+    <ion-grid fixed="fixed">
+      <ion-row class="ion-text-center">
+        <ion-col
+          size="12"
+          *ngIf="!this.helperService.isValidValue(aforoData.id)"
+        >
+          <ion-button
+            color="macana"
+            type="submit"
+            [disabled]="formulario.invalid"
+            fill="outline"
+            expand="full"
+            >{{ 'guardar' | translate }}</ion-button
+          >
+        </ion-col>
+
+        <ion-col
+          size="12"
+          *ngIf="this.helperService.isValidValue(aforoData.id)"
+        >
+          <ion-button
+            color="macana"
+            type="submit"
+            [disabled]="formulario.invalid"
+            fill="outline"
+            expand="full"
+            >{{ 'editar' | translate }}</ion-button
+          >
+        </ion-col>
+
+        <ion-col
+          size="12"
+          *ngIf="this.helperService.isValidValue(aforoData.id)"
+        >
+          <ion-button
+            color="macana"
+            fill="outline"
+            expand="full"
+            (click)="deleteAforoData();"
+            >{{ 'eliminar' | translate }}</ion-button
+          >
+        </ion-col>
+
+        <ion-col size="12">
+          <ion-button
+            color="macana"
+            fill="outline"
+            routerLink="/aforos"
+            expand="full"
+            >{{ 'regresar' | translate }}</ion-button
+          >
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+  </form>
+</ion-content>
