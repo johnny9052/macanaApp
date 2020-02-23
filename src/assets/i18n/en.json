@@ -77,6 +77,9 @@
 
     "errorCargandoInformacion": "Error cargando la informacion",
 
+    "registroExistente":"El registro ya existe",
+    "noSePuedeEliminar":"El registro no se puede eliminar, ya que tiene informacion asociada",
+
     "***************GESTION ROLES**********************": "",
     "nombreRol": "Nombre del rol",
     "descripcionRol": "Descripcion del rol",
@@ -158,5 +161,6 @@
     "observaciones":"Observaciones",
 
     "verificarDatosPasto":"Verifique los datos del pasto",
-    "seleccionePotrero":"Seleccione un potrero"
+    "seleccionePotrero":"Seleccione un potrero",
+    "pastoMedioError":"El pasto medio no es valido"
 }
