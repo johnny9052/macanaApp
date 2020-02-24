@@ -162,5 +162,6 @@
 
     "verificarDatosPasto":"Verifique los datos del pasto",
     "seleccionePotrero":"Seleccione un potrero",
-    "pastoMedioError":"El pasto medio no es valido"
+    "pastoMedioError":"El pasto medio no es valido",
+    "lancesInsuficientes":"La cantidad de lances debe ser mayor a 30"
 }

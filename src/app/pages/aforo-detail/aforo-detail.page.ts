@@ -8,7 +8,6 @@ import { TranslateService } from "@ngx-translate/core";
 import { AforoService } from "src/app/services/aforo.service";
 import { ModelPotrero } from "src/app/interfaces/potrerointerface";
 import { PotreroService } from "src/app/services/potrero.service";
-import { parse } from "querystring";
 
 @Component({
   selector: "app-aforo-detail",
@@ -32,6 +31,8 @@ export class AforoDetailPage implements OnInit {
   aforoDataTemp = {} as ModelAforo;
   potreros: ModelPotrero[] = [];
   /****************END OBJETOS************************** */
+
+  mjsTiempoPotrero = "";
 
   /********************INYECCION DE DEPENDENCIAS********* */
   /*HelperService: Servicio generico para funcionalidades ya implementadas
@@ -104,6 +105,8 @@ export class AforoDetailPage implements OnInit {
         }
       });
     }, 250);
+
+    this.mostrarMensajeTiempoPotrero();
   }
 
   ngOnInit() {
@@ -246,73 +249,88 @@ export class AforoDetailPage implements OnInit {
           parseFloat(this.aforoData.pastomedio) >= rangoPastoInferior &&
           parseFloat(this.aforoData.pastomedio) <= rangoPastoSuperior
         ) {
-          /* Se calculan todos los datos */
-          this.aforoData.cantlances = (
+          if (
             parseFloat(this.aforoData.lancealto) +
-            parseFloat(this.aforoData.lancemedio) +
-            parseFloat(this.aforoData.lancebajo)
-          ).toString();
+              parseFloat(this.aforoData.lancemedio) +
+              parseFloat(this.aforoData.lancebajo) >=
+            30
+          ) {
+            /* Se calculan todos los datos */
+            this.aforoData.cantlances = (
+              parseFloat(this.aforoData.lancealto) +
+              parseFloat(this.aforoData.lancemedio) +
+              parseFloat(this.aforoData.lancebajo)
+            ).toString();
 
-          this.aforoData.pesopastoalto = (
-            parseFloat(this.aforoData.pastoalto) *
-            parseFloat(this.aforoData.lancealto)
-          ).toString();
+            this.aforoData.pesopastoalto = (
+              parseFloat(this.aforoData.pastoalto) *
+              parseFloat(this.aforoData.lancealto)
+            ).toString();
 
-          this.aforoData.pesopastomedio = (
-            parseFloat(this.aforoData.pastomedio) *
-            parseFloat(this.aforoData.lancemedio)
-          ).toString();
+            this.aforoData.pesopastomedio = (
+              parseFloat(this.aforoData.pastomedio) *
+              parseFloat(this.aforoData.lancemedio)
+            ).toString();
 
-          this.aforoData.pesopastobajo = (
-            parseFloat(this.aforoData.pastobajo) *
-            parseFloat(this.aforoData.lancebajo)
-          ).toString();
+            this.aforoData.pesopastobajo = (
+              parseFloat(this.aforoData.pastobajo) *
+              parseFloat(this.aforoData.lancebajo)
+            ).toString();
 
-          this.aforoData.cantpasto = (
-            parseFloat(this.aforoData.pesopastoalto) +
-            parseFloat(this.aforoData.pesopastomedio) +
-            parseFloat(this.aforoData.pesopastobajo)
-          ).toString();
+            this.aforoData.cantpasto = (
+              parseFloat(this.aforoData.pesopastoalto) +
+              parseFloat(this.aforoData.pesopastomedio) +
+              parseFloat(this.aforoData.pesopastobajo)
+            ).toString();
 
-          this.aforoData.porcentajealtro = (
-            parseFloat(this.aforoData.lancealto) /
-            parseFloat(this.aforoData.cantlances)
-          ).toString();
+            this.aforoData.porcentajealtro = (
+              parseFloat(this.aforoData.lancealto) /
+              parseFloat(this.aforoData.cantlances)
+            ).toString();
 
-          this.aforoData.porcentajemedio = (
-            parseFloat(this.aforoData.lancemedio) /
-            parseFloat(this.aforoData.cantlances)
-          ).toString();
+            this.aforoData.porcentajemedio = (
+              parseFloat(this.aforoData.lancemedio) /
+              parseFloat(this.aforoData.cantlances)
+            ).toString();
 
-          this.aforoData.porcentajebajo = (
-            parseFloat(this.aforoData.lancebajo) /
-            parseFloat(this.aforoData.cantlances)
-          ).toString();
+            this.aforoData.porcentajebajo = (
+              parseFloat(this.aforoData.lancebajo) /
+              parseFloat(this.aforoData.cantlances)
+            ).toString();
 
-          this.aforoData.totalmetrocuadrado = (
-            parseFloat(this.aforoData.cantpasto) /
-            parseFloat(this.aforoData.cantlances)
-          ).toString();
+            this.aforoData.totalmetrocuadrado = (
+              parseFloat(this.aforoData.cantpasto) /
+              parseFloat(this.aforoData.cantlances)
+            ).toString();
 
-          /* Se obtiene el area  del potrero seleccionado y la cantidad de 
+            /* Se obtiene el area  del potrero seleccionado y la cantidad de 
         vacas de la rotacion del potrero*/
-          this.potreros.forEach(element => {
-            if (element.id === this.aforoData.idpotrero) {
-              this.areaPotrero = element.area;
-              this.cantVacas = element.cantvacas;
-            }
-          });
+            this.potreros.forEach(element => {
+              if (element.id === this.aforoData.idpotrero) {
+                this.areaPotrero = element.area;
+                this.cantVacas = element.cantvacas;
+              }
+            });
 
-          this.aforoData.cantpastopotrero = (
-            parseFloat(this.areaPotrero) /
-            parseFloat(this.aforoData.totalmetrocuadrado) /
-            2
-          ).toString();
+            this.aforoData.cantpastopotrero = (
+              parseFloat(this.areaPotrero) /
+              parseFloat(this.aforoData.totalmetrocuadrado) /
+              2
+            ).toString();
 
-          this.aforoData.tiempopotrero = (
-            parseFloat(this.aforoData.cantpastopotrero) /
-            (parseFloat(this.cantVacas) * 55)
-          ).toString();
+            this.aforoData.tiempopotrero = (
+              parseFloat(this.aforoData.cantpastopotrero) /
+              (parseFloat(this.cantVacas) * 55)
+            ).toString();
+
+            this.mostrarMensajeTiempoPotrero();
+
+          } else {
+            this.helperService.showAlert(
+              this.translate.instant("alertaTitulo"),
+              this.translate.instant("lancesInsuficientes")
+            );
+          }
         } else {
           this.helperService.showAlert(
             this.translate.instant("alertaTitulo"),
@@ -372,6 +390,19 @@ export class AforoDetailPage implements OnInit {
       this.aforoData.lancebajo = (
         parseInt(this.aforoData.lancebajo) - 1
       ).toString();
+    }
+  }
+
+  mostrarMensajeTiempoPotrero() {
+
+    if (parseFloat(this.aforoData.tiempopotrero) <= 0.75) {
+      this.mjsTiempoPotrero = "Las vacas pueden estar medio dia";
+    } else {
+      if (parseFloat(this.aforoData.tiempopotrero) < 1.4) {
+        this.mjsTiempoPotrero = "Las vacas pueden estar un dia";
+      } else {
+        this.mjsTiempoPotrero = "Las vacas pueden estar un dia y medio";
+      }
     }
   }
 }
