@@ -6,5 +6,6 @@ export interface ModelPotrero {
     observacion: string;
     idrotacion: string;
     idresponsable: string;
+    cantvacas: string;
   }
   

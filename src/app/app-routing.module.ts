@@ -17,14 +17,6 @@ const routes: Routes = [
     loadChildren: () => import('./pages/aforos/aforos.module').then( m => m.AforosPageModule)
   },
   {
-    path: 'cambio-climatico',
-    loadChildren: () => import('./pages/cambio-climatico/cambio-climatico.module').then( m => m.CambioClimaticoPageModule)
-  },
-  {
-    path: 'pluviosidad',
-    loadChildren: () => import('./pages/pluviosidad/pluviosidad.module').then( m => m.PluviosidadPageModule)
-  },
-  {
     path: 'plaga',
     loadChildren: () => import('./pages/plaga/plaga.module').then( m => m.PlagaPageModule)
   },
@@ -97,7 +89,8 @@ const routes: Routes = [
     path: 'rotaciones-detail',
     loadChildren: () => import('./pages/rotaciones-detail/rotaciones-detail.module').then( m => m.RotacionesDetailPageModule)
 
-  },  {
+  },
+  {
     path: 'potrero-detail',
     loadChildren: () => import('./pages/potrero-detail/potrero-detail.module').then( m => m.PotreroDetailPageModule)
   },

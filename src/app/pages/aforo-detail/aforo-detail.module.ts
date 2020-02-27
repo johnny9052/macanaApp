@@ -9,6 +9,7 @@ import { AforoDetailPageRoutingModule } from './aforo-detail-routing.module';
 import { AforoDetailPage } from './aforo-detail.page';
 import { ComponentsModule } from 'src/app/components/components.module';
 import { TranslateModule } from '@ngx-translate/core';
+import { PipesModule } from '../../pipes/pipes.module';
 
 @NgModule({
   imports: [
@@ -17,7 +18,8 @@ import { TranslateModule } from '@ngx-translate/core';
     IonicModule,
     AforoDetailPageRoutingModule, 
     ComponentsModule,
-    TranslateModule
+    TranslateModule,
+    PipesModule
   ],
   declarations: [AforoDetailPage]
 })
