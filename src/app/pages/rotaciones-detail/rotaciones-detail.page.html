@@ -7,30 +7,26 @@
 
             <ion-item>
                 <ion-label position="floating">{{ 'nombre' | translate }}*</ion-label>
-
                 <ion-input type="text" name="nombre" required="required" [(ngModel)]="rotacionData.nombre">
                 </ion-input>
-
             </ion-item>
 
             <ion-item>
                 <ion-label position="floating">{{ 'cantvacas' | translate }}*</ion-label>
-
                 <ion-input type="number" name="cantvacas" required="required" [(ngModel)]="rotacionData.cantvacas"></ion-input>
             </ion-item>
 
-
         </ion-list>
-
         <ion-grid fixed="fixed">
             <ion-row class="ion-text-center">
                 <ion-col size="12" *ngIf="!this.helperService.isValidValue(rotacionData.id)">
-                    <ion-button color="macana" type="submit" [disabled]="formulario.invalid" fill="outline" expand="full">{{ 'guardar' | translate }}</ion-button>
+                    <ion-button color="macana" type="submit" [disabled]="formulario.invalid" fill="outline" expand="full">{{ 'guardar' | translate }}
+                    </ion-button>
                 </ion-col>
 
-
                 <ion-col size="12" *ngIf="this.helperService.isValidValue(rotacionData.id)">
-                    <ion-button color="macana" type="submit" [disabled]="formulario.invalid" fill="outline" expand="full">{{ 'editar' | translate }}</ion-button>
+                    <ion-button color="macana" type="submit" [disabled]="formulario.invalid" fill="outline" expand="full">{{ 'editar' | translate }}
+                    </ion-button>
                 </ion-col>
 
 
