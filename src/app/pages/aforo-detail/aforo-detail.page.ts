@@ -104,7 +104,7 @@ export class AforoDetailPage implements OnInit {
           this.cantVacas = element.cantvacas;
         }
       });
-    }, 250);
+    }, 500);
 
     this.mostrarMensajeTiempoPotrero();
   }

@@ -62,7 +62,7 @@ export class PotreroDetailPage implements OnInit {
   /* Despues de que se llenan los selects, se espera 250 milisegundos para poder regresar los datos */
   setTimeout(() => {
     this.potreroData = this.potreroDataTemp;
-  }, 250);
+  }, 500);
 
 }
 
