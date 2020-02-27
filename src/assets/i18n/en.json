@@ -129,7 +129,7 @@
     "***************GESTION POTRERO**********************": "",
     "crearPotrero": "Crear potrero",
     "numeroPotrero": "Numero de Potrero",
-    "areaPotrero": "Area del Potrero",
+    "areaPotrero": "Area en Metros Cuadrados",
     "observacionPotrero": "Observaciones",
     "idrotacionpotrero": "Rotacion"
 }

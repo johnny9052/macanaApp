@@ -4,34 +4,29 @@
     <form #formulario="ngForm" (ngSubmit)="savePotreroData()">
         <ion-list>
 
-
             <ion-item>
                 <ion-label position="floating">{{ 'numeroPotrero' | translate }}*</ion-label>
-
                 <ion-input type="number" name="numero" required="required" [(ngModel)]="potreroData.numero">
                 </ion-input>
-
             </ion-item>
 
             <ion-item>
                 <ion-label position="floating">{{ 'areaPotrero' | translate }}*</ion-label>
-
                 <ion-input type="number" name="area" required="required" [(ngModel)]="potreroData.area">
                 </ion-input>
             </ion-item>
 
             <ion-item>
                 <ion-label position="floating">{{ 'observacionPotrero' | translate }}*</ion-label>
-
                 <ion-input type="text" name="observacion" required="required" [(ngModel)]="potreroData.observacion">
                 </ion-input>
             </ion-item>
 
             <ion-item>
                 <ion-label position="floating">{{ 'idrotacionpotrero' | translate }}*</ion-label>
-
                 <ion-select placeholder="Seleccione" [(ngModel)]="potreroData.idrotacion" name="rotacion">
-                    <ion-select-option *ngFor="let rotacion of rotaciones" value="{{rotacion.id}}">{{rotacion.nombre}}</ion-select-option>
+                    <ion-select-option *ngFor="let rotacion of rotaciones" value="{{rotacion.id}}">{{rotacion.nombre}}
+                    </ion-select-option>
                 </ion-select>
             </ion-item>
 
@@ -40,12 +35,13 @@
         <ion-grid fixed="fixed">
             <ion-row class="ion-text-center">
                 <ion-col size="12" *ngIf="!this.helperService.isValidValue(potreroData.id)">
-                    <ion-button color="macana" type="submit" [disabled]="formulario.invalid" fill="outline" expand="full">{{ 'guardar' | translate }}</ion-button>
+                    <ion-button color="macana" type="submit" [disabled]="formulario.invalid" fill="outline" expand="full">{{ 'guardar' | translate }}
+                    </ion-button>
                 </ion-col>
 
-
                 <ion-col size="12" *ngIf="this.helperService.isValidValue(potreroData.id)">
-                    <ion-button color="macana" type="submit" [disabled]="formulario.invalid" fill="outline" expand="full">{{ 'editar' | translate }}</ion-button>
+                    <ion-button color="macana" type="submit" [disabled]="formulario.invalid" fill="outline" expand="full">{{ 'editar' | translate }}
+                    </ion-button>
                 </ion-col>
 
                 <ion-col size="12" *ngIf="this.helperService.isValidValue(potreroData.id)">
