@@ -28,6 +28,15 @@ export class AforoService {
     );
   }
 
+  getPDFAforos() {
+    window.open(this.baseUrl + "Controller/Aforo/CtlAforo.php?action=generatePDFList",'_system', 'location=yes');
+  }
+
+
+  getCSVAforos() {
+    window.open(this.baseUrl + "Controller/Aforo/CtlAforo.php?action=reportCSVList",'_system', 'location=yes');
+  }
+
   /*Funcion que se encarga de registrar al rol, recibiendo por parametro
   los datos del rol*/
   saveAforoDataService(postData: any) {
