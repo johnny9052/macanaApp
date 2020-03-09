@@ -29,12 +29,21 @@ export class AforoService {
   }
 
   getPDFAforos() {
-    window.open(this.baseUrl + "Controller/Aforo/CtlAforo.php?action=generatePDFList",'_system', 'location=yes');
+    window.open(
+      this.baseUrl + "Controller/Aforo/CtlAforo.php?action=generatePDFList",
+      "_system",
+      "location=yes"
+    );
   }
 
-
-  getCSVAforos() {
-    window.open(this.baseUrl + "Controller/Aforo/CtlAforo.php?action=reportCSVList",'_system', 'location=yes');
+  getCSVAforos(caracter: string) {
+    window.open(
+      this.baseUrl +
+        "Controller/Aforo/CtlAforo.php?action=reportCSVList&caracter=" +
+        caracter,
+      "_system",
+      "location=yes"
+    );
   }
 
   /*Funcion que se encarga de registrar al rol, recibiendo por parametro
@@ -120,9 +129,9 @@ export class AforoService {
               this.translate.instant("errorTitulo"),
               this.translate.instant("noSePuedeEliminar")
             );
-          }else{
-             /*Si no retorna uno es porque el rol ya existe*/
-             this.helperService.showAlert(
+          } else {
+            /*Si no retorna uno es porque el rol ya existe*/
+            this.helperService.showAlert(
               this.translate.instant("errorTitulo"),
               this.translate.instant("errorTransaccion")
             );
