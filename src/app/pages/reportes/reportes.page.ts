@@ -74,11 +74,19 @@ export class ReportesPage implements OnInit {
           }
         },
         {
-          text: this.translate.instant("EXCEL"),
+          text: this.translate.instant("EXCELCOMA"),
           /* icon: "share", */
           cssClass: "accionesInferior",
           handler: () => {
-            this.generarCSVAforos();
+            this.generarCSVAforos(',');
+          }
+        },
+        {
+          text: this.translate.instant("EXCELPUNTOCOMA"),
+          /* icon: "share", */
+          cssClass: "accionesInferior",
+          handler: () => {
+            this.generarCSVAforos(';');
           }
         },
         {
@@ -103,8 +111,8 @@ export class ReportesPage implements OnInit {
   }
 
 
-  generarCSVAforos() {
+  generarCSVAforos(caracter: string) {
     /*Se llama al metodo de listar aforos definido en el servicio*/
-    this.aforosService.getCSVAforos();
+    this.aforosService.getCSVAforos(caracter);
   }
 }

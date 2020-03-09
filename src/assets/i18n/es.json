@@ -169,5 +169,7 @@
     "reporteAforos":"Reporte aforos",
     "PDF":"PDF",
     "EXCEL":"EXCEL",
+    "EXCELCOMA":"EXCEL (,)",
+    "EXCELPUNTOCOMA":"EXCEL (;)",
     "Cancelar":"Cancelar"
 }
