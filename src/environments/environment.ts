@@ -4,8 +4,8 @@
 
 export const environment = {
   production: false,
-  baseUrl: 'http://localhost/MacapaAppBackend/'
-  /* baseUrl: 'http://hatolamacana.com/MacapaAppBackend/' */
+/*   baseUrl: 'http://localhost/MacapaAppBackend/' */
+  baseUrl: 'http://hatolamacana.com/MacapaAppBackend/'
  /*  baseUrl: 'http://192.168.1.167/MacapaAppBackend/' */
 };
 
