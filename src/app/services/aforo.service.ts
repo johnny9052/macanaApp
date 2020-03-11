@@ -37,6 +37,9 @@ export class AforoService {
   }
 
   getCSVAforos(caracter: string) {
+    console.log(this.baseUrl +
+      "Controller/Aforo/CtlAforo.php?action=reportCSVList&caracter=" +
+      caracter);
     window.open(
       this.baseUrl +
         "Controller/Aforo/CtlAforo.php?action=reportCSVList&caracter=" +
