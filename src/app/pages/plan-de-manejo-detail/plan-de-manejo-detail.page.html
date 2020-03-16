@@ -1,0 +1,51 @@
+<app-header titulo="{{ 'nombre' | translate }}"></app-header>
+
+<ion-content padding="padding">
+    <form #formulario="ngForm" (ngSubmit)="savePLanDeManejoData()">
+        <ion-list>
+
+            <ion-item>
+                <ion-label position="floating">{{ 'fecha' | translate }}*</ion-label>
+
+                <ion-datetime required="required" placeholder="{{ 'seleccione' | translate }}" display-format="YYYY MMMM DD" cancelText="{{ 'cancelar' | translate }}" [(ngModel)]="plandemanejoData.fecha" name="fechaAforo" [pickerOptions]="customPickerOptions"></ion-datetime>
+            </ion-item>
+
+            <ion-item>
+                <ion-label position="floating">{{ 'nombre' | translate }}</ion-label>
+
+                <ion-input type="text" name="nombre" [(ngModel)]="plandemanejoData.nombre" required="required"></ion-input>
+            </ion-item>
+
+            <ion-item>
+                <ion-label position="floating">{{ 'observaciones' | translate }}</ion-label>
+
+                <ion-input type="text" name="observaciones" [(ngModel)]="plandemanejoData.observaciones"></ion-input>
+            </ion-item>
+
+
+        </ion-list>
+
+        <ion-grid fixed="fixed">
+            <ion-row class="ion-text-center">
+                <ion-col size="12" *ngIf="!this.helperService.isValidValue(plandemanejoData.id)">
+                    <ion-button color="macana" type="submit" [disabled]="formulario.invalid" fill="outline" expand="full">{{ 'guardar' | translate }}</ion-button>
+                </ion-col>
+
+                <ion-col size="12" *ngIf="this.helperService.isValidValue(plandemanejoData.id)">
+                    <ion-button color="macana" type="submit" [disabled]="formulario.invalid" fill="outline" expand="full">{{ 'editar' | translate }}</ion-button>
+                </ion-col>
+
+
+                <ion-col size="12" *ngIf="this.helperService.isValidValue(plandemanejoData.id)">
+                    <ion-button color="macana" fill="outline" expand="full" (click)="deletePlanDeManejoData();">{{ 'eliminar' | translate }}</ion-button>
+                </ion-col>
+
+                <ion-col size="12">
+                    <ion-button color="macana" fill="outline" routerLink="/plan-de-manejo" expand="full">{{ 'regresar' | translate }}</ion-button>
+                </ion-col>
+            </ion-row>
+
+
+        </ion-grid>
+    </form>
+</ion-content>
