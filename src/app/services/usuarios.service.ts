@@ -26,7 +26,9 @@ export class UsuariosService {
 
   getUsuarios() {
     return this.http.get<ModelUserData>(
-      this.baseUrl + "Controller/Configuration/CtlUser.php?action=list"
+      this.baseUrl +
+        "Controller/Configuration/CtlUser.php?action=list&token=" +
+        this.helperService.generarToken()
     );
   }
 
@@ -35,6 +37,10 @@ export class UsuariosService {
   saveUserDataService(postData: any) {
     /*URL del web service*/
     const url = this.baseUrl + "Controller/Configuration/CtlUser.php";
+
+    
+    postData.append('token' , this.helperService.generarToken());
+
     /*Se muestra una barra de carga*/
     this.helperService.mostrarBarraDeCarga(this.translate.instant("espere"));
     /*Se envian los datos al servidor, enviando la url, los datos y la configuracion necesaria del header*/
@@ -80,6 +86,10 @@ export class UsuariosService {
   deleteUserDataService(postData: any) {
     /*URL del web service*/
     const url = this.baseUrl + "Controller/Configuration/CtlUser.php";
+
+
+    postData.append('token' , this.helperService.generarToken());
+
     /*Se muestra una barra de carga*/
     this.helperService.mostrarBarraDeCarga(this.translate.instant("espere"));
     /*Se envian los datos al servidor, enviando la url, los datos y la configuracion necesaria del header*/
@@ -132,6 +142,10 @@ export class UsuariosService {
   updateUserPasswordService(postData: any) {
     /*URL del web service*/
     const url = this.baseUrl + "Controller/Configuration/CtlUser.php";
+
+    
+    postData.append('token' , this.helperService.generarToken());
+    
     /*Se muestra una barra de carga*/
     this.helperService.mostrarBarraDeCarga(this.translate.instant("espere"));
     /*Se envian los datos al servidor, enviando la url, los datos y la configuracion necesaria del header*/

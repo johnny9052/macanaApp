@@ -24,7 +24,9 @@ export class RolesService {
 
   getRoles() {
     return this.http.get<ModelRol>(
-      this.baseUrl + "Controller/Configuration/CtlRol.php?action=list"
+      this.baseUrl +
+        "Controller/Configuration/CtlRol.php?action=list&token=" +
+        this.helperService.generarToken()
     );
   }
 
@@ -33,6 +35,10 @@ export class RolesService {
   saveRolDataService(postData: any) {
     /*URL del web service*/
     const url = this.baseUrl + "Controller/Configuration/CtlRol.php";
+
+    postData.append('token' , this.helperService.generarToken());
+
+
     /*Se muestra una barra de carga*/
     this.helperService.mostrarBarraDeCarga(this.translate.instant("espere"));
     /*Se envian los datos al servidor, enviando la url, los datos y la configuracion necesaria del header*/
@@ -85,6 +91,10 @@ export class RolesService {
   deleteRolDataService(postData: any) {
     /*URL del web service*/
     const url = this.baseUrl + "Controller/Configuration/CtlRol.php";
+
+    postData.append('token' , this.helperService.generarToken());
+
+    
     /*Se muestra una barra de carga*/
     this.helperService.mostrarBarraDeCarga(this.translate.instant("espere"));
     /*Se envian los datos al servidor, enviando la url, los datos y la configuracion necesaria del header*/
@@ -111,9 +121,9 @@ export class RolesService {
               this.translate.instant("errorTitulo"),
               this.translate.instant("noSePuedeEliminar")
             );
-          }else{
-             /*Si no retorna uno es porque el rol ya existe*/
-             this.helperService.showAlert(
+          } else {
+            /*Si no retorna uno es porque el rol ya existe*/
+            this.helperService.showAlert(
               this.translate.instant("errorTitulo"),
               this.translate.instant("errorTransaccion")
             );

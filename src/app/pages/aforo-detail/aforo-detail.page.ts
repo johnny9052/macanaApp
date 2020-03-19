@@ -313,7 +313,7 @@ export class AforoDetailPage implements OnInit {
             });
 
             this.aforoData.cantpastopotrero = (
-              parseFloat(this.areaPotrero) /
+              parseFloat(this.areaPotrero) *
               parseFloat(this.aforoData.totalmetrocuadrado) /
               2
             ).toString();

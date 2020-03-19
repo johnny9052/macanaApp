@@ -43,6 +43,9 @@ export class SecurityService {
     /* Se define la url del WebService*/
     const urlLogIn = this.baseUrl + 'Controller/Security/CtlLogIn.php';
 
+    postData.append('token' , this.helperService.generarToken());
+  
+
     /*Se muestra una barra de carga*/
     this.helperService.mostrarBarraDeCarga(this.translate.instant('espere'));
 

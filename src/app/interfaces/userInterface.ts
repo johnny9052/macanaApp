@@ -18,10 +18,11 @@ export interface ModelUserData {
   rol_nombre: string;
   rol_id: string;
   descripcion: string;
-
+  token:string;
 }
 
 export interface ModelUserLogIn {
   username: string;
   password: string;
+  token:string;
 }

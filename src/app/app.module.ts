@@ -30,6 +30,7 @@ import { IonicStorageModule } from '@ionic/storage';
 import { TranslateLoader, TranslateModule } from '@ngx-translate/core';
 import { TranslateHttpLoader } from '@ngx-translate/http-loader';
 import { PipesModule } from './pipes/pipes.module';
+import { DatePipe } from '@angular/common';
 
 /*Para instalar cordova en el proyecto
 ionic cordova plugin add cordova-plugin-advanced-http
@@ -59,6 +60,7 @@ npm install @ionic-native/http*/
     StatusBar,
     SplashScreen,
     Camera,
+    DatePipe,
     Base64,
     { provide: RouteReuseStrategy, useClass: IonicRouteStrategy }
   ],
