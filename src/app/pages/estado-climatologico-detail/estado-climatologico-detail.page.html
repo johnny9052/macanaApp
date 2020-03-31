@@ -1,27 +1,23 @@
 <app-header titulo="{{ 'climatologico' | translate }}"></app-header>
 
-
 <ion-content padding="padding">
-  
   <form #formulario="ngForm" (ngSubmit)="saveClimatologicoData()">
     <ion-list>
-
-
       <ion-item>
-        <ion-label position="floating">{{ 'fecha' | translate }}*</ion-label>
+        <ion-label>{{ 'fecha' | translate }} *</ion-label>
 
-        <ion-input
-          type="date"
-          name="fecha"
-          required="required"
+        <ion-datetime
+          placeholder="{{ 'seleccione' | translate }}"
+          display-format="YYYY MM DD"
+          cancelText="{{ 'cancelar' | translate }}"
           [(ngModel)]="climatologicoData.fecha"
-        ></ion-input>
+          name="fechaAforo"
+          [pickerOptions]="customPickerOptions"
+        ></ion-datetime>
       </ion-item>
 
       <ion-item>
-        <ion-label position="floating"
-          >{{ 'nubosidad' | translate }}</ion-label
-        >
+        <ion-label position="floating">{{ 'nubosidad' | translate }}</ion-label>
 
         <ion-input
           type="text"
@@ -30,8 +26,6 @@
           [(ngModel)]="climatologicoData.nubosidad"
         ></ion-input>
       </ion-item>
-
-
 
       <ion-item>
         <ion-label position="floating"
@@ -46,7 +40,6 @@
         ></ion-input>
       </ion-item>
 
-
       <ion-item>
         <ion-label position="floating"
           >{{ 'observaciones' | translate }}</ion-label
@@ -58,13 +51,14 @@
           [(ngModel)]="climatologicoData.observaciones"
         ></ion-input>
       </ion-item>
-
-   
     </ion-list>
 
     <ion-grid fixed="fixed">
       <ion-row class="ion-text-center">
-        <ion-col size="12" *ngIf="!this.helperService.isValidValue(climatologicoData.id)">
+        <ion-col
+          size="12"
+          *ngIf="!this.helperService.isValidValue(climatologicoData.id)"
+        >
           <ion-button
             color="macana"
             type="submit"
@@ -75,43 +69,43 @@
           >
         </ion-col>
 
+        <ion-col
+          size="12"
+          *ngIf="this.helperService.isValidValue(climatologicoData.id)"
+        >
+          <ion-button
+            color="macana"
+            type="submit"
+            [disabled]="formulario.invalid"
+            fill="outline"
+            expand="full"
+            >{{ 'editar' | translate }}</ion-button
+          >
+        </ion-col>
 
-        <ion-col size="12" *ngIf="this.helperService.isValidValue(climatologicoData.id)">
-            <ion-button
-              color="macana"
-              type="submit"
-              [disabled]="formulario.invalid"
-              fill="outline"
-              expand="full"
-              >{{ 'editar' | translate }}</ion-button
-            >
-          </ion-col>
-
-          
-        
-        <ion-col size="12" *ngIf="this.helperService.isValidValue(climatologicoData.id)">
-            <ion-button
-              color="macana"
-              fill="outline"
-              expand="full"
-              (click)="deleteClimatologicoData();"
-              >{{ 'eliminar' | translate }}</ion-button
-            >
-          </ion-col>
+        <ion-col
+          size="12"
+          *ngIf="this.helperService.isValidValue(climatologicoData.id)"
+        >
+          <ion-button
+            color="macana"
+            fill="outline"
+            expand="full"
+            (click)="deleteClimatologicoData();"
+            >{{ 'eliminar' | translate }}</ion-button
+          >
+        </ion-col>
 
         <ion-col size="12">
-            <ion-button
-              color="macana"
-              fill="outline"
-              routerLink="/estado-climatologico"
-              expand="full"
-              >{{ 'regresar' | translate }}</ion-button
-            >
-          </ion-col>
+          <ion-button
+            color="macana"
+            fill="outline"
+            routerLink="/estado-climatologico"
+            expand="full"
+            >{{ 'regresar' | translate }}</ion-button
+          >
+        </ion-col>
       </ion-row>
-
-    
     </ion-grid>
   </form>
 </ion-content>
-

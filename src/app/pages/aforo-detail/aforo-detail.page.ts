@@ -283,19 +283,28 @@ export class AforoDetailPage implements OnInit {
             ).toString();
 
             this.aforoData.porcentajealtro = (
-              parseFloat(this.aforoData.lancealto) /
-              parseFloat(this.aforoData.cantlances)
-            ).toString();
+              (parseFloat(this.aforoData.lancealto) /
+                parseFloat(this.aforoData.cantlances)) *
+              100
+            )
+              .toFixed(2)
+              .toString();
 
             this.aforoData.porcentajemedio = (
-              parseFloat(this.aforoData.lancemedio) /
-              parseFloat(this.aforoData.cantlances)
-            ).toString();
+              (parseFloat(this.aforoData.lancemedio) /
+                parseFloat(this.aforoData.cantlances)) *
+              100
+            )
+              .toFixed(2)
+              .toString();
 
             this.aforoData.porcentajebajo = (
-              parseFloat(this.aforoData.lancebajo) /
-              parseFloat(this.aforoData.cantlances)
-            ).toString();
+              (parseFloat(this.aforoData.lancebajo) /
+                parseFloat(this.aforoData.cantlances)) *
+              100
+            )
+              .toFixed(2)
+              .toString();
 
             this.aforoData.totalmetrocuadrado = (
               parseFloat(this.aforoData.cantpasto) /
@@ -312,8 +321,8 @@ export class AforoDetailPage implements OnInit {
             });
 
             this.aforoData.cantpastopotrero = (
-              parseFloat(this.areaPotrero) *
-              parseFloat(this.aforoData.totalmetrocuadrado) /
+              (parseFloat(this.areaPotrero) *
+                parseFloat(this.aforoData.totalmetrocuadrado)) /
               2
             ).toString();
 
@@ -323,7 +332,6 @@ export class AforoDetailPage implements OnInit {
             ).toString();
 
             this.mostrarMensajeTiempoPotrero();
-
           } else {
             this.helperService.showAlert(
               this.translate.instant("alertaTitulo"),
@@ -393,7 +401,6 @@ export class AforoDetailPage implements OnInit {
   }
 
   mostrarMensajeTiempoPotrero() {
-
     if (parseFloat(this.aforoData.tiempopotrero) <= 0.75) {
       this.mjsTiempoPotrero = "Las vacas pueden estar medio dia";
     } else {

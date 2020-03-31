@@ -5,6 +5,7 @@ import { HelperService } from 'src/app/util/HelperService';
 import { ClimatologicoService } from 'src/app/services/climatologico.service';
 import { AlertController } from '@ionic/angular';
 import { ActivatedRoute, Router } from '@angular/router';
+import { TranslateService } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-estado-climatologico-detail',
@@ -20,6 +21,9 @@ climatologicoData = {} as ModelClimatologico;
 /****************END OBJETOS************************** */
 
 
+  /*Almacena la configuracion del calendar*/
+  customPickerOptions;
+
 /********************INYECCION DE DEPENDENCIAS********* */
 /*HelperService: Servicio generico para funcionalidades ya implementadas
 ProfileService: Servicio para el consumo de web services del perfil
@@ -29,7 +33,8 @@ constructor(private blockAccess: BlockAccessService,
             public climatologicoService: ClimatologicoService,
             public alertCtrl: AlertController,
             private route: ActivatedRoute,
-            private router: Router
+            private router: Router,
+            private translate: TranslateService
 ) {
 
   this.route.queryParams.subscribe(params => {
@@ -49,6 +54,29 @@ constructor(private blockAccess: BlockAccessService,
 ngOnInit() {
   // Se obtiene el identidicador del usuario que ingreso al sistema
   this.getProfilePk();
+
+      // Se configura el calendar
+      this.customPickerOptions = {
+        buttons: [
+          {
+            text: this.translate.instant("seleccionar"),
+            handler: evento => {
+              this.climatologicoData.fecha =
+                evento.year.value +
+                "-" +
+                evento.month.value +
+                "-" +
+                evento.day.value;
+            }
+          },
+          {
+            text: this.translate.instant("cancelar"),
+            handler: evento => {
+              // console.log('close');
+            }
+          }
+        ]
+      };
 }
 
 /*Funcion que se encarga de obtener codigo del usuario que se encuentra identificado*/
