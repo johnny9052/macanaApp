@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { PreloadAllModules, RouterModule, Routes } from '@angular/router';
+import { PlanDeManejoDetailPageModule } from './pages/plan-de-manejo-detail/plan-de-manejo-detail.module';
 
 const routes: Routes = [
   { path: '', redirectTo: 'log-in', pathMatch: 'full' },
@@ -37,8 +38,12 @@ const routes: Routes = [
     loadChildren: () => import('./pages/permisos/permisos.module').then( m => m.PermisosPageModule)
   },
   {
-    path: 'plan-manejo',
-    loadChildren: () => import('./pages/plan-manejo/plan-manejo.module').then( m => m.PlanManejoPageModule)
+    path: 'plan-de-manejo',
+    loadChildren: () => import('./pages/plan-de-manejo/plan-de-manejo.module').then( m => m.PlanDeManejoPageModule)
+  },
+  {
+    path: 'plan-de-manejo-detail',
+    loadChildren: () => import('./pages/plan-de-manejo-detail/plan-de-manejo-detail.module').then( m => m.PlanDeManejoDetailPageModule)
   },
   {
     path: 'reportes',
@@ -94,6 +99,15 @@ const routes: Routes = [
     path: 'potrero-detail',
     loadChildren: () => import('./pages/potrero-detail/potrero-detail.module').then( m => m.PotreroDetailPageModule)
   },
+  {
+    path: 'presentacion',
+    loadChildren: () => import('./pages/presentacion/presentacion.module').then( m => m.PresentacionPageModule)
+  },
+  {
+
+    path: 'presentacion-detail',
+    loadChildren: () => import('./pages/presentacion-detail/presentacion-detail.module').then( m => m.PresentacionDetailPageModule)
+  }
 
 ];
 
