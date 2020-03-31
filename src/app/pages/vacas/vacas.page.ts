@@ -79,9 +79,11 @@ getVacasData() {
   /*Se llama al metodo de listar vacas definido en el servicio*/
   this.vacasService.getVacas().subscribe(data => {
     let res: any;
+    console.log(data);
     res = data;
     /*Se convierte en un objeto JSON el listado de datos obtenido*/
     this.vacas = JSON.parse(res.data);
+    
     /*Se oculta la barra de carga*/
     this.helperService.ocultarBarraCarga();
   },

@@ -170,6 +170,21 @@ export class HelperService {
     }
   }
 
+
+  fixNotRequiredValueByCharacter(val: string) {
+    if (
+      val !== undefined &&
+      val !== "undefined" &&
+      val !== null &&
+      val !== "null" &&
+      val !== ""
+    ) {
+      return "1";
+    } else {
+      return "";
+    }
+  }
+
   public cambiarLenguaje(lang) {
     this.saveLocalData("language", lang);
     this.activeLang = lang;

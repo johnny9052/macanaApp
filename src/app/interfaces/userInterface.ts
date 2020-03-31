@@ -10,7 +10,6 @@ export interface ModelUserData {
   celular: string;
   foto: string;
   foto_copia_ruta_original: string;
-  fotoBase64: string;
   fotoNombreBase64: string;
   usuario: string;
   password: string;
@@ -19,6 +18,7 @@ export interface ModelUserData {
   rol_id: string;
   descripcion: string;
   token:string;
+  fotoBase64: string;
 }
 
 export interface ModelUserLogIn {

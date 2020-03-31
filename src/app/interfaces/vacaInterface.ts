@@ -9,4 +9,5 @@ export interface ModelVaca {
   tipoanimal: string;
   edad: string;
   idresponsable: string; 
+  nombre_rotacion: string;
 }

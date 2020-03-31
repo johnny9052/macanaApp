@@ -18,6 +18,9 @@ export class AforoDetailPage implements OnInit {
   /*Almacena la configuracion del calendar*/
   customPickerOptions;
 
+  /*DATOS NECESARIOS PARA REFRESH SELECT*/
+  idPotreroTempo;
+
   /*************CODIGO GLOBAL DEL USUARIO IDENTIFICADO********************* */
   codeUser = "";
 
@@ -26,9 +29,6 @@ export class AforoDetailPage implements OnInit {
 
   /****************OBJETOS************************** */
   aforoData = {} as ModelAforo;
-  /* Un objeto que contendra temporalmente los datos que llegan del extra, con el fin de esperar un X tiempo 
- y luego setearlos a la objData, dando tiempo a que se llenen los selects y se refresquen en pantalla*/
-  aforoDataTemp = {} as ModelAforo;
   potreros: ModelPotrero[] = [];
   /****************END OBJETOS************************** */
 
@@ -50,28 +50,28 @@ export class AforoDetailPage implements OnInit {
   ) {
     this.route.queryParams.subscribe(params => {
       if (this.router.getCurrentNavigation().extras.state) {
-        this.aforoDataTemp.id = this.router.getCurrentNavigation().extras.state.id;
-        this.aforoDataTemp.fecha = this.router.getCurrentNavigation().extras.state.fecha;
-        this.aforoDataTemp.idpotrero = this.router.getCurrentNavigation().extras.state.idpotrero;
-        this.aforoDataTemp.pastoalto = this.router.getCurrentNavigation().extras.state.pastoalto;
-        this.aforoDataTemp.pastobajo = this.router.getCurrentNavigation().extras.state.pastobajo;
-        this.aforoDataTemp.pastomedio = this.router.getCurrentNavigation().extras.state.pastomedio;
-        this.aforoDataTemp.lancealto = this.router.getCurrentNavigation().extras.state.lancealto;
-        this.aforoDataTemp.lancemedio = this.router.getCurrentNavigation().extras.state.lancemedio;
-        this.aforoDataTemp.lancebajo = this.router.getCurrentNavigation().extras.state.lancebajo;
-        this.aforoDataTemp.cantlances = this.router.getCurrentNavigation().extras.state.cantlances;
-        this.aforoDataTemp.pesopastoalto = this.router.getCurrentNavigation().extras.state.pesopastoalto;
-        this.aforoDataTemp.pesopastomedio = this.router.getCurrentNavigation().extras.state.pesopastomedio;
-        this.aforoDataTemp.cantpasto = this.router.getCurrentNavigation().extras.state.cantpasto;
-        this.aforoDataTemp.porcentajealtro = this.router.getCurrentNavigation().extras.state.porcentajealtro;
-        this.aforoDataTemp.porcentajemedio = this.router.getCurrentNavigation().extras.state.porcentajemedio;
-        this.aforoDataTemp.porcentajebajo = this.router.getCurrentNavigation().extras.state.porcentajebajo;
-        this.aforoDataTemp.totalmetrocuadrado = this.router.getCurrentNavigation().extras.state.totalmetrocuadrado;
-        this.aforoDataTemp.cantpastopotrero = this.router.getCurrentNavigation().extras.state.cantpastopotrero;
-        this.aforoDataTemp.tiempopotrero = this.router.getCurrentNavigation().extras.state.tiempopotrero;
-        this.aforoDataTemp.observaciones = this.router.getCurrentNavigation().extras.state.observaciones;
-        this.aforoDataTemp.idresponsable = this.router.getCurrentNavigation().extras.state.idresponsable;
-        this.aforoDataTemp.numeropotrero = this.router.getCurrentNavigation().extras.state.numeropotrero;
+        this.aforoData.id = this.router.getCurrentNavigation().extras.state.id;
+        this.aforoData.fecha = this.router.getCurrentNavigation().extras.state.fecha;
+        this.idPotreroTempo = this.router.getCurrentNavigation().extras.state.idpotrero;
+        this.aforoData.pastoalto = this.router.getCurrentNavigation().extras.state.pastoalto;
+        this.aforoData.pastobajo = this.router.getCurrentNavigation().extras.state.pastobajo;
+        this.aforoData.pastomedio = this.router.getCurrentNavigation().extras.state.pastomedio;
+        this.aforoData.lancealto = this.router.getCurrentNavigation().extras.state.lancealto;
+        this.aforoData.lancemedio = this.router.getCurrentNavigation().extras.state.lancemedio;
+        this.aforoData.lancebajo = this.router.getCurrentNavigation().extras.state.lancebajo;
+        this.aforoData.cantlances = this.router.getCurrentNavigation().extras.state.cantlances;
+        this.aforoData.pesopastoalto = this.router.getCurrentNavigation().extras.state.pesopastoalto;
+        this.aforoData.pesopastomedio = this.router.getCurrentNavigation().extras.state.pesopastomedio;
+        this.aforoData.cantpasto = this.router.getCurrentNavigation().extras.state.cantpasto;
+        this.aforoData.porcentajealtro = this.router.getCurrentNavigation().extras.state.porcentajealtro;
+        this.aforoData.porcentajemedio = this.router.getCurrentNavigation().extras.state.porcentajemedio;
+        this.aforoData.porcentajebajo = this.router.getCurrentNavigation().extras.state.porcentajebajo;
+        this.aforoData.totalmetrocuadrado = this.router.getCurrentNavigation().extras.state.totalmetrocuadrado;
+        this.aforoData.cantpastopotrero = this.router.getCurrentNavigation().extras.state.cantpastopotrero;
+        this.aforoData.tiempopotrero = this.router.getCurrentNavigation().extras.state.tiempopotrero;
+        this.aforoData.observaciones = this.router.getCurrentNavigation().extras.state.observaciones;
+        this.aforoData.idresponsable = this.router.getCurrentNavigation().extras.state.idresponsable;
+        this.aforoData.numeropotrero = this.router.getCurrentNavigation().extras.state.numeropotrero;
       }
     });
   }
@@ -82,19 +82,17 @@ export class AforoDetailPage implements OnInit {
 
     /* Despues de que se llenan los selects, se espera 250 milisegundos para poder regresar los datos */
     setTimeout(() => {
-      if (!this.helperService.isValidValue(this.aforoDataTemp.lancealto)) {
-        this.aforoDataTemp.lancealto = "0";
+      if (!this.helperService.isValidValue(this.aforoData.lancealto)) {
+        this.aforoData.lancealto = "0";
       }
 
-      if (!this.helperService.isValidValue(this.aforoDataTemp.lancemedio)) {
-        this.aforoDataTemp.lancemedio = "0";
+      if (!this.helperService.isValidValue(this.aforoData.lancemedio)) {
+        this.aforoData.lancemedio = "0";
       }
 
-      if (!this.helperService.isValidValue(this.aforoDataTemp.lancebajo)) {
-        this.aforoDataTemp.lancebajo = "0";
+      if (!this.helperService.isValidValue(this.aforoData.lancebajo)) {
+        this.aforoData.lancebajo = "0";
       }
-
-      this.aforoData = this.aforoDataTemp;
 
       /* Se obtiene el area  del potrero seleccionado y la cantidad de 
         vacas de la rotacion del potrero*/
@@ -153,6 +151,7 @@ export class AforoDetailPage implements OnInit {
         res = data;
         this.potreros = JSON.parse(res.data);
         // this.helperService.ocultarBarraCarga();
+        this.aforoData.idpotrero = this.idPotreroTempo;
       },
       error => {
         this.helperService.ocultarBarraCarga();

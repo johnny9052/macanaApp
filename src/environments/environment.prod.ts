@@ -1,4 +1,4 @@
 export const environment = {
   production: true,
-  baseUrl: 'http://hatolamacana.com/MacapaAppBackend/' 
+  baseUrl: 'https://hatolamacana.com/MacapaAppBackend/' 
 };

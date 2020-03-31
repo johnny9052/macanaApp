@@ -21,11 +21,14 @@ export class VacasDetailPage implements OnInit {
   /*************CODIGO GLOBAL DEL USUARIO IDENTIFICADO********************* */
   codeUser = "";
 
+  /*DATOS NECESARIOS PARA REFRESH DE LOS SELECTS*/
+  idRotacionTemp;
+  idSexoTemp;
+  idRazaTemp;
+  idTipoTemp;
+
   /****************OBJETOS************************** */
   vacaData = {} as ModelVaca;
-  /* Un objeto que contendra temporalmente los datos que llegan del extra, con el fin de esperar un X tiempo 
-  y luego setearlos a la objData, dando tiempo a que se llenen los selects y se refresquen en pantalla*/
-  vacaDataTemp = {} as ModelVaca;
   rotaciones: ModelRotacion[] = [];
   sexos: ModelSexoVaca[] = [];
   razas: ModelRazaVaca[] = [];
@@ -49,15 +52,17 @@ export class VacasDetailPage implements OnInit {
     this.route.queryParams.subscribe(params => {
       if (this.router.getCurrentNavigation().extras.state) {
         
-        this.vacaDataTemp.id = this.router.getCurrentNavigation().extras.state.id;
-        this.vacaDataTemp.numero = this.router.getCurrentNavigation().extras.state.numero;
-        this.vacaDataTemp.nombre = this.router.getCurrentNavigation().extras.state.nombre;
-        this.vacaDataTemp.idrotacion = this.router.getCurrentNavigation().extras.state.idrotacion;
-        this.vacaDataTemp.sexo = this.router.getCurrentNavigation().extras.state.sexo;
-        this.vacaDataTemp.raza = this.router.getCurrentNavigation().extras.state.raza;
-        this.vacaDataTemp.tipoanimal = this.router.getCurrentNavigation().extras.state.tipoanimal;
-        this.vacaDataTemp.edad = this.router.getCurrentNavigation().extras.state.edad;
-        this.vacaDataTemp.idresponsable = this.router.getCurrentNavigation().extras.state.idresponsable;
+        this.vacaData.id = this.router.getCurrentNavigation().extras.state.id;
+        this.vacaData.numero = this.router.getCurrentNavigation().extras.state.numero;
+        this.vacaData.nombre = this.router.getCurrentNavigation().extras.state.nombre;
+
+        this.idRotacionTemp = this.router.getCurrentNavigation().extras.state.idrotacion;
+        this.idSexoTemp = this.router.getCurrentNavigation().extras.state.sexo;
+        this.idRazaTemp = this.router.getCurrentNavigation().extras.state.raza;
+        this.idTipoTemp= this.router.getCurrentNavigation().extras.state.tipoanimal;
+
+        this.vacaData.edad = this.router.getCurrentNavigation().extras.state.edad;
+        this.vacaData.idresponsable = this.router.getCurrentNavigation().extras.state.idresponsable;
       }
     });
   }
@@ -71,7 +76,7 @@ export class VacasDetailPage implements OnInit {
 
     /* Despues de que se llenan los selects, se espera 250 milisegundos para poder regresar los datos */
     setTimeout(() => {
-      this.vacaData = this.vacaDataTemp;
+      this.vacaData = this.vacaData;
     }, 250);
 
   }
@@ -97,6 +102,8 @@ export class VacasDetailPage implements OnInit {
         res = data;
         this.rotaciones = JSON.parse(res.data);
         // this.helperService.ocultarBarraCarga();
+        this.vacaData.idrotacion = this.idRotacionTemp;
+
       },
       error => {
         this.helperService.ocultarBarraCarga();
@@ -116,6 +123,7 @@ export class VacasDetailPage implements OnInit {
         res = data;
         this.sexos = JSON.parse(res.data);
         // this.helperService.ocultarBarraCarga();
+        this.vacaData.sexo = this.idSexoTemp;
       },
       error => {
         this.helperService.ocultarBarraCarga();
@@ -135,6 +143,7 @@ export class VacasDetailPage implements OnInit {
         res = data;
         this.razas = JSON.parse(res.data);
         // this.helperService.ocultarBarraCarga();
+        this.vacaData.raza = this.idRazaTemp;
       },
       error => {
         this.helperService.ocultarBarraCarga();
@@ -154,6 +163,7 @@ export class VacasDetailPage implements OnInit {
         res = data;
         this.tiposAnimal = JSON.parse(res.data);
         // this.helperService.ocultarBarraCarga();
+        this.vacaData.tipoanimal = this.idTipoTemp;
       },
       error => {
         this.helperService.ocultarBarraCarga();

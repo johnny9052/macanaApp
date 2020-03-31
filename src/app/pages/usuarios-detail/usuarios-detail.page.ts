@@ -1,8 +1,8 @@
-import { Component, OnInit } from "@angular/core";
+import { Component, OnInit, NgZone } from "@angular/core";
 import { BlockAccessService } from "src/app/util/blockAccess";
 import { HelperService } from "src/app/util/HelperService";
 import { RolesService } from "src/app/services/roles.service";
-import { AlertController, ModalController } from "@ionic/angular";
+import { AlertController, ModalController, Events } from "@ionic/angular";
 import { TranslateService } from "@ngx-translate/core";
 import { Router, ActivatedRoute } from "@angular/router";
 import { ModelUserData } from "src/app/interfaces/userInterface";
@@ -34,11 +34,10 @@ export class UsuariosDetailPage implements OnInit {
 
   /****************OBJETOS************************** */
   userData = {} as ModelUserData;
-  /* Un objeto que contendra temporalmente los datos que llegan del extra, con el fin de esperar un X tiempo 
-  y luego setearlos a la objData, dando tiempo a que se llenen los selects y se refresquen en pantalla*/
-  userDataTemp = {} as ModelUserData;
   roles: ModelRol[] = [];
   /****************END OBJETOS************************** */
+
+  idRolTemporal;
 
   /********************INYECCION DE DEPENDENCIAS********* */
   /*HelperService: Servicio generico para funcionalidades ya implementadas
@@ -58,42 +57,37 @@ export class UsuariosDetailPage implements OnInit {
   ) {
     this.route.queryParams.subscribe(params => {
       if (this.router.getCurrentNavigation().extras.state) {
-        this.userDataTemp.id = this.router.getCurrentNavigation().extras.state.id;
-        this.userDataTemp.primer_nombre = this.router.getCurrentNavigation().extras.state.primerNombre;
-        this.userDataTemp.segundo_nombre = this.router.getCurrentNavigation().extras.state.segundoNombre;
-        this.userDataTemp.primer_apellido = this.router.getCurrentNavigation().extras.state.primerApellido;
-        this.userDataTemp.segundo_apellido = this.router.getCurrentNavigation().extras.state.segundoApellido;
-        this.userDataTemp.cedula = this.router.getCurrentNavigation().extras.state.cedula;
-        this.userDataTemp.correo = this.router.getCurrentNavigation().extras.state.correo;
-        this.userDataTemp.celular = this.router.getCurrentNavigation().extras.state.celular;
-        this.userDataTemp.foto = this.router.getCurrentNavigation().extras.state.foto;
-        this.userDataTemp.foto_copia_ruta_original = this.router.getCurrentNavigation().extras.state.fotoCopiaRutaOriginal;
+        this.userData.id = this.router.getCurrentNavigation().extras.state.id;
+        this.userData.primer_nombre = this.router.getCurrentNavigation().extras.state.primerNombre;
+        this.userData.segundo_nombre = this.router.getCurrentNavigation().extras.state.segundoNombre;
+        this.userData.primer_apellido = this.router.getCurrentNavigation().extras.state.primerApellido;
+        this.userData.segundo_apellido = this.router.getCurrentNavigation().extras.state.segundoApellido;
+        this.userData.cedula = this.router.getCurrentNavigation().extras.state.cedula;
+        this.userData.correo = this.router.getCurrentNavigation().extras.state.correo;
+        this.userData.celular = this.router.getCurrentNavigation().extras.state.celular;
+        this.userData.foto = this.router.getCurrentNavigation().extras.state.foto;
+        this.userData.foto_copia_ruta_original = this.router.getCurrentNavigation().extras.state.fotoCopiaRutaOriginal;
 
         // tslint:disable-next-line: max-line-length
-        this.userDataTemp.foto = this.helperService.isValidValue(this.userDataTemp.foto)
-          ? this.baseUrl + this.userDataTemp.foto
-          : this.userDataTemp.foto;
+        this.userData.foto = this.helperService.isValidValue(this.userData.foto)
+          ? this.baseUrl + this.userData.foto
+          : this.userData.foto;
 
-        this.userDataTemp.usuario = this.router.getCurrentNavigation().extras.state.usuario;
-        this.userDataTemp.password = this.router.getCurrentNavigation().extras.state.password;
-        this.userDataTemp.rol_nombre = this.router.getCurrentNavigation().extras.state.rolNombre;
-        this.userDataTemp.rol_id = this.router.getCurrentNavigation().extras.state.rolId;
-        this.userDataTemp.descripcion = this.router.getCurrentNavigation().extras.state.descripcion;
+        this.userData.usuario = this.router.getCurrentNavigation().extras.state.usuario;
+        this.userData.password = this.router.getCurrentNavigation().extras.state.password;
+        this.userData.rol_nombre = this.router.getCurrentNavigation().extras.state.rolNombre;
+        this.idRolTemporal = this.router.getCurrentNavigation().extras.state.rolId;
+        this.userData.descripcion = this.router.getCurrentNavigation().extras.state.descripcion;
       }
     });
   }
 
+  
   ionViewWillEnter() {
     this.editoImagen = false;
     this.imagenesEliminar = new Array();
     // Se obtiene los roles de la base de datos para ser cargados en el select
     this.getRoles();
-
-     /* Despues de que se llenan los selects, se espera 250 milisegundos para poder regresar los datos */
-     setTimeout(() => {
-      this.userData = this.userDataTemp;
-    }, 250);
-
   }
 
   ngOnInit() {
@@ -117,6 +111,8 @@ export class UsuariosDetailPage implements OnInit {
         res = data;
         this.roles = JSON.parse(res.data);
         this.helperService.ocultarBarraCarga();
+        this.userData.rol_id = this.idRolTemporal;
+         
       },
       error => {
         this.helperService.ocultarBarraCarga();
@@ -162,8 +158,15 @@ export class UsuariosDetailPage implements OnInit {
     /*Se anexa la informacion de la foto, esta almacena la ruta de la foto*/
     postDataObj.append(
       "foto",
-      this.helperService.fixNotRequiredValue(this.userData.foto)
+      this.helperService.fixNotRequiredValueByCharacter(this.userData.foto)
     );
+
+    console.log(
+      "************************FOTO**************" +
+        this.helperService.fixNotRequiredValueByCharacter(this.userData.foto) +
+        "************************ENDFOTO**************"
+    );
+
     /*Esta variable se utiliza como una copia de la ruta original de la foto, ya que una es la ruta que queda en
     la base de datos, y otra la que se estructura para cargar la imagen desde el app*/
     postDataObj.append(
@@ -172,8 +175,24 @@ export class UsuariosDetailPage implements OnInit {
         this.userData.foto_copia_ruta_original
       )
     );
+
+    console.log(
+      "************************FOTO COPIA RUTA ORIGINAL**************" +
+        this.helperService.fixNotRequiredValue(
+          this.userData.foto_copia_ruta_original
+        ) +
+        "************************END FOTO COPIA RUTA ORIGINAL**************"
+    );
+
     /*Valor boleando que indica si se actualizo o no una foto*/
     postDataObj.append("seActualizoFoto", this.editoImagen.toString());
+
+    console.log(
+      "************************SE ACTUALIZO FOTO**************" +
+        this.editoImagen.toString() +
+        "************************END SE ACTUALIZO FOTO**************"
+    );
+
     /*Se valida si se genero una foto a base64, sino es asi se reemplaza por un -1*/
     this.userData.fotoBase64 = this.helperService.isValidValue(
       this.userData.fotoBase64
@@ -183,10 +202,22 @@ export class UsuariosDetailPage implements OnInit {
     /*Dicha variable se almacena en una variable llamada base64File0, y el ultimo numero lo que hace es referenciar si es
     la imagen 1 o la X, debido a que el web Service puede recibir N imagenes. Ademas se reemplaza el texto del metodo ya que
     angular cuando lo codifica genera esa seccion de ruido*/
-    postDataObj.append(
+    /*     postDataObj.append(
       "base64File" + "0",
       this.userData.fotoBase64.replace("data:image/*;charset=utf-8;base64,", "")
+    ); */
+
+    postDataObj.append(
+      "base64File" + "0",
+      this.userData.fotoBase64.replace("data:image/jpeg;base64,", "")
     );
+
+    console.log(
+      "************************BASE64 FILE**************" +
+        this.userData.fotoBase64.replace("data:image/jpeg;base64,", "") +
+        "************************END BASE64 FILE**************"
+    );
+
     /*Al igual que el anterior, se almacena el nombre del archivo convertido en base64 para ser generado en el lado del 
     servidor*/
     // tslint:disable-next-line: max-line-length
@@ -196,11 +227,28 @@ export class UsuariosDetailPage implements OnInit {
         ? this.userData.fotoNombreBase64
         : "-1"
     );
+
+    let zzz = this.helperService.isValidValue(this.userData.fotoNombreBase64)
+      ? this.userData.fotoNombreBase64
+      : "-1";
+
+    console.log(
+      "************************OJOOOOO**************" +
+        zzz +
+        "************************OJOOOOO**************"
+    );
+
     /*Cada vez que se elimina o actualiza una imagen, se anaden al array imagenesEliminar, aqui se recorre una a una
     para anadirlas dinamicamente y se eliminan todas en el webService*/
     // tslint:disable-next-line: prefer-for-of
     for (let x = 0; x < this.imagenesEliminar.length; x++) {
       postDataObj.append("nameFileDelete" + x, this.imagenesEliminar[x]);
+
+      console.log(
+        "************************NAME FILE DELETE**************" +
+          this.imagenesEliminar[x] +
+          "************************END NAME FILE DELETE**************"
+      );
     }
 
     /*************END SECCION DE INFORMACION DE LAS FOTOS************************************/
@@ -388,5 +436,52 @@ export class UsuariosDetailPage implements OnInit {
       this.editoImagen = true;
       this.imagenesEliminar.push(this.userData.foto_copia_ruta_original);
     }
+  }
+
+  /*************VERSION 2 CAMARA FOTOGRAFICA*************************/
+
+  takePictureBase64V2() {
+    const options: CameraOptions = {
+      quality: 20,
+      destinationType: this.camera.DestinationType.DATA_URL,
+      encodingType: this.camera.EncodingType.JPEG,
+      mediaType: this.camera.MediaType.PICTURE,
+      correctOrientation: true,
+      sourceType: this.camera.PictureSourceType.CAMERA
+    };
+
+    this.agregarImagenEliminar();
+    this.procesarImagenBase64V2(options);
+  }
+
+  loadPictureBase64V2() {
+    const options: CameraOptions = {
+      quality: 30,
+      destinationType: this.camera.DestinationType.DATA_URL,
+      encodingType: this.camera.EncodingType.JPEG,
+      mediaType: this.camera.MediaType.PICTURE,
+      correctOrientation: true,
+      sourceType: this.camera.PictureSourceType.PHOTOLIBRARY
+    };
+
+    this.agregarImagenEliminar();
+    this.procesarImagenBase64V2(options);
+  }
+
+  procesarImagenBase64V2(options: CameraOptions) {
+    this.camera.getPicture(options).then(
+      imageData => {
+        this.userData.fotoBase64 = "data:image/jpeg;base64," + imageData;
+        this.userData.foto = "data:image/jpeg;base64," + imageData;
+        /*Se genera un numero aleatorio para asignarle a la foto como nombre, que posteriormente en el 
+        server se le concatenara el username*/
+        this.userData.fotoNombreBase64 = (
+          Math.floor(Math.random() * (99999 - 10000 + 1)) + 99999
+        ).toString();
+      },
+      err => {
+        // Handle error
+      }
+    );
   }
 }
