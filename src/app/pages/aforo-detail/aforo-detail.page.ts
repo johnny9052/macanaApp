@@ -62,6 +62,8 @@ export class AforoDetailPage implements OnInit {
         this.aforoData.cantlances = this.router.getCurrentNavigation().extras.state.cantlances;
         this.aforoData.pesopastoalto = this.router.getCurrentNavigation().extras.state.pesopastoalto;
         this.aforoData.pesopastomedio = this.router.getCurrentNavigation().extras.state.pesopastomedio;
+        this.aforoData.pesopastobajo = this.router.getCurrentNavigation().extras.state.pesopastobajo;
+
         this.aforoData.cantpasto = this.router.getCurrentNavigation().extras.state.cantpasto;
         this.aforoData.porcentajealtro = this.router.getCurrentNavigation().extras.state.porcentajealtro;
         this.aforoData.porcentajemedio = this.router.getCurrentNavigation().extras.state.porcentajemedio;
