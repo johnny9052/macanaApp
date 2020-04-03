@@ -36,7 +36,7 @@
 
       <ion-item>
         <ion-label position="floating"
-          >{{ 'pastoAlto' | translate }}*</ion-label
+          >{{ 'pastoAlto' | translate }}* {{aforoData.pastoalto | number: '.'}}</ion-label
         >
         <ion-input
           type="number"
@@ -48,7 +48,7 @@
 
       <ion-item>
         <ion-label position="floating"
-          >{{ 'pastoMedio' | translate }}*</ion-label
+          >{{ 'pastoMedio' | translate }}* {{aforoData.pastomedio | number: '.'}}</ion-label
         >
         <ion-input
           type="number"
@@ -60,7 +60,7 @@
 
       <ion-item>
         <ion-label position="floating"
-          >{{ 'pastoBajo' | translate }}*</ion-label
+          >{{ 'pastoBajo' | translate }}* {{aforoData.pastobajo | number: '.'}}</ion-label
         >
         <ion-input
           type="number"
@@ -87,7 +87,7 @@
         <ion-col size="8">
           <ion-item>
             <ion-label position="floating"
-              >{{ 'lanceAlto' | translate }}*</ion-label
+              >{{ 'lanceAlto' | translate }}* {{aforoData.lancealto | number: '.'}}</ion-label
             >
             <ion-input
               type="number"
@@ -124,7 +124,7 @@
         <ion-col size="8">
           <ion-item>
             <ion-label position="floating"
-              >{{ 'lanceMedio' | translate }}*</ion-label
+              >{{ 'lanceMedio' | translate }}* {{aforoData.lancemedio | number: '.'}}</ion-label
             >
             <ion-input
               type="number"
@@ -161,7 +161,7 @@
         <ion-col size="8">
           <ion-item>
             <ion-label position="floating"
-              >{{ 'lanceBajo' | translate }}*</ion-label
+              >{{ 'lanceBajo' | translate }}* {{aforoData.lancebajo | number: '.'}}</ion-label
             >
             <ion-input
               type="number"
@@ -205,7 +205,7 @@
       <!-- **************VALORES CALCULADOS AUTOMATICAMENTE***************************** -->
       <ion-item>
         <ion-label position="floating"
-          >{{ 'cantidadLances' | translate }}*</ion-label
+          >{{ 'cantidadLances' | translate }}* {{aforoData.cantlances | number: '.'}}</ion-label
         >
         <ion-input
           type="number"
@@ -218,7 +218,7 @@
 
       <ion-item>
         <ion-label position="floating"
-          >{{ 'pesoPastoAlto' | translate }}*</ion-label
+          >{{ 'pesoPastoAlto' | translate }}* {{aforoData.pesopastoalto | number: '.'}}</ion-label
         >
         <ion-input
           type="number"
@@ -231,7 +231,7 @@
 
       <ion-item>
         <ion-label position="floating"
-          >{{ 'pesoPastoMedio' | translate }}*</ion-label
+          >{{ 'pesoPastoMedio' | translate }}* {{aforoData.pesopastomedio | number: '.'}}</ion-label
         >
         <ion-input
           type="number"
@@ -244,7 +244,7 @@
 
       <ion-item>
         <ion-label position="floating"
-          >{{ 'pesoPastoBajo' | translate }}*</ion-label
+          >{{ 'pesoPastoBajo' | translate }}* {{aforoData.pesopastobajo | number: '.'}}</ion-label
         >
         <ion-input
           type="number"
@@ -257,7 +257,7 @@
 
       <ion-item>
         <ion-label position="floating"
-          >{{ 'cantidadPasto' | translate }}*</ion-label
+          >{{ 'cantidadPasto' | translate }}* {{aforoData.cantpasto | number: '.'}}</ion-label
         >
         <ion-input
           type="number"
@@ -270,7 +270,7 @@
 
       <ion-item>
         <ion-label position="floating"
-          >{{ 'porcentajeAlto' | translate }}*</ion-label
+          >{{ 'porcentajeAlto' | translate }}* {{aforoData.porcentajealtro | number: '.'}} %</ion-label
         >
         <ion-input
           type="number"
@@ -283,7 +283,7 @@
 
       <ion-item>
         <ion-label position="floating"
-          >{{ 'porcentajeMedio' | translate }}*</ion-label
+          >{{ 'porcentajeMedio' | translate }}* {{aforoData.porcentajemedio | number: '.'}} %</ion-label
         >
         <ion-input
           type="number"
@@ -296,7 +296,7 @@
 
       <ion-item>
         <ion-label position="floating"
-          >{{ 'porcentajeBajo' | translate }}*</ion-label
+          >{{ 'porcentajeBajo' | translate }}* {{aforoData.porcentajebajo | number: '.'}} %</ion-label
         >
         <ion-input
           type="number"
@@ -309,7 +309,7 @@
 
       <ion-item>
         <ion-label position="floating"
-          >{{ 'totalMetroCuadrado' | translate }}*</ion-label
+          >{{ 'totalMetroCuadrado' | translate }}* {{aforoData.totalmetrocuadrado | number: '.'}}</ion-label
         >
         <ion-input
           type="number"
@@ -322,7 +322,7 @@
 
       <ion-item>
         <ion-label position="floating"
-          >{{ 'cantidadPastoPotrero' | translate }}*</ion-label
+          >{{ 'cantidadPastoPotrero' | translate }}* {{aforoData.cantpastopotrero | number: '.'}}</ion-label
         >
         <ion-input
           type="number"
@@ -335,7 +335,7 @@
 
       <ion-item>
         <ion-label position="floating"
-          >{{ 'tiempoPotrero' | translate }}*</ion-label
+          >{{ 'tiempoPotrero' | translate }}*  {{aforoData.tiempopotrero | number: '.'}}</ion-label
         >
         <ion-input
           type="number"

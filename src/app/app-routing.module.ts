@@ -38,7 +38,7 @@ const routes: Routes = [
     loadChildren: () => import('./pages/permisos/permisos.module').then( m => m.PermisosPageModule)
   },
   {
-    path: 'plan-de-manejo',
+    path: 'plan-manejo',
     loadChildren: () => import('./pages/plan-de-manejo/plan-de-manejo.module').then( m => m.PlanDeManejoPageModule)
   },
   {
