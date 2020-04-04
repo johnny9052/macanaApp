@@ -132,7 +132,8 @@
     "areaPotrero": "Area metros cuadrados",
     "observacionPotrero": "Observaciones",
     "idrotacionpotrero": "Rotacion",
-
+    "estado":"Estado",
+    "activoInactivo":"Activo / Inactivo",
 
 
     "***************GESTION AFOROS**********************": "",

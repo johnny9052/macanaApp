@@ -12,12 +12,11 @@ import { TranslateService } from "@ngx-translate/core";
 @Component({
   selector: "app-potrero-detail",
   templateUrl: "./potrero-detail.page.html",
-  styleUrls: ["./potrero-detail.page.scss"]
+  styleUrls: ["./potrero-detail.page.scss"],
 })
 export class PotreroDetailPage implements OnInit {
   /*************CODIGO GLOBAL DEL USUARIO IDENTIFICADO********************* */
   codeUser = "";
-
 
   /*CAMPOS ORIENTADOS AL REFRESH DEL SELECT*/
   idRotacionTemp;
@@ -41,7 +40,7 @@ export class PotreroDetailPage implements OnInit {
     public rotacionesService: RotacionesService,
     private translate: TranslateService
   ) {
-    this.route.queryParams.subscribe(params => {
+    this.route.queryParams.subscribe((params) => {
       if (this.router.getCurrentNavigation().extras.state) {
         this.potreroData.id = this.router.getCurrentNavigation().extras.state.id;
         this.potreroData.numero = this.router.getCurrentNavigation().extras.state.numero;
@@ -49,9 +48,11 @@ export class PotreroDetailPage implements OnInit {
         this.potreroData.observacion = this.router.getCurrentNavigation().extras.state.observacion;
         this.idRotacionTemp = this.router.getCurrentNavigation().extras.state.idrotacion;
         this.potreroData.idresponsable = this.router.getCurrentNavigation().extras.state.idresponsable;
+        this.potreroData.estado = this.router.getCurrentNavigation().extras.state.estado;
       }
     });
   }
+  
   ionViewWillEnter() {
     // Se obtiene los roles de la base de datos para ser cargados en el select
     this.getRotaciones();
@@ -65,21 +66,21 @@ export class PotreroDetailPage implements OnInit {
   /*Funcion que se encarga de obtener codigo del usuario que se encuentra identificado*/
   getProfilePk() {
     // Se obtiene el identificador del usuario que ingreso al sistema
-    this.helperService.getLocalData("profilePk").then(response => {
+    this.helperService.getLocalData("profilePk").then((response) => {
       this.codeUser = response;
     });
   }
   getRotaciones() {
     // this.helperService.mostrarBarraDeCarga(this.translate.instant('espere'));
     this.rotacionesService.getRotacion().subscribe(
-      data => {
+      (data) => {
         let res: any;
         res = data;
         this.rotaciones = JSON.parse(res.data);
         this.potreroData.idrotacion = this.idRotacionTemp;
         // this.helperService.ocultarBarraCarga();
       },
-      error => {
+      (error) => {
         this.helperService.ocultarBarraCarga();
         this.helperService.showAlert(
           this.translate.instant("errorTitulo"),
@@ -101,6 +102,7 @@ export class PotreroDetailPage implements OnInit {
       this.helperService.fixNotRequiredValue(this.potreroData.observacion)
     );
     postDataObj.append("idrotacion", this.potreroData.idrotacion);
+    postDataObj.append("estado", this.potreroData.estado ? "1" : "0");
     postDataObj.append("idresponsable", this.codeUser);
 
     if (this.helperService.isValidValue(this.potreroData.id)) {

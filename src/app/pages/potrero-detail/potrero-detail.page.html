@@ -31,6 +31,25 @@
                 </ion-select>
             </ion-item>
 
+            <br>
+
+            <ion-item lines="none">
+                <ion-checkbox                  
+                  name="estadoPotrero"
+                  color="primary"
+                  [(ngModel)]="potreroData.estado"
+                >
+                </ion-checkbox>
+                <ion-label style="padding-left: 10px;">                   
+                  <h3 slot="start">
+                    {{ 'estado' | translate }}
+                  </h3>
+                  <p>
+                    {{ 'activoInactivo' | translate }} 
+                  </p>
+                </ion-label>
+              </ion-item>
+
         </ion-list>
 
         <ion-grid fixed="fixed">
