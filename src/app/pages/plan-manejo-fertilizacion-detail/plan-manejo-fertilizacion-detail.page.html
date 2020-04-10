@@ -1,0 +1,111 @@
+<app-header titulo="{{ 'planManejoFertilizacion' | translate }}"></app-header>
+
+<ion-content padding="padding">
+  <form #formulario="ngForm" (ngSubmit)="savePlanManejoFertilizacionData()">
+    <ion-list>
+
+
+      <ion-item>
+        <ion-label position="floating">{{ 'periodicidad' | translate }}*</ion-label>
+
+        <ion-input
+          type="number"
+          name="nombrePlanManejoFertilizacion"
+          required="required"
+          [(ngModel)]="planManejoFertilizacionData.periodicidad"
+        ></ion-input>
+      </ion-item>
+
+      <ion-item>
+        <ion-label>{{ 'fechaInicio' | translate }} *</ion-label>
+
+        <ion-datetime
+          placeholder="{{ 'seleccione' | translate }}"
+          display-format="YYYY MM DD"
+          cancelText="{{ 'cancelar' | translate }}"
+          [(ngModel)]="planManejoFertilizacionData.fechainicio"
+          name="fechaInicioPlanManejoFertilizacion"
+          [pickerOptions]="customPickerOptionsFechaInicio"
+        ></ion-datetime>
+      </ion-item>
+
+
+      <ion-item>
+        <ion-label>{{ 'fechaFin' | translate }} *</ion-label>
+
+        <ion-datetime
+          placeholder="{{ 'seleccione' | translate }}"
+          display-format="YYYY MM DD"
+          cancelText="{{ 'cancelar' | translate }}"
+          [(ngModel)]="planManejoFertilizacionData.fechafin"
+          name="fechaFinPlanManejoFertilizacion"
+          [pickerOptions]="customPickerOptionsFechaFin"
+        ></ion-datetime>
+      </ion-item>
+
+      <ion-item>
+        <ion-label position="floating"
+          >{{ 'observacionesPlanManejoFertilizacion' | translate }}</ion-label
+        >
+
+        <ion-input
+          type="text"
+          name="descripcion"
+          [(ngModel)]="planManejoFertilizacionData.observaciones"
+        ></ion-input>
+      </ion-item>
+
+   
+    </ion-list>
+
+    <ion-grid fixed="fixed">
+      <ion-row class="ion-text-center">
+        <ion-col size="12" *ngIf="!this.helperService.isValidValue(planManejoFertilizacionData.id)">
+          <ion-button
+            color="macana"
+            type="submit"
+            [disabled]="formulario.invalid"
+            fill="outline"
+            expand="full"
+            >{{ 'guardar' | translate }}</ion-button
+          >
+        </ion-col>
+
+
+        <ion-col size="12" *ngIf="this.helperService.isValidValue(planManejoFertilizacionData.id)">
+            <ion-button
+              color="macana"
+              type="submit"
+              [disabled]="formulario.invalid"
+              fill="outline"
+              expand="full"
+              >{{ 'editar' | translate }}</ion-button
+            >
+          </ion-col>
+
+          
+        <ion-col size="12" *ngIf="this.helperService.isValidValue(planManejoFertilizacionData.id)">
+            <ion-button
+              color="macana"
+              fill="outline"
+              expand="full"
+              (click)="deletePlanManejoFertilizacionData();"
+              >{{ 'eliminar' | translate }}</ion-button
+            >
+          </ion-col>
+
+        <ion-col size="12">
+            <ion-button
+              color="macana"
+              fill="outline"
+              routerLink="/plan-manejo-fertilizacion"
+              expand="full"
+              >{{ 'regresar' | translate }}</ion-button
+            >
+          </ion-col>
+      </ion-row>
+
+    
+    </ion-grid>
+  </form>
+</ion-content>

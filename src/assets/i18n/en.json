@@ -44,7 +44,7 @@
     "fertilizacion": "Fertilizacion",
     "rotacion": "Rotacion",
     "reportes": "Reportes",
-    "planManejo": "Plan de manejo",
+    "planManejoFertilizacion": "Plan de manejo fertilizacion",
     "analisis": "Analisis",
     "informes": "Informes",
 
@@ -181,5 +181,10 @@
     "crearPresentacion": "Crear presentacion",
 
     "***************GESTION PLAN DE MANEJO**********************": "",
-    "crearPlanDeManejo": "Crear plan de manejo"
+    "crearPlanDeManejo": "Crear plan de manejo",
+    "crearPlanManejoFertilizacion": "Crear plan manejo fertilizacion",
+    "periodicidad":"Periodicidad",
+    "fechaInicio":"Fecha inicio",
+    "fechaFin":"Fecha fin",
+    "observacionesPlanManejoFertilizacion":"Observaciones"
 }
