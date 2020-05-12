@@ -1,12 +1,15 @@
 <app-header titulo="{{ 'planManejoFertilizacion' | translate }}"></app-header>
 
-<ion-content padding="padding">
-  <form #formulario="ngForm" (ngSubmit)="savePlanManejoFertilizacionData()">
+<ion-content class="ion-padding">
+  <form
+    #formulario="ngForm"
+    (ngSubmit)="savePlanManejoFertilizacionData()"
+  >
     <ion-list>
-
-
       <ion-item>
-        <ion-label position="floating">{{ 'periodicidad' | translate }}*</ion-label>
+        <ion-label position="floating">
+          {{ 'periodicidad' | translate }}*
+        </ion-label>
 
         <ion-input
           type="number"
@@ -17,7 +20,9 @@
       </ion-item>
 
       <ion-item>
-        <ion-label>{{ 'fechaInicio' | translate }} *</ion-label>
+        <ion-label>
+          {{ 'fechaInicio' | translate }} *
+        </ion-label>
 
         <ion-datetime
           placeholder="{{ 'seleccione' | translate }}"
@@ -29,9 +34,10 @@
         ></ion-datetime>
       </ion-item>
 
-
       <ion-item>
-        <ion-label>{{ 'fechaFin' | translate }} *</ion-label>
+        <ion-label>
+          {{ 'fechaFin' | translate }} *
+        </ion-label>
 
         <ion-datetime
           placeholder="{{ 'seleccione' | translate }}"
@@ -44,9 +50,9 @@
       </ion-item>
 
       <ion-item>
-        <ion-label position="floating"
-          >{{ 'observacionesPlanManejoFertilizacion' | translate }}</ion-label
-        >
+        <ion-label position="floating">
+          {{ 'observacionesPlanManejoFertilizacion' | translate }}
+        </ion-label>
 
         <ion-input
           type="text"
@@ -54,58 +60,192 @@
           [(ngModel)]="planManejoFertilizacionData.observaciones"
         ></ion-input>
       </ion-item>
-
-   
     </ion-list>
+
+    <br>
+    <!-- ******************************************************************** -->
+    <!-- *************************SECCION DE POTREROS************************ -->
+    <!-- ********************************************************************** -->
+
+    <ion-card
+      style="width: 100%; margin: 0px !important; border-radius: 2px;"
+      color="macana"
+      [hidden]="!this.helperService.isValidValue(planManejoFertilizacionData.id)"
+    >
+      <ion-item
+        color="FlyLinkers-Blanco"
+        (click)="showHidePotreros()"
+      >
+        <ion-label>
+          {{ 'potreros' | translate }} ({{potreros.length}})
+        </ion-label>
+
+        <ion-icon
+          ios="ios-eye"
+          md="md-eye"
+        ></ion-icon>
+      </ion-item>
+
+      <ion-card-content
+        [hidden]="hiddenPotreros"
+        style="width: 100%; margin: 0px !important; border-radius: 0px; padding: 0px;"
+      >
+        <ion-item *ngFor="let potrero of potreros;">
+          <ion-label>
+            <h3>{{potrero.numero}}</h3>
+          </ion-label>
+
+          <!-- (click)="deleteExperience(potrero.id)" -->
+
+          <ion-icon
+            name="trash"
+            slot="end"
+            (click)="deletePotreroPlanFertilizacion(potrero.id)"
+          ></ion-icon>
+
+          <!--  -->
+
+          <ion-icon
+            name="create"
+            slot="end"
+            (click)="editarPotreroPlanFertilizacion(potrero.id,potrero.idplanfertilizacion,potrero.idpotrero,potrero.fecha,potrero.observaciones,potrero.ejecutado,potrero.idresponsable)"
+          ></ion-icon>
+        </ion-item>
+
+        <ion-item class="ion-text-center">
+          <ion-label>
+            <ion-button
+              color="flylinkers"
+              fill="outline"
+              (click)="crearNuevoPotreroPlanFertilizacion()"
+            >
+              {{ 'agregarPotrero' | translate }}
+            </ion-button>
+          </ion-label>
+        </ion-item>
+      </ion-card-content>
+    </ion-card>
+
+    <!-- ********************************************************************** -->
+    <!-- **********************END SECCION DE POTREROS********************* -->
+    <!-- ********************************************************************** -->
+    <br>
+    <!-- ******************************************************************** -->
+    <!-- *************************SECCION DE FERTILIZANTES********************* -->
+    <!-- ********************************************************************** -->
+
+    <ion-card
+      style="width: 100%; margin: 0px !important; border-radius: 2px;"
+      color="macana"
+      [hidden]="!this.helperService.isValidValue(planManejoFertilizacionData.id)"
+    >
+      <ion-item
+        color="FlyLinkers-Blanco"
+        (click)="showHideFertilizantes()"
+      >
+        <ion-label>
+          {{ 'fertilizantes' | translate }} ({{fertilizantes.length}})
+        </ion-label>
+
+        <ion-icon
+          ios="ios-eye"
+          md="md-eye"
+        ></ion-icon>
+      </ion-item>
+
+      <ion-card-content
+        [hidden]="hiddenFertilizantes"
+        style="width: 100%; margin: 0px !important; border-radius: 0px; padding: 0px;"
+      >
+        <ion-item *ngFor="let fertilizante of fertilizantes;">
+          <ion-label>
+            <h3>{{fertilizante.nombre}}</h3>
+          </ion-label>
+
+          <!-- (click)="deleteExperience(fertilizante.id)" -->
+
+          <ion-icon
+            name="trash"
+            slot="end"
+            (click)="deleteFertilizantePlanFertilizacion(fertilizante.id)"
+          ></ion-icon>
+
+          <!-- (click)="editarFertilizantePlanFertilizacion(fertilizante.id,fertilizante.idplanfertilizacion,fertilizante.idfertilizante,fertilizante.fecha,fertilizante.observaciones,fertilizante.ejecutado,fertilizante.idresponsable)" -->
+
+          <ion-icon
+            name="create"
+            slot="end"            
+          ></ion-icon>
+        </ion-item>
+
+        <ion-item class="ion-text-center">
+          <ion-label>
+            <ion-button
+              color="flylinkers"
+              fill="outline"
+              (click)="crearNuevoFertilizantePlanFertilizacion()"
+            >
+              {{ 'agregarFertilizante' | translate }}
+            </ion-button>
+          </ion-label>
+        </ion-item>
+      </ion-card-content>
+    </ion-card>
+
+    <!-- ********************************************************************** -->
+    <!-- **********************END SECCION DE POTREROS********************* -->
+    <!-- ********************************************************************** -->
+    <br>
 
     <ion-grid fixed="fixed">
       <ion-row class="ion-text-center">
-        <ion-col size="12" *ngIf="!this.helperService.isValidValue(planManejoFertilizacionData.id)">
+        <ion-col
+          size="12"
+          *ngIf="!this.helperService.isValidValue(planManejoFertilizacionData.id)"
+        >
           <ion-button
             color="macana"
             type="submit"
             [disabled]="formulario.invalid"
             fill="outline"
             expand="full"
-            >{{ 'guardar' | translate }}</ion-button
-          >
+          >{{ 'guardar' | translate }}</ion-button>
         </ion-col>
 
+        <ion-col
+          size="12"
+          *ngIf="this.helperService.isValidValue(planManejoFertilizacionData.id)"
+        >
+          <ion-button
+            color="macana"
+            type="submit"
+            [disabled]="formulario.invalid"
+            fill="outline"
+            expand="full"
+          >{{ 'editar' | translate }}</ion-button>
+        </ion-col>
 
-        <ion-col size="12" *ngIf="this.helperService.isValidValue(planManejoFertilizacionData.id)">
-            <ion-button
-              color="macana"
-              type="submit"
-              [disabled]="formulario.invalid"
-              fill="outline"
-              expand="full"
-              >{{ 'editar' | translate }}</ion-button
-            >
-          </ion-col>
-
-          
-        <ion-col size="12" *ngIf="this.helperService.isValidValue(planManejoFertilizacionData.id)">
-            <ion-button
-              color="macana"
-              fill="outline"
-              expand="full"
-              (click)="deletePlanManejoFertilizacionData();"
-              >{{ 'eliminar' | translate }}</ion-button
-            >
-          </ion-col>
+        <ion-col
+          size="12"
+          *ngIf="this.helperService.isValidValue(planManejoFertilizacionData.id)"
+        >
+          <ion-button
+            color="macana"
+            fill="outline"
+            expand="full"
+            (click)="deletePlanManejoFertilizacionData();"
+          >{{ 'eliminar' | translate }}</ion-button>
+        </ion-col>
 
         <ion-col size="12">
-            <ion-button
-              color="macana"
-              fill="outline"
-              routerLink="/plan-manejo-fertilizacion"
-              expand="full"
-              >{{ 'regresar' | translate }}</ion-button
-            >
-          </ion-col>
+          <ion-button
+            color="macana"
+            fill="outline"
+            routerLink="/plan-manejo-fertilizacion"
+            expand="full"
+          >{{ 'regresar' | translate }}</ion-button>
+        </ion-col>
       </ion-row>
-
-    
     </ion-grid>
   </form>
 </ion-content>

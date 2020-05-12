@@ -143,6 +143,9 @@ export class HelperService {
   }
 
   isValidValue(val: string) {
+
+    //console.log("valor a evaluar "+ val);
+
     if (
       val !== undefined &&
       val !== "undefined" &&
