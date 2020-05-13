@@ -107,7 +107,17 @@ const routes: Routes = [
 
     path: 'presentacion-detail',
     loadChildren: () => import('./pages/presentacion-detail/presentacion-detail.module').then( m => m.PresentacionDetailPageModule)
+  },
+  {
+    path: 'raza-vaca',
+    loadChildren: () => import('./pages/raza-vaca/raza-vaca.module').then( m => m.RazaVacaPageModule)
+  },
+  {
+    path: 'raza-vaca-detail',
+    loadChildren: () => import('./pages/raza-vaca-detail/raza-vaca-detail.module').then( m => m.RazaVacaDetailPageModule)
   }
+
+
 
 ];
 
