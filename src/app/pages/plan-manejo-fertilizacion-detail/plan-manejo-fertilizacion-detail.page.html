@@ -170,11 +170,12 @@
             (click)="deleteFertilizantePlanFertilizacion(fertilizante.id)"
           ></ion-icon>
 
-          <!-- (click)="editarFertilizantePlanFertilizacion(fertilizante.id,fertilizante.idplanfertilizacion,fertilizante.idfertilizante,fertilizante.fecha,fertilizante.observaciones,fertilizante.ejecutado,fertilizante.idresponsable)" -->
+          <!--  -->
 
           <ion-icon
             name="create"
-            slot="end"            
+            slot="end"        
+            (click)="editarFertilizantePlanFertilizacion(fertilizante.id,fertilizante.idplanfertilizacion,fertilizante.idfertilizante,fertilizante.cantidad,fertilizante.idresponsable)"    
           ></ion-icon>
         </ion-item>
 

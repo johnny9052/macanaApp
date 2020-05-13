@@ -106,11 +106,7 @@ const routes: Routes = [
   {
     path: 'plan-manejo-fertilizacion-detail',
     loadChildren: () => import('./pages/plan-manejo-fertilizacion-detail/plan-manejo-fertilizacion-detail.module').then( m => m.PlanManejoFertilizacionDetailPageModule)
-  },  {
-    path: 'plan-manejo-fertilizacion-fertilizante',
-    loadChildren: () => import('./pages/plan-manejo-fertilizacion-fertilizante/plan-manejo-fertilizacion-fertilizante.module').then( m => m.PlanManejoFertilizacionFertilizantePageModule)
   }
-
 
 
 

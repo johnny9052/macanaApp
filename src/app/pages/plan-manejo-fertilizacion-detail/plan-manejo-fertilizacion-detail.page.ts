@@ -447,24 +447,21 @@ export class PlanManejoFertilizacionDetailPage implements OnInit {
       data !== null &&
       data !== "null"
     ) {
-      this.potrero = data;
+      this.fertilizante = data;
 
       let postDataObj = new FormData();
-      postDataObj.append("id", this.potrero.id);
+      postDataObj.append("id", this.fertilizante.id);
       postDataObj.append(
         "idplanfertilizacion",
-        this.potrero.idplanfertilizacion
+        this.fertilizante.idplanfertilizacion
       );
-      postDataObj.append("idpotrero", this.potrero.idpotrero);
-      postDataObj.append("fecha", this.potrero.fecha);
-      postDataObj.append(
-        "observaciones",
-        this.helperService.fixNotRequiredValue(this.potrero.observaciones)
-      );
-      postDataObj.append("ejecutado", this.potrero.ejecutado ? "1" : "0");
+      postDataObj.append("idfertilizante", this.fertilizante.idfertilizante);
+
+      postDataObj.append("cantidad", this.fertilizante.cantidad);
+     
       postDataObj.append("idresponsable", this.codeUser);
 
-      if (this.helperService.isValidValue(this.potrero.id)) {
+      if (this.helperService.isValidValue(this.fertilizante.id)) {
         postDataObj.append("action", "update");
       } else {
         postDataObj.append("action", "save");
@@ -484,10 +481,8 @@ export class PlanManejoFertilizacionDetailPage implements OnInit {
   async editarFertilizantePlanFertilizacion(
     id: string,
     idplanfertilizacion: string,
-    idpotrero: string,
-    fecha: string,
-    observaciones: string,
-    ejecutado: string,
+    idfertilizante: string,
+    cantidad: string,
     idresponsable: string
   ) {
     const modal = await this.modalCtrl.create({
@@ -496,10 +491,8 @@ export class PlanManejoFertilizacionDetailPage implements OnInit {
         id: id,
         idplanfertilizacion: idplanfertilizacion,
         idplanmanejo: this.planManejoFertilizacionData.id,
-        idpotrero : idpotrero,
-        fecha: fecha,
-        observaciones: observaciones,
-        ejecutado: ejecutado,
+        idfertilizante : idfertilizante,
+        cantidad: cantidad,
         idresponsable: idresponsable        
       },
     });
@@ -516,24 +509,20 @@ export class PlanManejoFertilizacionDetailPage implements OnInit {
       data !== null &&
       data !== "null"
     ) {
-      this.potrero = data;
+      this.fertilizante = data;
 
       let postDataObj = new FormData();
-      postDataObj.append("id", this.potrero.id);
+      postDataObj.append("id", this.fertilizante.id);
       postDataObj.append(
         "idplanfertilizacion",
-        this.potrero.idplanfertilizacion
+        this.fertilizante.idplanfertilizacion
       );
-      postDataObj.append("idpotrero", this.potrero.idpotrero);
-      postDataObj.append("fecha", this.potrero.fecha);
-      postDataObj.append(
-        "observaciones",
-        this.helperService.fixNotRequiredValue(this.potrero.observaciones)
-      );
-      postDataObj.append("ejecutado", this.potrero.ejecutado ? "1" : "0");
+      postDataObj.append("idfertilizante", this.fertilizante.idfertilizante);
+      postDataObj.append("cantidad", this.fertilizante.cantidad);
+      
       postDataObj.append("idresponsable", this.codeUser);
 
-      if (this.helperService.isValidValue(this.potrero.id)) {
+      if (this.helperService.isValidValue(this.fertilizante.id)) {
         postDataObj.append("action", "update");
       } else {
         postDataObj.append("action", "save");
