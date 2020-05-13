@@ -6,6 +6,7 @@ import { MenuComponent } from './menu/menu.component';
 import { HeaderLoginComponent } from './header-login/header-login.component';
 import { FooterLoginComponent } from './footer-login/footer-login.component';
 import { HeaderComponent } from './header/header.component';
+import { HeaderModalComponent } from './header-modal/header-modal.component';
 /*END Import de los diferentes componentes creados*/
 
 import { IonicModule } from '@ionic/angular';
@@ -21,14 +22,16 @@ import { TranslateModule } from '@ngx-translate/core';
     MenuComponent,
     HeaderLoginComponent,
     FooterLoginComponent,
-    HeaderComponent
+    HeaderComponent,
+    HeaderModalComponent
   ],
   exports: [
     /*Todos los componentes se que exportaran a traves del modulo*/
     MenuComponent,
     HeaderLoginComponent,
     FooterLoginComponent,
-    HeaderComponent
+    HeaderComponent,
+    HeaderModalComponent
     /*END Todos los componentes se que exportaran a traves del modulo*/
  ],
   imports: [

@@ -71,6 +71,7 @@ export class PotreroPage implements OnInit {
     this.potreroService.getPotrero().subscribe(data => {
       let res: any;
       res = data;
+      console.log(data);
       /*Se convierte en un objeto JSON el listado de datos obtenido*/
       this.potreros = JSON.parse(res.data);
       /*Se oculta la barra de carga*/
@@ -103,7 +104,7 @@ export class PotreroPage implements OnInit {
 
   /*Metodo que envia los datos de un rol seleccionado en particular a otro formulario,
   encapsulando los datos en un NavigationExtras*/
-  viewPotrero(id: string, numero: string, area: string, observacion: string, idrotacion: string) {
+  viewPotrero(id: string, numero: string, area: string, observacion: string, idrotacion: string, estado: boolean) {
     /*Se encapsulan los datos en el extra, definiendo un objeto llamado state y su
     variable lo llamamos data*/
      const data: NavigationExtras = {
@@ -112,7 +113,8 @@ export class PotreroPage implements OnInit {
         numero,
         area,
         observacion,
-        idrotacion
+        idrotacion,
+        estado
       }
     };
 

@@ -1,6 +1,5 @@
 import { NgModule } from '@angular/core';
 import { PreloadAllModules, RouterModule, Routes } from '@angular/router';
-import { PlanDeManejoDetailPageModule } from './pages/plan-de-manejo-detail/plan-de-manejo-detail.module';
 
 const routes: Routes = [
   { path: '', redirectTo: 'log-in', pathMatch: 'full' },
@@ -36,14 +35,6 @@ const routes: Routes = [
   {
     path: 'permisos',
     loadChildren: () => import('./pages/permisos/permisos.module').then( m => m.PermisosPageModule)
-  },
-  {
-    path: 'plan-de-manejo',
-    loadChildren: () => import('./pages/plan-de-manejo/plan-de-manejo.module').then( m => m.PlanDeManejoPageModule)
-  },
-  {
-    path: 'plan-de-manejo-detail',
-    loadChildren: () => import('./pages/plan-de-manejo-detail/plan-de-manejo-detail.module').then( m => m.PlanDeManejoDetailPageModule)
   },
   {
     path: 'reportes',
@@ -115,7 +106,16 @@ const routes: Routes = [
   {
     path: 'raza-vaca-detail',
     loadChildren: () => import('./pages/raza-vaca-detail/raza-vaca-detail.module').then( m => m.RazaVacaDetailPageModule)
+  },
+  {
+    path: 'plan-manejo-fertilizacion',
+    loadChildren: () => import('./pages/plan-manejo-fertilizacion/plan-manejo-fertilizacion.module').then( m => m.PlanManejoFertilizacionPageModule)
+  },
+  {
+    path: 'plan-manejo-fertilizacion-detail',
+    loadChildren: () => import('./pages/plan-manejo-fertilizacion-detail/plan-manejo-fertilizacion-detail.module').then( m => m.PlanManejoFertilizacionDetailPageModule)
   }
+
 
 
 

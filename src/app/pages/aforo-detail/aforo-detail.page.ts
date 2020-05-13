@@ -62,6 +62,8 @@ export class AforoDetailPage implements OnInit {
         this.aforoData.cantlances = this.router.getCurrentNavigation().extras.state.cantlances;
         this.aforoData.pesopastoalto = this.router.getCurrentNavigation().extras.state.pesopastoalto;
         this.aforoData.pesopastomedio = this.router.getCurrentNavigation().extras.state.pesopastomedio;
+        this.aforoData.pesopastobajo = this.router.getCurrentNavigation().extras.state.pesopastobajo;
+
         this.aforoData.cantpasto = this.router.getCurrentNavigation().extras.state.cantpasto;
         this.aforoData.porcentajealtro = this.router.getCurrentNavigation().extras.state.porcentajealtro;
         this.aforoData.porcentajemedio = this.router.getCurrentNavigation().extras.state.porcentajemedio;
@@ -329,7 +331,9 @@ export class AforoDetailPage implements OnInit {
             this.aforoData.tiempopotrero = (
               parseFloat(this.aforoData.cantpastopotrero) /
               (parseFloat(this.cantVacas) * 55)
-            ).toString();
+            )
+              .toFixed(1)
+              .toString();
 
             this.mostrarMensajeTiempoPotrero();
           } else {
@@ -401,13 +405,15 @@ export class AforoDetailPage implements OnInit {
   }
 
   mostrarMensajeTiempoPotrero() {
-    if (parseFloat(this.aforoData.tiempopotrero) <= 0.75) {
-      this.mjsTiempoPotrero = "Las vacas pueden estar medio dia";
-    } else {
-      if (parseFloat(this.aforoData.tiempopotrero) < 1.4) {
-        this.mjsTiempoPotrero = "Las vacas pueden estar un dia";
+    if (this.helperService.isValidValue(this.aforoData.tiempopotrero)) {
+      if (parseFloat(this.aforoData.tiempopotrero) <= 0.75) {
+        this.mjsTiempoPotrero = "Las vacas pueden estar medio dia";
       } else {
-        this.mjsTiempoPotrero = "Las vacas pueden estar un dia y medio";
+        if (parseFloat(this.aforoData.tiempopotrero) < 1.4) {
+          this.mjsTiempoPotrero = "Las vacas pueden estar un dia";
+        } else {
+          this.mjsTiempoPotrero = "Las vacas pueden estar un dia y medio";
+        }
       }
     }
   }
