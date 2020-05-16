@@ -1,12 +1,13 @@
-<app-header-modal
-  titulo="{{ 'planManejoFertilizacion' | translate }}"
-></app-header-modal>
+<app-header-modal titulo="{{ 'planManejoFertilizacion' | translate }}"></app-header-modal>
 
 <ion-content padding="padding">
   <!-- Con el position floating da el efecto de materalized, en 
             donde se selecciona la caja de texto, y sube el texto como el placeholder -->
 
-  <form #formulario="ngForm" (ngSubmit)="enviarDatosAlFormulario()">
+  <form
+    #formulario="ngForm"
+    (ngSubmit)="enviarDatosAlFormulario()"
+  >
     <ion-list>
       <ion-item>
         <ion-label>{{ 'potrero' | translate }}</ion-label>
@@ -15,13 +16,12 @@
           placeholder="{{ 'seleccione' | translate }}"
           name="idPotrero"
           [(ngModel)]="potrero.idpotrero"
-          required
+          required="required"
         >
           <ion-select-option
             *ngFor="let potrero of potreros"
             value="{{potrero.id}}"
-            >{{potrero.numero}}</ion-select-option
-          >
+          >{{potrero.numero}}</ion-select-option>
         </ion-select>
       </ion-item>
 
@@ -35,7 +35,7 @@
           [(ngModel)]="potrero.fecha"
           name="fecha"
           [pickerOptions]="customPickerOptions"
-          required
+          required="required"
         ></ion-datetime>
       </ion-item>
 
@@ -55,12 +55,11 @@
           name="estadoPotrero"
           color="primary"
           [(ngModel)]="potrero.ejecutado"
-        >
-        </ion-checkbox>
+        ></ion-checkbox>
+
         <ion-label style="padding-left: 10px;">
-          <h3 slot="start">
-            {{ 'estado' | translate }}
-          </h3>
+          <h3 slot="start">{{ 'estado' | translate }}</h3>
+
           <p>
             {{ 'ejecutadoNoEjecutado' | translate }}
           </p>
@@ -82,9 +81,11 @@
         </ion-col>
 
         <ion-col size="12">
-          <ion-button color="macana" (click)="cerrarModal()" expand="full"
-            >{{ 'cancelar' | translate }}</ion-button
-          >
+          <ion-button
+            color="macana"
+            (click)="cerrarModal()"
+            expand="full"
+          >{{ 'cancelar' | translate }}</ion-button>
         </ion-col>
       </ion-row>
     </ion-grid>

@@ -180,7 +180,7 @@
     "***************GESTION PLAN DE MANEJO FERTILIZACION**********************": "",
     "crearPlanDeManejo": "Crear plan de manejo",
     "crearPlanManejoFertilizacion": "Crear plan manejo fertilizacion",
-    "periodicidad":"Periodicidad",
+    "periodicidad":"Periodicidad (En dias)",
     "fechaInicio":"Fecha inicio",
     "fechaFin":"Fecha fin",
     "observacionesPlanManejoFertilizacion":"Observaciones",
@@ -196,5 +196,7 @@
     "fertilizantes": "Fertilizantes",
     "agregarFertilizante": "Añadir fertilizante",
     "guardarFertilizante":"Guardar fertilizante",
-    "deseaEliminarFertilizante":"¿Desea eliminar el fertilizante?"
+    "deseaEliminarFertilizante":"¿Desea eliminar el fertilizante?",
+    "cantidadGramos":"Cantidad (en gramos)",
+    "agregarGrupoPotreros":"Añadir grupo de potreros"
 }
