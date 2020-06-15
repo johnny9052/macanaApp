@@ -33,7 +33,6 @@ export class PlanManejoFertilizacionDetailPage implements OnInit {
 
   /*Almacena la configuracion del calendar*/
   customPickerOptionsFechaInicio;
-  customPickerOptionsFechaFin;
 
   /*******VARIABLES DE CONTROL VISUAL****************/
   hiddenPotreros = true;
@@ -62,9 +61,8 @@ export class PlanManejoFertilizacionDetailPage implements OnInit {
     this.route.queryParams.subscribe((params) => {
       if (this.router.getCurrentNavigation().extras.state) {
         this.planManejoFertilizacionData.id = this.router.getCurrentNavigation().extras.state.id;
-        this.planManejoFertilizacionData.periodicidad = this.router.getCurrentNavigation().extras.state.periodicidad;
+        this.planManejoFertilizacionData.nombre = this.router.getCurrentNavigation().extras.state.nombre;
         this.planManejoFertilizacionData.fechainicio = this.router.getCurrentNavigation().extras.state.fechainicio;
-        this.planManejoFertilizacionData.fechafin = this.router.getCurrentNavigation().extras.state.fechafin;
         this.planManejoFertilizacionData.observaciones = this.router.getCurrentNavigation().extras.state.observaciones;
 
         this.getListPotrerosData();
@@ -101,31 +99,6 @@ export class PlanManejoFertilizacionDetailPage implements OnInit {
         },
       ],
     };
-
-    // Se configura el calendar
-    this.customPickerOptionsFechaFin = {
-      buttons: [
-        {
-          text: this.translate.instant("seleccionar"),
-          handler: (evento) => {
-            // console.log("mensaje desde fecha fin");
-
-            this.planManejoFertilizacionData.fechafin =
-              evento.year.value +
-              "-" +
-              evento.month.value +
-              "-" +
-              evento.day.value;
-          },
-        },
-        {
-          text: this.translate.instant("cancelar"),
-          handler: (evento) => {
-            // console.log('close');
-          },
-        },
-      ],
-    };
   }
 
   /*Funcion que se encarga de obtener codigo del usuario que se encuentra identificado*/
@@ -141,19 +114,14 @@ export class PlanManejoFertilizacionDetailPage implements OnInit {
     // tslint:disable-next-line: prefer-const
     let postDataObj = new FormData();
     postDataObj.append("id", this.planManejoFertilizacionData.id);
-    postDataObj.append(
-      "periodicidad",
-      this.planManejoFertilizacionData.periodicidad
-    );
+
+    postDataObj.append("nombre", this.planManejoFertilizacionData.nombre);
+
     postDataObj.append(
       "fechainicio",
       this.planManejoFertilizacionData.fechainicio
     );
-    postDataObj.append(
-      "fechafin",
 
-      this.planManejoFertilizacionData.fechafin
-    );
     postDataObj.append(
       "observaciones",
       this.helperService.fixNotRequiredValue(
@@ -257,12 +225,6 @@ export class PlanManejoFertilizacionDetailPage implements OnInit {
         this.potrero.idplanfertilizacion
       );
       postDataObj.append("idpotrero", this.potrero.idpotrero);
-      postDataObj.append("fecha", this.potrero.fecha);
-      postDataObj.append(
-        "observaciones",
-        this.helperService.fixNotRequiredValue(this.potrero.observaciones)
-      );
-      postDataObj.append("ejecutado", this.potrero.ejecutado ? "1" : "0");
       postDataObj.append("idresponsable", this.codeUser);
 
       if (this.helperService.isValidValue(this.potrero.id)) {
@@ -286,9 +248,6 @@ export class PlanManejoFertilizacionDetailPage implements OnInit {
     id: string,
     idplanfertilizacion: string,
     idpotrero: string,
-    fecha: string,
-    observaciones: string,
-    ejecutado: string,
     idresponsable: string
   ) {
     const modal = await this.modalCtrl.create({
@@ -298,9 +257,6 @@ export class PlanManejoFertilizacionDetailPage implements OnInit {
         idplanfertilizacion: idplanfertilizacion,
         idplanmanejo: this.planManejoFertilizacionData.id,
         idpotrero: idpotrero,
-        fecha: fecha,
-        observaciones: observaciones,
-        ejecutado: ejecutado,
         idresponsable: idresponsable,
       },
     });
@@ -605,6 +561,14 @@ export class PlanManejoFertilizacionDetailPage implements OnInit {
     });
 
     await alert.present();
+  }
+
+  fixEjecutadoNoEjecutado(status: number, fecha: string) {
+    if (status == 1) {
+      return "Ejecutado el " + fecha;
+    } else {
+      return "No ejecutado";
+    }
   }
 
   /******************************************************/

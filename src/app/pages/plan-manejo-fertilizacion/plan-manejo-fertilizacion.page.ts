@@ -117,9 +117,8 @@ caracteristica del regresco, por lo que su implementacion varia levemente*/
 encapsulando los datos en un NavigationExtras*/
   viewPlanManejoFertilizacion(
     id: string,
-    periodicidad: string,
+    nombre: string,
     fechainicio: string,
-    fechafin: string,
     observaciones: string
   ) {
     /*Se encapsulan los datos en el extra, definiendo un objeto llamado state y su
@@ -127,9 +126,8 @@ encapsulando los datos en un NavigationExtras*/
     const data: NavigationExtras = {
       state: {
         id,
-        periodicidad,
+        nombre,
         fechainicio,
-        fechafin,
         observaciones,
       },
     };

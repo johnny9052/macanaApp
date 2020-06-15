@@ -16,9 +16,6 @@ export class PlanManejoFertilizacionPotreroPage implements OnInit {
   @Input() id;
   @Input() idplanmanejo;
   @Input() idpotrero;
-  @Input() fecha;
-  @Input() observaciones;
-  @Input() ejecutado;
   @Input() responsable;
 
   potrero = {} as ModelPlanManejoFertilizacionPotrero;
@@ -75,11 +72,8 @@ export class PlanManejoFertilizacionPotreroPage implements OnInit {
     this.potrero.id = this.id;
     this.potrero.idplanfertilizacion = this.idplanmanejo;
     this.idPotreroTempo = this.idpotrero;
-    this.potrero.fecha = this.fecha;
-    this.potrero.observaciones = this.observaciones;
     this.potrero.idresponsable = this.responsable;
-    this.potrero.ejecutado = this.fixBoolean(String(this.ejecutado));
-
+    
     // console.log('El valor es', this.experiencia.currently_working);
   }
 
@@ -100,15 +94,6 @@ export class PlanManejoFertilizacionPotreroPage implements OnInit {
     );
   }
 
-  fixBoolean(val: string) {
-    if (val === "1") {
-      return true;
-    }
-
-    if (val === "0") {
-      return false;
-    }
-  }
 
   enviarDatosAlFormulario() {
     // debugger;

@@ -25,46 +25,6 @@
         </ion-select>
       </ion-item>
 
-      <ion-item>
-        <ion-label>{{ 'fecha' | translate }}</ion-label>
-
-        <ion-datetime
-          placeholder="{{ 'elijaFecha' | translate }}"
-          display-format="YYYY MM DD"
-          cancelText="{{ 'cancelar' | translate }}"
-          [(ngModel)]="potrero.fecha"
-          name="fecha"
-          [pickerOptions]="customPickerOptions"
-          required="required"
-        ></ion-datetime>
-      </ion-item>
-
-      <ion-item>
-        <ion-label position="floating">
-          {{ 'observaciones' | translate }}
-        </ion-label>
-
-        <ion-textarea
-          name="observaciones"
-          [(ngModel)]="potrero.observaciones"
-        ></ion-textarea>
-      </ion-item>
-
-      <ion-item lines="none">
-        <ion-checkbox
-          name="estadoPotrero"
-          color="primary"
-          [(ngModel)]="potrero.ejecutado"
-        ></ion-checkbox>
-
-        <ion-label style="padding-left: 10px;">
-          <h3 slot="start">{{ 'estado' | translate }}</h3>
-
-          <p>
-            {{ 'ejecutadoNoEjecutado' | translate }}
-          </p>
-        </ion-label>
-      </ion-item>
     </ion-list>
 
     <ion-grid fixed="fixed">

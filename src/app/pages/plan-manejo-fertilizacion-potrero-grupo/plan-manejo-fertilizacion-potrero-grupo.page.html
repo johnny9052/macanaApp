@@ -16,7 +16,8 @@
           placeholder="{{ 'seleccione' | translate }}"
           name="idPotrero"
           [(ngModel)]="idRotacion"
-          required="required"
+          required="required" 
+          interface="action-sheet" 
         >
           <ion-select-option
             *ngFor="let rotacion of rotaciones"

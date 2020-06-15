@@ -197,6 +197,9 @@
     "agregarFertilizante": "Añadir fertilizante",
     "guardarFertilizante":"Guardar fertilizante",
     "deseaEliminarFertilizante":"¿Desea eliminar el fertilizante?",
-    "cantidadGramos":"Cantidad (en gramos)",
-    "agregarGrupoPotreros":"Añadir grupo de potreros"
+    "cantidadGramos":"Cantidad (por metro cuadrado)",
+    "agregarGrupoPotreros":"Añadir grupo de potreros",
+
+    "***************GESTION PLAN DE MANEJO FERTILIZACION FERTILIZANTE OPERARIO**********************": "",
+    "planManejoFertilizanteOperario":"Plan fertilizacion Operario"
 }

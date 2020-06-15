@@ -3,18 +3,21 @@
 <ion-content class="ion-padding">
   <form #formulario="ngForm" (ngSubmit)="savePlanManejoFertilizacionData()">
     <ion-list>
+
+
       <ion-item>
         <ion-label position="floating">
-          {{ 'periodicidad' | translate }}*
+          {{ 'nombre' | translate }}*
         </ion-label>
 
         <ion-input
-          type="number"
+          type="text"
           name="nombrePlanManejoFertilizacion"
           required="required"
-          [(ngModel)]="planManejoFertilizacionData.periodicidad"
+          [(ngModel)]="planManejoFertilizacionData.nombre"
         ></ion-input>
       </ion-item>
+
 
       <ion-item>
         <ion-label>
@@ -31,20 +34,6 @@
         ></ion-datetime>
       </ion-item>
 
-      <ion-item>
-        <ion-label>
-          {{ 'fechaFin' | translate }} *
-        </ion-label>
-
-        <ion-datetime
-          placeholder="{{ 'seleccione' | translate }}"
-          display-format="YYYY MM DD"
-          cancelText="{{ 'cancelar' | translate }}"
-          [(ngModel)]="planManejoFertilizacionData.fechafin"
-          name="fechaFinPlanManejoFertilizacion"
-          [pickerOptions]="customPickerOptionsFechaFin"
-        ></ion-datetime>
-      </ion-item>
 
       <ion-item>
         <ion-label position="floating">
@@ -89,6 +78,8 @@
         <ion-item *ngFor="let potrero of potreros;">
           <ion-label>
             <h3>{{potrero.numero}}</h3>
+            <h4>{{this.fixEjecutadoNoEjecutado(potrero.ejecutado, potrero.fecha)}}</h4>
+            <h4 *ngIf="this.helperService.isValidValue(potrero.observaciones)">Observaciones: {{potrero.observaciones}}</h4>
           </ion-label>
 
           <!-- (click)="deleteExperience(potrero.id)" -->
@@ -104,7 +95,7 @@
           <ion-icon
             name="create"
             slot="end"
-            (click)="editarPotreroPlanFertilizacion(potrero.id,potrero.idplanfertilizacion,potrero.idpotrero,potrero.fecha,potrero.observaciones,potrero.ejecutado,potrero.idresponsable)"
+            (click)="editarPotreroPlanFertilizacion(potrero.id,potrero.idplanfertilizacion,potrero.idpotrero,potrero.idresponsable)"
           ></ion-icon>
         </ion-item>
 
@@ -164,7 +155,8 @@
       >
         <ion-item *ngFor="let fertilizante of fertilizantes;">
           <ion-label>
-            <h3>{{fertilizante.nombre}}</h3>
+            <h3>{{fertilizante.nombre}} / {{fertilizante.presentacion}}</h3>
+            <h4>{{ 'cantidadGramos' | translate }} : {{fertilizante.cantidad}} </h4>
           </ion-label>
 
           <!-- (click)="deleteExperience(fertilizante.id)" -->
@@ -199,7 +191,7 @@
     </ion-card>
 
     <!-- ********************************************************************** -->
-    <!-- **********************END SECCION DE POTREROS********************* -->
+    <!-- **********************END SECCION DE FERTILIZANTES********************* -->
     <!-- ********************************************************************** -->
     <br />
 
