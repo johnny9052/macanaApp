@@ -48,11 +48,10 @@ export class PotreroDetailPage implements OnInit {
         this.potreroData.observacion = this.router.getCurrentNavigation().extras.state.observacion;
         this.idRotacionTemp = this.router.getCurrentNavigation().extras.state.idrotacion;
         this.potreroData.idresponsable = this.router.getCurrentNavigation().extras.state.idresponsable;
-        this.potreroData.ordenrotacion = this.router.getCurrentNavigation().extras.state.ordenrotacion;
-        this.potreroData.estado = this.router.getCurrentNavigation().extras.state.estado;
-        console.log('El estado que llego es '+ this.potreroData.estado);
+        this.potreroData.estado = this.helperService.procesarCheckboxRadioValue(this.router.getCurrentNavigation().extras.state.estado);
+        // console.log("El estado es "+ this.potreroData.estado);
       }
-    });
+    });    
   }
   
   ionViewWillEnter() {
