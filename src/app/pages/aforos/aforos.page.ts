@@ -116,28 +116,30 @@ export class AforosPage implements OnInit {
   /*Metodo que envia los datos de un aforo seleccionado en particular a otro formulario,
   encapsulando los datos en un NavigationExtras*/
   viewAforo(
-    id: string,
-    fecha: string,
-    idpotrero: string,
-    pastoalto: string,
-    pastobajo: string,
-    pastomedio: string,
-    lancealto: string,
-    lancemedio: string,
-    lancebajo: string,
-    cantlances: string,
-    pesopastoalto: string,
-    pesopastobajo: string,
-    pesopastomedio: string,
-    cantpasto: string,
-    porcentajealtro: string,
-    porcentajemedio: string,
-    porcentajebajo: string,
+    id:                 string,
+    fecha:              string,
+    idpotrero:          string,
+    pastoalto:          string,
+    pastobajo:          string,
+    pastomedio:         string,
+    lancealto:          string,
+    lancemedio:         string,
+    lancebajo:          string,
+    cantlances:         string,
+    pesopastoalto:      string,
+    pesopastobajo:      string,
+    pesopastomedio:     string,
+    cantpasto:          string,
+    porcentajealtro:    string,
+    porcentajemedio:    string,
+    porcentajebajo:     string,
     totalmetrocuadrado: string,
-    cantpastopotrero: string,
-    tiempopotrero: string,
-    observaciones: string,
-    idresponsable: string
+    cantpastopotrero:   string,
+    tiempopotrero:      string,
+    observaciones:      string,
+    idresponsable:      string,
+    fechaentrada:       string,
+    fechasalida:        string
   ) {
     /*Se encapsulan los datos en el extra, definiendo un objeto llamado state y su
     variable lo llamamos data*/
@@ -164,7 +166,9 @@ export class AforosPage implements OnInit {
         cantpastopotrero,
         tiempopotrero,
         observaciones,
-        idresponsable
+        idresponsable,
+        fechaentrada,
+        fechasalida
       }
     };
 

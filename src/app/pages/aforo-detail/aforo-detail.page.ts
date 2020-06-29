@@ -17,6 +17,9 @@ import { PotreroService } from "src/app/services/potrero.service";
 export class AforoDetailPage implements OnInit {
   /*Almacena la configuracion del calendar*/
   customPickerOptions;
+  customPickerOptions1;
+  customPickerOptions2;
+
 
   /*DATOS NECESARIOS PARA REFRESH SELECT*/
   idPotreroTempo;
@@ -74,6 +77,9 @@ export class AforoDetailPage implements OnInit {
         this.aforoData.observaciones = this.router.getCurrentNavigation().extras.state.observaciones;
         this.aforoData.idresponsable = this.router.getCurrentNavigation().extras.state.idresponsable;
         this.aforoData.numeropotrero = this.router.getCurrentNavigation().extras.state.numeropotrero;
+        
+        this.aforoData.fechaentrada = this.router.getCurrentNavigation().extras.state.fechaentrada;
+        this.aforoData.fechasalida = this.router.getCurrentNavigation().extras.state.fechasalida;
       }
     });
   }
@@ -135,6 +141,50 @@ export class AforoDetailPage implements OnInit {
         }
       ]
     };
+  // Se configura el calendar fecha entrada 
+  this.customPickerOptions1 = {
+    buttons: [
+      {
+        text: this.translate.instant("seleccionar"),
+        handler: evento => {
+          this.aforoData.fechaentrada =
+            evento.year.value +
+            "-" +
+            evento.month.value +
+            "-" +
+            evento.day.value;
+        }
+      },
+      {
+        text: this.translate.instant("cancelar"),
+        handler: evento => {
+          // console.log('close');
+        }
+      }
+    ]
+  };
+  // Se configura el calendar fecha salida
+  this.customPickerOptions2 = {
+    buttons: [
+      {
+        text: this.translate.instant("seleccionar"),
+        handler: evento => {
+          this.aforoData.fechasalida =
+            evento.year.value +
+            "-" +
+            evento.month.value +
+            "-" +
+            evento.day.value;
+        }
+      },
+      {
+        text: this.translate.instant("cancelar"),
+        handler: evento => {
+          // console.log('close');
+        }
+      }
+    ]
+  };
   }
 
   /*Funcion que se encarga de obtener codigo del usuario que se encuentra identificado*/
@@ -196,6 +246,8 @@ export class AforoDetailPage implements OnInit {
       this.helperService.fixNotRequiredValue(this.aforoData.observaciones)
     );
     postDataObj.append("idresponsable", this.codeUser);
+    postDataObj.append("fechaentrada", this.aforoData.fechaentrada);
+    postDataObj.append("fechasalida", this.aforoData.fechasalida);
 
     /*Se valida si se ha seleccionado un rol en el select, para saber si se le solicita al usuario*/
     if (this.helperService.isValidValue(this.aforoData.idpotrero)) {

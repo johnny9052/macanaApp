@@ -1,0 +1,37 @@
+<app-header titulo="{{ 'nombre' | translate }}"></app-header>
+
+<ion-content padding="padding">
+    <form #formulario="ngForm" (ngSubmit)="saveRazaVacaData()">
+        <ion-list>
+
+            <ion-item>
+                <ion-label position="floating">{{ 'nombre' | translate }}*</ion-label>
+                <ion-input type="text" name="nombreRol" required="required" [(ngModel)]="razaVacaData.nombre"></ion-input>
+            </ion-item>
+            <ion-item>
+                <ion-label position="floating">{{ 'observaciones' | translate }}</ion-label>
+                <ion-input type="text" name="descripcion" [(ngModel)]="razaVacaData.observaciones"></ion-input>
+            </ion-item>
+        </ion-list>
+        <ion-grid fixed="fixed">
+            <ion-row class="ion-text-center">
+                <ion-col size="12" *ngIf="!this.helperService.isValidValue(razaVacaData.id)">
+                    <ion-button color="macana" type="submit" [disabled]="formulario.invalid" fill="outline" expand="full">{{ 'guardar' | translate }}</ion-button>
+                </ion-col>
+
+                <ion-col size="12" *ngIf="this.helperService.isValidValue(razaVacaData.id)">
+                    <ion-button color="macana" type="submit" [disabled]="formulario.invalid" fill="outline" expand="full">{{ 'editar' | translate }}</ion-button>
+                </ion-col>
+
+
+                <ion-col size="12" *ngIf="this.helperService.isValidValue(razaVacaData.id)">
+                    <ion-button color="macana" fill="outline" expand="full" (click)="deleteRazaVacaData();">{{ 'eliminar' | translate }}</ion-button>
+                </ion-col>
+
+                <ion-col size="12">
+                    <ion-button color="macana" fill="outline" routerLink="/raza-vaca" expand="full">{{ 'regresar' | translate }}</ion-button>
+                </ion-col>
+            </ion-row>
+        </ion-grid>
+    </form>
+</ion-content>

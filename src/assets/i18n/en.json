@@ -135,8 +135,8 @@
     "areaPotrero": "Area metros cuadrados",
     "observacionPotrero": "Observaciones",
     "idrotacionpotrero": "Rotacion",
-    "estado":"Estado",
-    "activoInactivo":"Activo / Inactivo",
+    "estado": "Estado",
+    "activoInactivo": "Activo / Inactivo",
 
 
     "***************GESTION AFOROS**********************": "",
@@ -183,26 +183,26 @@
     "***************GESTION PLAN DE MANEJO FERTILIZACION**********************": "",
     "crearPlanDeManejo": "Crear plan de manejo",
     "crearPlanManejoFertilizacion": "Crear plan manejo fertilizacion",
-    "periodicidad":"Periodicidad (En dias)",
-    "fechaInicio":"Fecha inicio",
-    "fechaFin":"Fecha fin",
-    "observacionesPlanManejoFertilizacion":"Observaciones",
+    "periodicidad": "Periodicidad (En dias)",
+    "fechaInicio": "Fecha inicio",
+    "fechaFin": "Fecha fin",
+    "observacionesPlanManejoFertilizacion": "Observaciones",
 
     "***************GESTION PLAN DE MANEJO FERTILIZACION POTRERO**********************": "",
     "agregarPotrero": "Añadir potrero",
     "elijaFecha": "Seleccione una fecha",
-    "ejecutadoNoEjecutado":"Ejecutado / No ejecutado",
-    "guardarPotrero":"Guardar potrero",
-    "deseaEliminarPotrero":"¿Desea eliminar el potrero?",
+    "ejecutadoNoEjecutado": "Ejecutado / No ejecutado",
+    "guardarPotrero": "Guardar potrero",
+    "deseaEliminarPotrero": "¿Desea eliminar el potrero?",
 
     "***************GESTION PLAN DE MANEJO FERTILIZACION FERTILIZANTE**********************": "",
     "fertilizantes": "Fertilizantes",
     "agregarFertilizante": "Añadir fertilizante",
-    "guardarFertilizante":"Guardar fertilizante",
-    "deseaEliminarFertilizante":"¿Desea eliminar el fertilizante?",
-    "cantidadGramos":"Cantidad (por metro cuadrado)",
-    "agregarGrupoPotreros":"Añadir grupo de potreros",
+    "guardarFertilizante": "Guardar fertilizante",
+    "deseaEliminarFertilizante": "¿Desea eliminar el fertilizante?",
+    "cantidadGramos": "Cantidad (por metro cuadrado)",
+    "agregarGrupoPotreros": "Añadir grupo de potreros",
 
     "***************GESTION PLAN DE MANEJO FERTILIZACION FERTILIZANTE OPERARIO**********************": "",
-    "planManejoFertilizanteOperario":"Plan fertilizacion Operario"
+    "planManejoFertilizanteOperario": "Plan fertilizacion Operario"
 }

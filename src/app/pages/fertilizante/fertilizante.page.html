@@ -1,26 +1,25 @@
 <app-header titulo="{{ 'nombre' | translate }}"></app-header>
 
 <ion-content>
-    <ion-button color="macana" fill="outline" expand="full" routerLink="/presentacion-detail">{{ 'crearPresentacion' | translate }}</ion-button>
+    <ion-button color="macana" fill="outline" expand="full" routerLink="/fertilizante-detail">{{ 'crearFertilizante' | translate }}</ion-button>
 
     <!-- Este seccion permite que cuando con el dedo desde la parte superior se desliza hacia abajo, 
   entonces se refresque la lista, llamando al metodo refrescar-->
-
     <ion-refresher slot="fixed" (ionRefresh)="refrescar($event)">
         <ion-refresher-content></ion-refresher-content>
     </ion-refresher>
 
     <br />
 
-    <!-- Por cada uno de las presentaciones en el listado de presentaciones, se va a generar cada elemento del listado, ademas se
+    <!-- Por cada uno de los roles en el listado de roles, se va a generar cada elemento del listado, ademas se
   genera dinamicamente un evento click con todos los datos que se cargaran visualmente -->
-    <ion-item *ngFor="let presentacion of presentaciones" (click)="viewPresentacion(presentacion.id,presentacion.nombre,presentacion.observacion)">
+    <ion-item *ngFor="let fertilizante of fertilizantes" (click)="viewFertilizante(fertilizante.id,fertilizante.nombre,fertilizante.marca,fertilizante.idpresentacion,fertilizante.idresponsable)">
         <ion-avatar slot="start">
             <img src="{{baseUrl}}Resource/Images/Users/avatar_2x2.png" />
         </ion-avatar>
         <ion-label>
             <h3 slot="start">
-                {{presentacion.nombre}}
+                {{fertilizante.nombre}}
             </h3>
         </ion-label>
     </ion-item>

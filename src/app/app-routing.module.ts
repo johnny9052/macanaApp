@@ -100,13 +100,34 @@ const routes: Routes = [
     loadChildren: () => import('./pages/presentacion-detail/presentacion-detail.module').then( m => m.PresentacionDetailPageModule)
   },
   {
+    path: 'raza-vaca',
+    loadChildren: () => import('./pages/raza-vaca/raza-vaca.module').then( m => m.RazaVacaPageModule)
+  },
+  {
+    path: 'raza-vaca-detail',
+    loadChildren: () => import('./pages/raza-vaca-detail/raza-vaca-detail.module').then( m => m.RazaVacaDetailPageModule)
+  },
+  {
     path: 'plan-manejo-fertilizacion',
     loadChildren: () => import('./pages/plan-manejo-fertilizacion/plan-manejo-fertilizacion.module').then( m => m.PlanManejoFertilizacionPageModule)
   },
   {
     path: 'plan-manejo-fertilizacion-detail',
     loadChildren: () => import('./pages/plan-manejo-fertilizacion-detail/plan-manejo-fertilizacion-detail.module').then( m => m.PlanManejoFertilizacionDetailPageModule)
-  },  {
+  },
+  {
+    path: 'fertilizante',
+    loadChildren: () => import('./pages/fertilizante/fertilizante.module').then( m => m.FertilizantePageModule)
+  },
+  {
+    path: 'fertilizante-detail',
+    loadChildren: () => import('./pages/fetilizante-detail/fetilizante-detail.module').then( m => m.FetilizanteDetailPageModule)
+  },
+  {
+    path: 'cronograma',
+    loadChildren: () => import('./pages/cronograma/cronograma.module').then( m => m.CronogramaPageModule)
+  },
+  {
     path: 'plan-manejo-fertilizacion-operario',
     loadChildren: () => import('./pages/plan-manejo-fertilizacion-operario/plan-manejo-fertilizacion-operario.module').then( m => m.PlanManejoFertilizacionOperarioPageModule)
   }

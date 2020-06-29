@@ -15,7 +15,7 @@
     <!-- Por cada uno de los roles en el listado de roles, se va a generar cada elemento del listado, ademas se
     genera dinamicamente un evento click con todos los datos que se cargaran visualmente -->
     <!--  -->
-    <ion-item *ngFor="let potrero of potreros" (click)="viewPotrero(potrero.id, potrero.numero, potrero.area, potrero.observacion,potrero.idrotacion,potrero.estado)">
+    <ion-item *ngFor="let potrero of potreros" (click)="viewPotrero(potrero.id, potrero.numero, potrero.area, potrero.observacion,potrero.idrotacion,potrero.estado,potrero.ordenrotacion)">
         <ion-avatar slot="start">
             <img src="{{baseUrl}}Resource/Images/Users/avatar_2x2.png" />
         </ion-avatar>

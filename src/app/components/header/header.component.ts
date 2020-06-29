@@ -21,8 +21,8 @@ export class HeaderComponent implements OnInit {
    * TranslateService: Servicio para internacionalizacion
    */
   constructor(public helperService: HelperService,
-              public alertCtrl: AlertController,
-              private translate: TranslateService) { }
+              public alertCtrl:     AlertController,
+              private translate:    TranslateService) { }
 
   ngOnInit() {}
 

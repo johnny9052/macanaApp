@@ -1,19 +1,19 @@
-import { Injectable } from "@angular/core";
-import { environment } from "src/environments/environment";
-import { HttpHeaders, HttpClient } from "@angular/common/http";
-import { HelperService } from "../util/HelperService";
-import { TranslateService } from "@ngx-translate/core";
-import { ModelPotrero } from "../interfaces/potrerointerface";
+import { Injectable } from '@angular/core';
+import { environment } from 'src/environments/environment';
+import { HttpHeaders, HttpClient } from '@angular/common/http';
+import { HelperService } from '../util/HelperService';
+import { TranslateService } from '@ngx-translate/core';
+import { ModelRazaVaca } from '../interfaces/razaVacaInterface';
 
 @Injectable({
-  providedIn: "root"
+  providedIn: 'root'
 })
-export class PotreroService {
+export class RazaVacaService {
   baseUrl = environment.baseUrl;
 
   /*Definicion del header funcional para envios via post*/
   private headersPost = new HttpHeaders({
-    "Content-Type": "application/x-www-form-urlencoded"
+    'Content-Type': 'application/x-www-form-urlencoded'
   });
 
   constructor(
@@ -22,16 +22,16 @@ export class PotreroService {
     private translate: TranslateService
   ) {}
 
-  getPotrero() {
-    return this.http.get<ModelPotrero>(
-      this.baseUrl + "Controller/Potreros/CtlPotrero.php?action=list"
+  getRazaVaca() {
+    return this.http.get<ModelRazaVaca>(
+      this.baseUrl + 'Controller/RazaVaca/CtlRazaVaca.php?action=list'
     );
   }
-  /*Funcion que se encarga de registrar al rol, recibiendo por parametro
+/*Funcion que se encarga de registrar al rol, recibiendo por parametro
   los datos del rol*/
-  savePotreroDataService(postData: any) {
+  saveRazaVacaDataService(postData: any) {
     /*URL del web service*/
-    const url = this.baseUrl + "Controller/Potreros/CtlPotrero.php";
+    const url = this.baseUrl + "Controller/RazaVaca/CtlRazaVaca.php";
     /*Se muestra una barra de carga*/
     this.helperService.mostrarBarraDeCarga(this.translate.instant("espere"));
     /*Se envian los datos al servidor, enviando la url, los datos y la configuracion necesaria del header*/
@@ -49,14 +49,14 @@ export class PotreroService {
           this.helperService.showAlertRedirect(
             this.translate.instant("exitoTitulo"),
             this.translate.instant("exitoTransaccion"),
-            "/potrero"
+            "/raza-vacas"
           );
         } else {
           if (res.code === "2") {
             /*Si no retorna uno es porque el registro*/
             this.helperService.showAlert(
               this.translate.instant("errorTitulo"),
-              "El Registro ya existe o el Orden de Rotacion ya esta Asignado"
+              this.translate.instant("registroExistente")
             );
           } else {
             /*Si no retorna uno es porque el usuario ya existe*/
@@ -81,9 +81,9 @@ export class PotreroService {
 
   /*Funcion que se encarga de eliminar rol, recibiendo por parametro
   el id*/
-  deletePotreroDataService(postData: any) {
+  deleteRolDataService(postData: any) {
     /*URL del web service*/
-    const url = this.baseUrl + "Controller/Potreros/CtlPotrero.php";
+    const url = this.baseUrl + "Controller/RazaVaca/CtlRazaVaca.php";
     /*Se muestra una barra de carga*/
     this.helperService.mostrarBarraDeCarga(this.translate.instant("espere"));
     /*Se envian los datos al servidor, enviando la url, los datos y la configuracion necesaria del header*/
@@ -101,7 +101,7 @@ export class PotreroService {
           this.helperService.showAlertRedirect(
             this.translate.instant("exitoTitulo"),
             this.translate.instant("exitoTransaccion"),
-            "/potrero"
+            "/raza-vaca"
           );
         } else {
           if (res.code === "3") {
@@ -110,9 +110,9 @@ export class PotreroService {
               this.translate.instant("errorTitulo"),
               this.translate.instant("noSePuedeEliminar")
             );
-          } else {
-            /*Si no retorna uno es porque el rol ya existe*/
-            this.helperService.showAlert(
+          }else{
+             /*Si no retorna uno es porque el rol ya existe*/
+             this.helperService.showAlert(
               this.translate.instant("errorTitulo"),
               this.translate.instant("errorTransaccion")
             );

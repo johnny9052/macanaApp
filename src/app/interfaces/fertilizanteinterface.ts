@@ -6,6 +6,5 @@ export interface ModelFertilizante {
     idpresentacion: string;
     presentacion: string;
     idresponsable: string;
-    cantvacas: string;
   }
   

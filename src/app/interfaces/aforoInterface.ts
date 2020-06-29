@@ -23,4 +23,6 @@ export interface ModelAforo {
   observaciones: string;
   idresponsable: string;
   numeropotrero: string;
+  fechaentrada: string;
+  fechasalida: string;
 }

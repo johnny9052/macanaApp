@@ -3,7 +3,6 @@ import { environment } from 'src/environments/environment';
 import { HttpHeaders, HttpClient } from '@angular/common/http';
 import { HelperService } from '../util/HelperService';
 import { TranslateService } from '@ngx-translate/core';
-import { ModelPotrero } from '../interfaces/potrerointerface';
 import { ModelFertilizante } from '../interfaces/fertilizanteinterface';
 
 @Injectable({
@@ -34,6 +33,9 @@ export class FertilizanteService {
   saveFertilizanteDataService(postData: any) {
     /*URL del web service*/
     const url = this.baseUrl + "Controller/Fertilizante/CtlFertilizante.php";
+
+    postData.append('token' , this.helperService.generarToken());
+
     /*Se muestra una barra de carga*/
     this.helperService.mostrarBarraDeCarga(this.translate.instant("espere"));
     /*Se envian los datos al servidor, enviando la url, los datos y la configuracion necesaria del header*/
@@ -86,6 +88,9 @@ export class FertilizanteService {
   deleteFertilizanteDataService(postData: any) {
     /*URL del web service*/
     const url = this.baseUrl + "Controller/Fertilizante/CtlFertilizante.php";
+    
+    postData.append('token' , this.helperService.generarToken());
+    
     /*Se muestra una barra de carga*/
     this.helperService.mostrarBarraDeCarga(this.translate.instant("espere"));
     /*Se envian los datos al servidor, enviando la url, los datos y la configuracion necesaria del header*/
