@@ -6,6 +6,7 @@ import { TranslateService } from "@ngx-translate/core";
 import { ModelRol } from "../interfaces/rolInterface";
 import { ModelPlanManejoFertilizacionPotrero } from "../interfaces/planManejoFertilizacionPotreroInterface";
 import { ModelPlanManejoFertilizacionFertilizante } from '../interfaces/ModelPlanManejoFertilizacionFertilizante';
+import { ModelPotrero } from '../interfaces/potrerointerface';
 
 @Injectable({
   providedIn: "root",
@@ -210,6 +211,64 @@ export class PlanManejoFertilizacionService {
     );
   }
 
+
+
+
+    /*Funcion que se encarga de registrar un nuevo skill, recibiendo por parametro
+  el pk del usuario*/
+  async savePlanManejoFertilizacionPotreroPorRotacionDataService(postData: any) {
+    /*URL del web service*/
+    const url =
+      this.baseUrl +
+      "Controller/PlanManejo/CtlPlanManejoFertilizacionPotrero.php";
+
+    postData.append("token", this.helperService.generarToken());
+
+    /*Se muestra una barra de carga*/
+    this.helperService.mostrarBarraDeCarga(this.translate.instant("espere"));
+
+    // // console.log(postData);
+
+    /*Se envian los datos al servidor, enviando la url, los datos y la configuracion necesaria del header*/
+    this.http.post(url, postData).subscribe(
+      (data) => {
+        /*Se Oculta la barra de carga tan pronto se recibe una respuesta*/
+        this.helperService.ocultarBarraCarga();
+        /*Se define una variable local para recibir la respuesta*/
+        let res: any;
+        res = data;
+        /*Si el codigo enviado por el servidor es 1, es porque fue exitoso el registro*/
+        if (res.code === "1") {
+          /*Se muestra un modal indicando que el registro fue exitoso, el cual al ser presionado
+        redireccionara al login*/
+          this.helperService.showAlert(
+            this.translate.instant("exitoTitulo"),
+            this.translate.instant("exitoTransaccion")
+          );
+        } else {
+          /*Si no retorna uno es porque el usuario ya existe*/
+          this.helperService.showAlert(
+            this.translate.instant("errorTitulo"),
+            this.translate.instant("registroExistente")
+          );
+        }
+      },
+      (error) => {
+        /*Se Oculta la barra de carga tan pronto se recibe una respuesta*/
+        this.helperService.ocultarBarraCarga();
+        /*Sino es porque se genero un error en el servidor*/
+        this.helperService.showAlert(
+          this.translate.instant("errorTitulo"),
+          this.translate.instant("errorTransaccion")
+        );
+      }
+    );
+  }
+
+
+
+
+
   /*Funcion que se encarga de eliminar rol, recibiendo por parametro
   el id*/
   async deletePlanManejoFertilizacionPotreroDataService(postData: any) {
@@ -393,5 +452,84 @@ export class PlanManejoFertilizacionService {
   /******************************************************/
   /*****END FUNCIONES DE GESTION DE LOS FERTILIZANTES****/
   /******************************************************/
+
+
+
+
+
+  /******************************************************/
+  /*****FUNCIONES DE GESTION DE POTREROS POR OPERARIO****/
+  /******************************************************/
+
+
+  /*Funcion que se encarga de registrar un nuevo skill, recibiendo por parametro
+  el pk del usuario*/
+  async savePlanManejoFertilizacionPotreroOperarioDataService(postData: any) {
+    /*URL del web service*/
+    const url =
+      this.baseUrl +
+      "Controller/PlanManejo/CtlPlanManejoFertilizacionPotrero.php";
+
+    postData.append("token", this.helperService.generarToken());
+
+    /*Se muestra una barra de carga*/
+    this.helperService.mostrarBarraDeCarga(this.translate.instant("espere"));
+
+    // // console.log(postData);
+
+    /*Se envian los datos al servidor, enviando la url, los datos y la configuracion necesaria del header*/
+    this.http.post(url, postData).subscribe(
+      (data) => {
+        /*Se Oculta la barra de carga tan pronto se recibe una respuesta*/
+        this.helperService.ocultarBarraCarga();
+        /*Se define una variable local para recibir la respuesta*/
+        let res: any;
+        res = data;
+        /*Si el codigo enviado por el servidor es 1, es porque fue exitoso el registro*/
+        if (res.code === "1") {
+          /*Se muestra un modal indicando que el registro fue exitoso, el cual al ser presionado
+        redireccionara al login*/
+          this.helperService.showAlert(
+            this.translate.instant("exitoTitulo"),
+            this.translate.instant("exitoTransaccion")
+          );
+        } else {
+          /*Si no retorna uno es porque el usuario ya existe*/
+          this.helperService.showAlert(
+            this.translate.instant("errorTitulo"),
+            this.translate.instant("registroExistente")
+          );
+        }
+      },
+      (error) => {
+        /*Se Oculta la barra de carga tan pronto se recibe una respuesta*/
+        this.helperService.ocultarBarraCarga();
+        /*Sino es porque se genero un error en el servidor*/
+        this.helperService.showAlert(
+          this.translate.instant("errorTitulo"),
+          this.translate.instant("errorTransaccion")
+        );
+      }
+    );
+  }
+
+
+
+
+  getPotreroByPlanManejo(idPlanManejo: string) {
+    return this.http.get<ModelPotrero>(
+      this.baseUrl + "Controller/PlanManejo/CtlPlanManejoFertilizacionPotrero.php?action=listPotrerosByPlanesManejo&idplanfertilizacion="+idPlanManejo+"&token=" +
+      this.helperService.generarToken()
+    );
+  }
+  
+  
+  
+  
+  /*******************************************************/
+  /*****END FUNCIONES DE GESTION DE POTREROS POR OPERARIO*/
+  /*******************************************************/
+
+
 
 }

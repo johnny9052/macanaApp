@@ -122,10 +122,21 @@ const routes: Routes = [
   {
     path: 'fertilizante-detail',
     loadChildren: () => import('./pages/fetilizante-detail/fetilizante-detail.module').then( m => m.FetilizanteDetailPageModule)
-  },  {
+  },
+  {
     path: 'cronograma',
     loadChildren: () => import('./pages/cronograma/cronograma.module').then( m => m.CronogramaPageModule)
+  },
+  {
+    path: 'plan-manejo-fertilizacion-operario',
+    loadChildren: () => import('./pages/plan-manejo-fertilizacion-operario/plan-manejo-fertilizacion-operario.module').then( m => m.PlanManejoFertilizacionOperarioPageModule)
   }
+
+
+
+
+
+
 
 ];
 

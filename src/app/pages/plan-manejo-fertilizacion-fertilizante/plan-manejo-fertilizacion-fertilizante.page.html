@@ -15,19 +15,21 @@
           placeholder="{{ 'seleccione' | translate }}"
           name="idFertilizante"
           [(ngModel)]="fertilizante.idfertilizante"
-          required
+          required 
+          interface="action-sheet" 
+          cancel-text="Cancelar"
         >
           <ion-select-option
             *ngFor="let fertilizante of fertilizantes"
             value="{{fertilizante.id}}"
-            >{{fertilizante.nombre}}</ion-select-option
+            >{{fertilizante.nombre}} / {{fertilizante.presentacion}}</ion-select-option
           >
         </ion-select>
       </ion-item>
 
 
       <ion-item>
-        <ion-label position="floating">{{ 'cantidad' | translate }}*</ion-label>
+        <ion-label position="floating">{{ 'cantidadGramos' | translate }}*</ion-label>
         <ion-input type="number" name="cantidad" required="required" [(ngModel)]="fertilizante.cantidad">
         </ion-input>
     </ion-item>

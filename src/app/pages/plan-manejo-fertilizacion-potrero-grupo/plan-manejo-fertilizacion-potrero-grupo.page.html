@@ -10,21 +10,21 @@
   >
     <ion-list>
       <ion-item>
-        <ion-label>{{ 'potrero' | translate }}</ion-label>
+        <ion-label>{{ 'rotacion' | translate }}</ion-label>
 
         <ion-select
           placeholder="{{ 'seleccione' | translate }}"
           name="idPotrero"
-          [(ngModel)]="potrero.idpotrero"
-          required="required"
+          [(ngModel)]="idRotacion"
+          required="required" 
+          interface="action-sheet" 
         >
           <ion-select-option
-            *ngFor="let potrero of potreros"
-            value="{{potrero.id}}"
-          >{{potrero.numero}}</ion-select-option>
+            *ngFor="let rotacion of rotaciones"
+            value="{{rotacion.id}}"
+          >{{rotacion.nombre}}</ion-select-option>
         </ion-select>
       </ion-item>
-
     </ion-list>
 
     <ion-grid fixed="fixed">
@@ -36,7 +36,7 @@
             [disabled]="formulario.invalid"
             expand="full"
           >
-            {{ 'guardarPotrero' | translate }}
+            {{ 'agregarGrupoPotreros' | translate }}
           </ion-button>
         </ion-col>
 

@@ -4,6 +4,7 @@ export interface ModelFertilizante {
     nombre: string;
     marca: string;
     idpresentacion: string;
+    presentacion: string;
     idresponsable: string;
   }
   

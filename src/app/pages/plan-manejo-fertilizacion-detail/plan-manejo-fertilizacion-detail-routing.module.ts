@@ -10,6 +10,10 @@ import { PlanManejoFertilizacionPotreroPageModule } from "../plan-manejo-fertili
 import { PlanManejoFertilizacionFertilizantePage } from "../plan-manejo-fertilizacion-fertilizante/plan-manejo-fertilizacion-fertilizante.page";
 import { PlanManejoFertilizacionFertilizantePageModule } from "../plan-manejo-fertilizacion-fertilizante/plan-manejo-fertilizacion-fertilizante.module";
 
+import { PlanManejoFertilizacionPotreroGrupoPage } from '../plan-manejo-fertilizacion-potrero-grupo/plan-manejo-fertilizacion-potrero-grupo.page';
+import { PlanManejoFertilizacionPotreroGrupoPageModule } from '../plan-manejo-fertilizacion-potrero-grupo/plan-manejo-fertilizacion-potrero-grupo.module';
+
+
 const routes: Routes = [
   {
     path: "",
@@ -22,12 +26,14 @@ const routes: Routes = [
   entryComponents: [
     PlanManejoFertilizacionPotreroPage,
     PlanManejoFertilizacionFertilizantePage,
+    PlanManejoFertilizacionPotreroGrupoPage
   ],
   imports: [
     RouterModule.forChild(routes),
     /*Se importa como modulo, el modulo de la pagina que se quiere cargar (OJOOOO ES EL MODULO)*/
     PlanManejoFertilizacionPotreroPageModule,
     PlanManejoFertilizacionFertilizantePageModule,
+    PlanManejoFertilizacionPotreroGrupoPageModule
   ],
   exports: [RouterModule],
 })

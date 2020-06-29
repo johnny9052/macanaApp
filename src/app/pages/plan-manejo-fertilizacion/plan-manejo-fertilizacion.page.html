@@ -15,14 +15,15 @@
 
     <!-- Por cada uno de los planesManejo en el listado de planesManejo, se va a generar cada elemento del listado, ademas se
     genera dinamicamente un evento click con todos los datos que se cargaran visualmente -->
-    <ion-item *ngFor="let planManejo of planesManejo" (click)="viewPlanManejoFertilizacion(planManejo.id,planManejo.periodicidad,planManejo.fechainicio,planManejo.fechafin,planManejo.observaciones)">
+    <ion-item *ngFor="let planManejo of planesManejo" (click)="viewPlanManejoFertilizacion(planManejo.id,planManejo.nombre,planManejo.fechainicio,planManejo.observaciones)">
         <ion-avatar slot="start">
             <img src="{{baseUrl}}Resource/Images/Users/avatar_2x2.png" />
         </ion-avatar>
         <ion-label>
             <h3 slot="start">
-                {{planManejo.fechainicio}}  /  {{planManejo.fechafin}}
+                {{planManejo.nombre}}
             </h3>
+            <p>{{planManejo.fechainicio}}</p>
             <p>{{planManejo.observaciones}}</p>
         </ion-label>
     </ion-item>

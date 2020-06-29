@@ -2,7 +2,7 @@ import { Injectable } from "@angular/core";
 import {
   AlertController,
   LoadingController,
-  NavController
+  NavController,
 } from "@ionic/angular";
 import { Storage } from "@ionic/storage";
 
@@ -13,7 +13,7 @@ import { Md5 } from "ts-md5/dist/md5";
 import { ThrowStmt } from "@angular/compiler";
 
 @Injectable({
-  providedIn: "root"
+  providedIn: "root",
 })
 export class HelperService {
   /*Barra de carga mostrada al usuario*/
@@ -64,11 +64,11 @@ export class HelperService {
         {
           text: this.translate.instant("aceptar"),
           cssClass: "flylinkersColor",
-          handler: blah => {
+          handler: (blah) => {
             // // console.log('Boton OK');
-          }
-        }
-      ]
+          },
+        },
+      ],
     });
 
     await alert.present();
@@ -88,12 +88,12 @@ export class HelperService {
         {
           text: this.translate.instant("aceptar"),
           cssClass: "flylinkersColor",
-          handler: blah => {
+          handler: (blah) => {
             /*Cuando se da tap en aceptar redirecciona al login*/
             this.navCtrl.navigateForward(redirectURL);
-          }
-        }
-      ]
+          },
+        },
+      ],
     });
 
     await alert.present();
@@ -116,7 +116,7 @@ export class HelperService {
     this.isLoadingLoadModal = true;
     /*Se inicia el proceso asincrono de la apertura de la barra de carga*/
     this.loading = await this.loadingCtrl.create({
-      message: mensaje
+      message: mensaje,
     });
     /*Si la peticion aun sigue activa (y no ha habido un proceso de cierre mientras que
       se creaba que cambie la variable) entonces se muestra la barra de carga, de lo
@@ -143,7 +143,6 @@ export class HelperService {
   }
 
   isValidValue(val: string) {
-
     //console.log("valor a evaluar "+ val);
 
     if (
@@ -173,7 +172,6 @@ export class HelperService {
     }
   }
 
-
   fixNotRequiredValueByCharacter(val: string) {
     if (
       val !== undefined &&
@@ -195,7 +193,7 @@ export class HelperService {
   }
 
   public cargarIdiomaActual() {
-    this.getLocalData("language").then(response => {
+    this.getLocalData("language").then((response) => {
       if (this.isValidValue(response)) {
         this.cambiarLenguaje(response);
       } else {
@@ -212,5 +210,13 @@ export class HelperService {
     const md5 = new Md5();
     let tokenApp = md5.appendStr(token).end();
     return tokenApp;
+  }
+
+  public fechaActual() {
+    var currentDate = new Date();
+    var day = currentDate.getDate();
+    var month = currentDate.getMonth() + 1;
+    var year = currentDate.getFullYear();
+    return (day + "/" + month + "/" + year);
   }
 }
