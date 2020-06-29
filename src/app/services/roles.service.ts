@@ -94,7 +94,6 @@ export class RolesService {
 
     postData.append('token' , this.helperService.generarToken());
 
-    
     /*Se muestra una barra de carga*/
     this.helperService.mostrarBarraDeCarga(this.translate.instant("espere"));
     /*Se envian los datos al servidor, enviando la url, los datos y la configuracion necesaria del header*/

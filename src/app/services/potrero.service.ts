@@ -56,7 +56,7 @@ export class PotreroService {
             /*Si no retorna uno es porque el registro*/
             this.helperService.showAlert(
               this.translate.instant("errorTitulo"),
-              this.translate.instant("registroExistente")
+              "El Registro ya existe o el Orden de Rotacion ya esta Asignado"
             );
           } else {
             /*Si no retorna uno es porque el usuario ya existe*/

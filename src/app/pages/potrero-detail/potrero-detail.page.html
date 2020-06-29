@@ -13,10 +13,10 @@
             <ion-item>
                 <ion-label position="floating">{{ 'areaPotrero' | translate }}* {{potreroData.area | number: '.'}}</ion-label>
                 <ion-input type="number" name="area" required="required" [(ngModel)]="potreroData.area">
-                </ion-input>                
+                </ion-input>
             </ion-item>
 
-            
+
             <ion-item>
                 <ion-label position="floating">{{ 'observacionPotrero' | translate }}*</ion-label>
                 <ion-input type="text" name="observacion" required="required" [(ngModel)]="potreroData.observacion">
@@ -34,21 +34,23 @@
             <br>
 
             <ion-item lines="none">
-                <ion-checkbox                  
-                  name="estadoPotrero"
-                  color="primary"
-                  [(ngModel)]="potreroData.estado"
-                >
+                <ion-checkbox name="estadoPotrero" color="primary" [(ngModel)]="potreroData.estado">
                 </ion-checkbox>
-                <ion-label style="padding-left: 10px;">                   
-                  <h3 slot="start">
-                    {{ 'estado' | translate }}
-                  </h3>
-                  <p>
-                    {{ 'activoInactivo' | translate }} 
-                  </p>
+                <ion-label style="padding-left: 10px;">
+                    <h3 slot="start">
+                        {{ 'estado' | translate }}
+                    </h3>
+                    <p>
+                        {{ 'activoInactivo' | translate }}
+                    </p>
                 </ion-label>
-              </ion-item>
+            </ion-item>
+
+            <ion-item>
+                <ion-label position="floating">{{ 'ordenRotacion' | translate }}*</ion-label>
+                <ion-input type="number" name="ordenrotacion" required="required" [(ngModel)]="potreroData.ordenrotacion">
+                </ion-input>
+            </ion-item>
 
         </ion-list>
 

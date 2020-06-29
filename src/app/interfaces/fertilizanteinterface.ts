@@ -5,6 +5,5 @@ export interface ModelFertilizante {
     marca: string;
     idpresentacion: string;
     idresponsable: string;
-    cantvacas: string;
   }
   

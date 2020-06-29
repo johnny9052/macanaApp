@@ -49,6 +49,7 @@ export class PotreroDetailPage implements OnInit {
         this.idRotacionTemp = this.router.getCurrentNavigation().extras.state.idrotacion;
         this.potreroData.idresponsable = this.router.getCurrentNavigation().extras.state.idresponsable;
         this.potreroData.estado = this.router.getCurrentNavigation().extras.state.estado;
+        this.potreroData.ordenrotacion = this.router.getCurrentNavigation().extras.state.ordenrotacion;
       }
     });
   }
@@ -97,13 +98,21 @@ export class PotreroDetailPage implements OnInit {
     postDataObj.append("id", this.potreroData.id);
     postDataObj.append("numero", this.potreroData.numero);
     postDataObj.append("area", this.potreroData.area);
-    postDataObj.append(
-      "observacion",
-      this.helperService.fixNotRequiredValue(this.potreroData.observacion)
-    );
+    postDataObj.append("observacion",this.helperService.fixNotRequiredValue(this.potreroData.observacion));
     postDataObj.append("idrotacion", this.potreroData.idrotacion);
     postDataObj.append("estado", this.potreroData.estado ? "1" : "0");
     postDataObj.append("idresponsable", this.codeUser);
+    postDataObj.append("ordenrotacion", this.potreroData.ordenrotacion);
+
+    if (this.helperService.isValidValue(this.potreroData.idrotacion)){
+      postDataObj.append("idrotacion", this.potreroData.idrotacion);
+    }else{
+      this.helperService.showAlert(
+        this.translate.instant("alertaTitulo"),
+        this.translate.instant("verificarSeleccion")
+      );
+      return;
+    }
 
     if (this.helperService.isValidValue(this.potreroData.id)) {
       postDataObj.append("action", "update");

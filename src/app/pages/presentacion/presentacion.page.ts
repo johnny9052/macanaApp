@@ -17,7 +17,7 @@ export class PresentacionPage implements OnInit {
   /* Se obtiene la url global definida en el archivo environment*/
   baseUrl = environment.baseUrl;
   
-  /*Se define una lista de objetos de tipo Rol*/
+  /*Se define una lista de objetos de tipo Presentacion*/
  presentaciones: ModelPresentacion[] = [];
   
   /*Variable para almacenar el id del usuario que se ha logueado para poder utilizarlo

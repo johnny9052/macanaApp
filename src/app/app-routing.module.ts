@@ -114,10 +114,18 @@ const routes: Routes = [
   {
     path: 'plan-manejo-fertilizacion-detail',
     loadChildren: () => import('./pages/plan-manejo-fertilizacion-detail/plan-manejo-fertilizacion-detail.module').then( m => m.PlanManejoFertilizacionDetailPageModule)
+  },
+  {
+    path: 'fertilizante',
+    loadChildren: () => import('./pages/fertilizante/fertilizante.module').then( m => m.FertilizantePageModule)
+  },
+  {
+    path: 'fertilizante-detail',
+    loadChildren: () => import('./pages/fetilizante-detail/fetilizante-detail.module').then( m => m.FetilizanteDetailPageModule)
+  },  {
+    path: 'cronograma',
+    loadChildren: () => import('./pages/cronograma/cronograma.module').then( m => m.CronogramaPageModule)
   }
-
-
-
 
 ];
 
