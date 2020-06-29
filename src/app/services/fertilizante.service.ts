@@ -25,7 +25,8 @@ export class FertilizanteService {
 
   getFertilizante() {
     return this.http.get<ModelFertilizante>(
-      this.baseUrl + "Controller/Fertilizante/CtlFertilizante.php?action=list"
+      this.baseUrl + "Controller/Fertilizante/CtlFertilizante.php?action=list&token=" +
+      this.helperService.generarToken()
     );
   }
   /*Funcion que se encarga de registrar al rol, recibiendo por parametro

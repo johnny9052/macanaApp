@@ -219,4 +219,13 @@ export class HelperService {
     var year = currentDate.getFullYear();
     return (day + "/" + month + "/" + year);
   }
+
+
+  public procesarCheckboxRadioValue(valueItem: string){
+      if(valueItem === "1"){
+        return true;
+      }else{
+        return false;
+      }
+  }
 }
