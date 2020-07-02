@@ -1,0 +1,73 @@
+<!-- Componente del header que recibe el titulo que se mostrara, para que este sea reconocido, en el modulo 
+se debe agregar el components-->
+<app-header-login titulo="{{ 'queEsMacana' | translate }}"></app-header-login>
+
+<ion-content>
+
+
+  <ion-card>
+    <ion-item color="macana">
+      <!-- Ya existen unos colores basicos para los iconos los cuales 
+      son: light para blanco, medium para gris, dark para negro -->
+
+      <ion-icon
+        color="light"
+        name="star"
+        slot="start"
+      ></ion-icon>
+
+      <ion-label>¿Qué ofrece?</ion-label>
+    </ion-item>
+
+    <ion-card-content>
+      <div style="white-space: pre-line" class="ion-text-justify">
+        Macana es una aplicación móvil destinada al control y gestión de potreros en fincas, controlando el ganado, rotación de este y control de usuarios de dicha finca. Permite la asignación de permisos y gestión de usuarios para los accesos con privilegios. 
+      </div>      
+    </ion-card-content>
+  </ion-card>
+
+
+  <ion-card>
+    <ion-item color="macana">
+      <!-- Ya existen unos colores basicos para los iconos los cuales 
+      son: light para blanco, medium para gris, dark para negro -->
+
+      <ion-icon
+        color="light"
+        name="bulb"
+        slot="start"
+      ></ion-icon>
+
+      <ion-label>¿Cómo accedo a la aplicación?</ion-label>
+    </ion-item>
+
+    <ion-card-content>      
+      <div style="white-space: pre-line" class="ion-text-justify">
+        Si deseas tener una cuenta de prueba y una cotización escribenos al correo macanapotrerosapp@gmail.com o tambien para dudas y soporte técnico.
+      </div>     
+    </ion-card-content>
+  </ion-card>
+
+  <ion-grid fixed="fixed">
+    <ion-row>
+      <ion-col size="1"></ion-col>
+      <ion-col size="10">
+        <div class="ion-text-center">
+                      
+          <ion-button routerLink="/" expand="full" color="macana" class="top-20">
+            <a
+              target="_blank"
+              style="text-decoration: none; color: white;"
+              
+            >
+            {{ 'regresar' | translate }}
+            </a>
+
+          </ion-button>
+          
+        </div>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+
+</ion-content>

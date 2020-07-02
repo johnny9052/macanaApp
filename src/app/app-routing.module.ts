@@ -130,7 +130,12 @@ const routes: Routes = [
   {
     path: 'plan-manejo-fertilizacion-operario',
     loadChildren: () => import('./pages/plan-manejo-fertilizacion-operario/plan-manejo-fertilizacion-operario.module').then( m => m.PlanManejoFertilizacionOperarioPageModule)
+  },
+  {
+    path: 'info-macana',
+    loadChildren: () => import('./pages/info-macana/info-macana.module').then( m => m.InfoMacanaPageModule)
   }
+
 
 
 
