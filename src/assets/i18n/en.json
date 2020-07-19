@@ -12,6 +12,7 @@
     "macanaTitulo": "Macana",
     "regresar": "Regresar",
     "verificarSeleccion": "Verifique todos los campos de seleccion",
+
     "***************Log-In**********************": "",
 
 
@@ -61,6 +62,8 @@
     "passwordNoCoiciden": "Los password no coinciden",
     "aceptar": "Aceptar",
     "borrar": "Borrar",
+    "guardar":"Guardar",
+    "buscar":"Buscar",
     "eliminar": "Eliminar",
     "editar": "Editar",
     "cancelar": "Cancelar",
@@ -205,5 +208,14 @@
     "agregarGrupoPotreros": "Añadir grupo de potreros",
 
     "***************GESTION PLAN DE MANEJO FERTILIZACION FERTILIZANTE OPERARIO**********************": "",
-    "planManejoFertilizanteOperario": "Plan fertilizacion Operario"
+    "planManejoFertilizanteOperario": "Plan fertilizacion Operario",
+
+
+    "***************INSUMO FUMIGACION**********************": "",
+    "crearInsumoFumigacion":"Crear insumo",
+    "insumoFumigacion":"Insumo fumigacion",
+    "nombreInsumoFumigacion":"Nombre insumo",
+    "marcaInsumoFumigacion":"Marca insumo",
+    "presentacion":"Presentacion"
+
 }

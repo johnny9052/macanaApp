@@ -1,0 +1,27 @@
+<app-header titulo="{{ 'insumoFumigacion' | translate }}"></app-header>
+
+<ion-content>
+    <ion-button color="macana" fill="outline" expand="full" routerLink="/insumo-fumigacion-detail">{{ 'crearInsumoFumigacion' | translate }}</ion-button>
+
+    <!-- Este seccion permite que cuando con el dedo desde la parte superior se desliza hacia abajo, 
+  entonces se refresque la lista, llamando al metodo refrescar-->
+    <ion-refresher slot="fixed" (ionRefresh)="refrescar($event)">
+        <ion-refresher-content></ion-refresher-content>
+    </ion-refresher>
+
+    <br />
+
+    <!-- Por cada uno de los roles en el listado de roles, se va a generar cada elemento del listado, ademas se
+  genera dinamicamente un evento click con todos los datos que se cargaran visualmente -->
+    <ion-item *ngFor="let insumoFumigacion of insumosFumigacion" (click)="viewInsumoFumigacion(insumoFumigacion.id,insumoFumigacion.nombre,insumoFumigacion.marca,insumoFumigacion.idpresentacion,insumoFumigacion.idresponsable)">
+        <ion-avatar slot="start">
+            <img src="{{baseUrl}}Resource/Images/Users/avatar_2x2.png" />
+        </ion-avatar>
+        <ion-label>
+            <h3 slot="start">
+                {{insumoFumigacion.nombre}} - {{insumoFumigacion.marca}}
+            </h3>
+            <p>{{insumoFumigacion.presentacion}}</p>
+        </ion-label>
+    </ion-item>
+</ion-content>
