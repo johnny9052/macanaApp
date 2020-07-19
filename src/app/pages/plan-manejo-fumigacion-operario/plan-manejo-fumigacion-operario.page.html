@@ -1,9 +1,136 @@
-<ion-header>
-  <ion-toolbar>
-    <ion-title>planManejoFumigacionOperario</ion-title>
-  </ion-toolbar>
-</ion-header>
+<app-header titulo="{{ 'fumigacion' | translate }}"></app-header>
 
-<ion-content>
+<ion-content padding="padding">
+  <!-- Con el position floating da el efecto de materalized, en 
+            donde se selecciona la caja de texto, y sube el texto como el placeholder -->
 
+  <form
+    #formulario="ngForm"
+  
+  >
+    <ion-list>
+
+      <ion-item>
+        <ion-label>{{ 'planManejoFumigacion' | translate }}</ion-label>
+
+        
+        <ion-select
+          placeholder="{{ 'seleccione' | translate }}"
+          name="idPlanManejo"
+          [(ngModel)]="planPotrero.idplanfumigacion" 
+          required="required"
+          (ionChange)="getPotrero($event.target.value);"
+        >
+          <ion-select-option
+            *ngFor="let planManejo of planesManejo"
+            value="{{planManejo.id}}"
+          >{{planManejo.nombre}}</ion-select-option> 
+        </ion-select>
+      </ion-item>
+
+
+      <ion-item>
+        <ion-label>{{ 'potrero' | translate }}</ion-label>
+
+        
+        <ion-select
+          placeholder="{{ 'seleccione' | translate }}"
+          name="idPotrero"
+          [(ngModel)]="planPotrero.idpotrero" 
+          required="required" 
+          (ionChange)="getListInsumoFumigacionData();"
+        >
+         <ion-select-option
+            *ngFor="let potrero of potreros"
+            value="{{potrero.id}}"
+          >{{potrero.numero}}</ion-select-option> 
+        </ion-select>
+      </ion-item>
+
+
+
+
+
+      <br />
+      <!-- ******************************************************************** -->
+      <!-- *************************SECCION DE FERTILIZANTES********************* -->
+      <!-- ********************************************************************** -->
+  
+      <!--  -->
+      <ion-card
+        style="width: 100%; margin: 0px !important; border-radius: 2px;"
+        color="macana"
+        [hidden]="!this.helperService.isValidValue(planPotrero.idpotrero)"
+      >
+
+      <!-- (click)="showHideInsumoFumigacions()" -->
+        <ion-item color="FlyLinkers-Blanco">
+          <ion-label>
+            {{ 'insumosFumigacion' | translate }} ({{insumosfumigacion.length}})
+          </ion-label>
+        </ion-item>
+  
+        <!-- [hidden]="hiddenInsumoFumigacions" -->
+        <ion-card-content
+          
+          style="
+            width: 100%;
+            margin: 0px !important;
+            border-radius: 0px;
+            padding: 0px;
+          "
+        >
+          <ion-item *ngFor="let fertilizante of insumosfumigacion;">
+            <ion-label>
+              <h3>{{fertilizante.nombre}} / {{fertilizante.presentacion}}</h3>
+              <h4>{{ 'cantidad' | translate }} : {{fertilizante.cantidad}} </h4>
+            </ion-label>            
+          </ion-item>
+  
+        </ion-card-content>
+      </ion-card>
+  
+
+
+      <br />
+
+
+      <ion-item [hidden]="!this.helperService.isValidValue(planPotrero.idpotrero)">
+        <ion-label position="floating">
+          {{ 'observaciones' | translate }}
+        </ion-label>
+
+        
+        <ion-textarea
+          name="observaciones"
+          [(ngModel)]="planPotrero.observaciones"  
+        ></ion-textarea>
+      </ion-item>
+
+
+    </ion-list>
+
+    <ion-grid fixed="fixed">
+      <ion-row class="ion-text-center">
+        <ion-col size="12">
+          <ion-button
+            color="macana"            
+            [disabled]="formulario.invalid"
+            expand="full"
+            (click)="guardarEjecucionPlanInsumoFumigacionPotrero()"
+          >
+            {{ 'guardar' | translate }}
+          </ion-button>
+        </ion-col>
+
+<!--         <ion-col size="12">
+          <ion-button
+            color="macana"
+            
+            expand="full"
+          >{{ 'cancelar' | translate }}</ion-button>
+        </ion-col> -->
+      </ion-row>
+    </ion-grid>
+  </form>
 </ion-content>

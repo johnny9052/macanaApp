@@ -7,13 +7,17 @@ import { IonicModule } from '@ionic/angular';
 import { PlanManejoFumigacionPotreroGrupoPageRoutingModule } from './plan-manejo-fumigacion-potrero-grupo-routing.module';
 
 import { PlanManejoFumigacionPotreroGrupoPage } from './plan-manejo-fumigacion-potrero-grupo.page';
+import { ComponentsModule } from 'src/app/components/components.module';
+import { TranslateModule } from '@ngx-translate/core';
 
 @NgModule({
   imports: [
     CommonModule,
     FormsModule,
     IonicModule,
-    PlanManejoFumigacionPotreroGrupoPageRoutingModule
+    PlanManejoFumigacionPotreroGrupoPageRoutingModule,
+    ComponentsModule,
+    TranslateModule
   ],
   declarations: [PlanManejoFumigacionPotreroGrupoPage]
 })

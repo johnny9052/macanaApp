@@ -135,6 +135,6 @@ encapsulando los datos en un NavigationExtras*/
    };
 
    /*Se redirecciona al formulario planesManejo-detail, enviando los datos encapsulados en el extra*/
-   this.router.navigate(["plan-manejo-fertilizacion-detail"], data);
+   this.router.navigate(["plan-manejo-fumigacion-detail"], data);
  }
 }

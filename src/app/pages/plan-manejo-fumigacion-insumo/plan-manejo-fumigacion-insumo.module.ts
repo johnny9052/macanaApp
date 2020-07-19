@@ -7,13 +7,17 @@ import { IonicModule } from '@ionic/angular';
 import { PlanManejoFumigacionInsumoPageRoutingModule } from './plan-manejo-fumigacion-insumo-routing.module';
 
 import { PlanManejoFumigacionInsumoPage } from './plan-manejo-fumigacion-insumo.page';
+import { ComponentsModule } from 'src/app/components/components.module';
+import { TranslateModule } from '@ngx-translate/core';
 
 @NgModule({
   imports: [
     CommonModule,
     FormsModule,
     IonicModule,
-    PlanManejoFumigacionInsumoPageRoutingModule
+    PlanManejoFumigacionInsumoPageRoutingModule, 
+    ComponentsModule,
+    TranslateModule
   ],
   declarations: [PlanManejoFumigacionInsumoPage]
 })

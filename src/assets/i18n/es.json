@@ -212,5 +212,12 @@
     "insumoFumigacion":"Insumo fumigacion",
     "nombreInsumoFumigacion":"Nombre insumo",
     "marcaInsumoFumigacion":"Marca insumo",
-    "presentacion":"Presentacion"
+    "presentacion":"Presentacion",
+    "planManejoFumigacion":"Plan manejo fumigacion",
+    "crearPlanManejoFumigacion":"Crear plan manejo",
+    "observacionesPlanManejoFumigacion":"Observaciones",
+    "insumosFumigacion":"Insumos fumigacion",
+    "agregarInsumoFumigacion":"Agregar insumos fumigacion",
+    "guardarInsumo":"Guardar insumo",
+    "fumigacion":"Fumigacion"
 }

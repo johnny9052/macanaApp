@@ -130,26 +130,18 @@ const routes: Routes = [
   {
     path: 'plan-manejo-fumigacion',
     loadChildren: () => import('./pages/plan-manejo-fumigacion/plan-manejo-fumigacion.module').then( m => m.PlanManejoFumigacionPageModule)
-  },  {
+  },
+  {
     path: 'plan-manejo-fumigacion-detail',
     loadChildren: () => import('./pages/plan-manejo-fumigacion-detail/plan-manejo-fumigacion-detail.module').then( m => m.PlanManejoFumigacionDetailPageModule)
   },
-  {
-    path: 'plan-manejo-fumigacion-insumo',
-    loadChildren: () => import('./pages/plan-manejo-fumigacion-insumo/plan-manejo-fumigacion-insumo.module').then( m => m.PlanManejoFumigacionInsumoPageModule)
-  },
+
   {
     path: 'plan-manejo-fumigacion-operario',
     loadChildren: () => import('./pages/plan-manejo-fumigacion-operario/plan-manejo-fumigacion-operario.module').then( m => m.PlanManejoFumigacionOperarioPageModule)
   },
-  {
-    path: 'plan-manejo-fumigacion-potrero',
-    loadChildren: () => import('./pages/plan-manejo-fumigacion-potrero/plan-manejo-fumigacion-potrero.module').then( m => m.PlanManejoFumigacionPotreroPageModule)
-  },
-  {
-    path: 'plan-manejo-fumigacion-potrero-grupo',
-    loadChildren: () => import('./pages/plan-manejo-fumigacion-potrero-grupo/plan-manejo-fumigacion-potrero-grupo.module').then( m => m.PlanManejoFumigacionPotreroGrupoPageModule)
-  },
+
+ 
   {
     path: 'insumo-fumigacion-detail',
     loadChildren: () => import('./pages/insumo-fumigacion-detail/insumo-fumigacion-detail.module').then( m => m.InsumoFumigacionDetailPageModule)

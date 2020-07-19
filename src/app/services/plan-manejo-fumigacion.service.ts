@@ -153,7 +153,7 @@ export class PlanManejoFumigacionService {
   getListPotrerosPlanMenejoFumigacion(idPlanFumigacion: string) {
     return this.http.get<ModelPlanManejoFumigacionPotrero>(
       this.baseUrl +
-        "Controller/PlanManejo/CtlPlanManejoFumigacionPotrero.php?action=list&idplanfertilizacion=" +
+        "Controller/PlanManejo/CtlPlanManejoFumigacionPotrero.php?action=list&idplanfumigacion=" +
         idPlanFumigacion +
         "&token=" +
         this.helperService.generarToken()
@@ -337,7 +337,7 @@ export class PlanManejoFumigacionService {
   getListInsumoFumigacionPlanMenejoFumigacion(idPlanFumigacion: string) {
     return this.http.get<ModelPlanManejoFumigacionInsumoFumigacion>(
       this.baseUrl +
-        "Controller/PlanManejo/CtlPlanManejoFumigacionInsumoFumigacion.php?action=list&idplanfertilizacion=" +
+        "Controller/PlanManejo/CtlPlanManejoFumigacionInsumoFumigacion.php?action=list&idplanfumigacion=" +
         idPlanFumigacion +
         "&token=" +
         this.helperService.generarToken()
@@ -518,7 +518,7 @@ export class PlanManejoFumigacionService {
 
   getPotreroByPlanManejo(idPlanManejo: string) {
     return this.http.get<ModelPotrero>(
-      this.baseUrl + "Controller/PlanManejo/CtlPlanManejoFumigacionPotrero.php?action=listPotrerosByPlanesManejo&idplanfertilizacion="+idPlanManejo+"&token=" +
+      this.baseUrl + "Controller/PlanManejo/CtlPlanManejoFumigacionPotrero.php?action=listPotrerosByPlanesManejo&idplanfumigacion="+idPlanManejo+"&token=" +
       this.helperService.generarToken()
     );
   }

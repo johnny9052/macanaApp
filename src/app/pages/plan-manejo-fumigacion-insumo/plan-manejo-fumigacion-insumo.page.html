@@ -1,9 +1,61 @@
-<ion-header>
-  <ion-toolbar>
-    <ion-title>planManejoFumigacionInsumo</ion-title>
-  </ion-toolbar>
-</ion-header>
+<app-header-modal
+  titulo="{{ 'planManejoFumigacion' | translate }}"
+></app-header-modal>
 
-<ion-content>
+<ion-content padding="padding">
+  <!-- Con el position floating da el efecto de materalized, en 
+            donde se selecciona la caja de texto, y sube el texto como el placeholder -->
 
+  <form #formulario="ngForm" (ngSubmit)="enviarDatosAlFormulario()">
+    <ion-list>
+      <ion-item>
+        <ion-label>{{ 'insumoFumigacion' | translate }}</ion-label>
+
+        <ion-select
+          placeholder="{{ 'seleccione' | translate }}"
+          name="idFertilizante"
+          [(ngModel)]="insumofumigacion.idinsumofumigacion"
+          required 
+          interface="action-sheet" 
+          cancel-text="Cancelar"
+        >
+          <ion-select-option
+            *ngFor="let insumofumigacion of insumosfumigacion"
+            value="{{insumofumigacion.id}}"
+            >{{insumofumigacion.nombre}} / {{insumofumigacion.presentacion}}</ion-select-option
+          >
+        </ion-select>
+      </ion-item>
+
+
+      <ion-item>
+        <ion-label position="floating">{{ 'cantidadGramos' | translate }}*</ion-label>
+        <ion-input type="number" name="cantidad" required="required" [(ngModel)]="insumofumigacion.cantidad">
+        </ion-input>
+    </ion-item>
+
+
+    </ion-list>
+
+    <ion-grid fixed="fixed">
+      <ion-row class="ion-text-center">
+        <ion-col size="12">
+          <ion-button
+            color="macana"
+            type="submit"
+            [disabled]="formulario.invalid"
+            expand="full"
+          >
+            {{ 'guardarInsumo' | translate }}
+          </ion-button>
+        </ion-col>
+
+        <ion-col size="12">
+          <ion-button color="macana" (click)="cerrarModal()" expand="full"
+            >{{ 'cancelar' | translate }}</ion-button
+          >
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+  </form>
 </ion-content>
