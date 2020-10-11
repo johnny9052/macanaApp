@@ -1,1 +1,43 @@
 <app-header titulo="{{ 'Cronograma' | translate }}"></app-header>
+
+<ion-content>
+    <ion-button color="macana" fill="outline" expand="full" routerLink="/cronograma-datail">{{ 'Crear Labor' | translate }}</ion-button>
+
+    <!-- Este seccion permite que cuando con el dedo desde la parte superior se desliza hacia abajo, 
+    entonces se refresque la lista, llamando al metodo refrescar-->
+    <ion-refresher slot="fixed" (ionRefresh)="refrescar($event)">
+        <ion-refresher-content></ion-refresher-content>
+    </ion-refresher>
+
+    <br/>
+
+    <!-- Por cada uno de los cronogramas en el listado de cronograma, se va a generar cada elemento del listado, ademas se
+    genera dinamicamente un evento click con todos los datos que se cargaran visualmente -->
+    <ion-item-group *ngFor=" let clasificacion of actividadData">
+        <ion-item-divider>
+            <ion-label>{{clasificacion.nombre}}</ion-label>
+        </ion-item-divider>
+        <div *ngFor="let cronograma of cronogramas">
+            <ion-item (click)="viewCronograma(
+                cronograma.id,
+                cronograma.idactividad,
+                cronograma.fechaprogramada,
+                cronograma.fechaejecutada,
+                cronograma.idpotrero,
+                cronograma.idresponsable,
+                cronograma.ejecutado)" *ngIf="cronograma.idactividad==clasificacion.id && cronograma.ejecutado==estado">
+                <ion-avatar slot="start ">
+                    <img src="{{baseUrl}}Resource/Images/Users/avatar_2x2.png " />
+                </ion-avatar>
+                <ion-label>
+                    <h3>
+                        Potrero: {{cronograma.numeropotrero}}
+                    </h3>
+                    <p>
+                        Fecha Programada: {{cronograma.fechaprogramada}}
+                    </p>
+                </ion-label>
+            </ion-item>
+        </div>
+    </ion-item-group>
+</ion-content>

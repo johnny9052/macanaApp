@@ -17,7 +17,7 @@ import { TranslateService } from "@ngx-translate/core";
 export class PotreroDetailPage implements OnInit {
   /*************CODIGO GLOBAL DEL USUARIO IDENTIFICADO********************* */
   codeUser = "";
-
+  estado:boolean;
   /*CAMPOS ORIENTADOS AL REFRESH DEL SELECT*/
   idRotacionTemp;
 
@@ -42,14 +42,15 @@ export class PotreroDetailPage implements OnInit {
   ) {
     this.route.queryParams.subscribe((params) => {
       if (this.router.getCurrentNavigation().extras.state) {
-        this.potreroData.id = this.router.getCurrentNavigation().extras.state.id;
-        this.potreroData.numero = this.router.getCurrentNavigation().extras.state.numero;
-        this.potreroData.area = this.router.getCurrentNavigation().extras.state.area;
-        this.potreroData.observacion = this.router.getCurrentNavigation().extras.state.observacion;
-        this.idRotacionTemp = this.router.getCurrentNavigation().extras.state.idrotacion;
-        this.potreroData.idresponsable = this.router.getCurrentNavigation().extras.state.idresponsable;
-        this.potreroData.estado = this.router.getCurrentNavigation().extras.state.estado;
-        this.potreroData.ordenrotacion = this.router.getCurrentNavigation().extras.state.ordenrotacion
+        this.potreroData.id             = this.router.getCurrentNavigation().extras.state.id;
+        this.potreroData.numero         = this.router.getCurrentNavigation().extras.state.numero;
+        this.potreroData.area           = this.router.getCurrentNavigation().extras.state.area;
+        this.potreroData.observacion    = this.router.getCurrentNavigation().extras.state.observacion;
+        this.idRotacionTemp             = this.router.getCurrentNavigation().extras.state.idrotacion;
+        this.potreroData.idresponsable  = this.router.getCurrentNavigation().extras.state.idresponsable;
+        this.potreroData.estado         = this.router.getCurrentNavigation().extras.state.estado;
+        this.potreroData.ordenrotacion  = this.router.getCurrentNavigation().extras.state.ordenrotacion
+        
         console.log("El orden  es "+ this.potreroData.ordenrotacion);
       }
     });    

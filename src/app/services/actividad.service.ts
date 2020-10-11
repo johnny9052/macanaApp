@@ -1,14 +1,14 @@
-import { Injectable } from "@angular/core";
-import { environment } from "src/environments/environment";
-import { HttpHeaders, HttpClient } from "@angular/common/http";
-import { HelperService } from "../util/HelperService";
-import { TranslateService } from "@ngx-translate/core";
-import { ModelPotrero } from "../interfaces/potrerointerface";
+import { Injectable } from '@angular/core';
+import { environment } from 'src/environments/environment';
+import { HttpHeaders, HttpClient } from '@angular/common/http';
+import { HelperService } from '../util/HelperService';
+import { TranslateService } from '@ngx-translate/core';
+import { ModelActividad } from '../interfaces/actividadinterface';
 
 @Injectable({
-  providedIn: "root"
+  providedIn: 'root'
 })
-export class PotreroService {
+export class ActividadService {
   baseUrl = environment.baseUrl;
 
   /*Definicion del header funcional para envios via post*/
@@ -22,16 +22,20 @@ export class PotreroService {
     private translate: TranslateService
   ) {}
 
-  getPotrero() {
-    return this.http.get<ModelPotrero>(
-      this.baseUrl + "Controller/Potreros/CtlPotrero.php?action=list"
+  getActividad() {
+    return this.http.get<ModelActividad>(
+      this.baseUrl + "Controller/Actividad/CtlActividad.php?action=list&token=" +
+      this.helperService.generarToken()
     );
   }
   /*Funcion que se encarga de registrar al rol, recibiendo por parametro
   los datos del rol*/
-  savePotreroDataService(postData: any) {
+  saveActividadDataService(postData: any) {
     /*URL del web service*/
-    const url = this.baseUrl + "Controller/Potreros/CtlPotrero.php";
+    const url = this.baseUrl + "Controller/Actividad/CtlActividad.php";
+
+    postData.append('token' , this.helperService.generarToken());
+
     /*Se muestra una barra de carga*/
     this.helperService.mostrarBarraDeCarga(this.translate.instant("espere"));
     /*Se envian los datos al servidor, enviando la url, los datos y la configuracion necesaria del header*/
@@ -49,14 +53,14 @@ export class PotreroService {
           this.helperService.showAlertRedirect(
             this.translate.instant("exitoTitulo"),
             this.translate.instant("exitoTransaccion"),
-            "/potrero"
+            "/actividad"
           );
         } else {
           if (res.code === "2") {
             /*Si no retorna uno es porque el registro*/
             this.helperService.showAlert(
               this.translate.instant("errorTitulo"),
-              "El Registro ya existe o el Orden de Rotacion ya esta Asignado"
+              this.translate.instant("registroExistente")
             );
           } else {
             /*Si no retorna uno es porque el usuario ya existe*/
@@ -81,9 +85,12 @@ export class PotreroService {
 
   /*Funcion que se encarga de eliminar rol, recibiendo por parametro
   el id*/
-  deletePotreroDataService(postData: any) {
+  deleteActividadDataService(postData: any) {
     /*URL del web service*/
-    const url = this.baseUrl + "Controller/Potreros/CtlPotrero.php";
+    const url = this.baseUrl + "Controller/Actividad/CtlActividad.php";
+    
+    postData.append('token' , this.helperService.generarToken());
+    
     /*Se muestra una barra de carga*/
     this.helperService.mostrarBarraDeCarga(this.translate.instant("espere"));
     /*Se envian los datos al servidor, enviando la url, los datos y la configuracion necesaria del header*/
@@ -101,7 +108,7 @@ export class PotreroService {
           this.helperService.showAlertRedirect(
             this.translate.instant("exitoTitulo"),
             this.translate.instant("exitoTransaccion"),
-            "/potrero"
+            "/actividad"
           );
         } else {
           if (res.code === "3") {
@@ -128,27 +135,6 @@ export class PotreroService {
           this.translate.instant("errorTransaccion")
         );
       }
-    );
-  }
-
-  getPDFPotrero() {
-    window.open(
-      this.baseUrl + "Controller/Potreros/CtlPotrero.php?action=generatePDFList",
-      "_system",
-      "location=yes"
-    );
-  }
-
-  getCSVPotrero(caracter: string) {
-    // console.log(this.baseUrl +
-    //   "Controller/Cronograma/CtlACronograma.php?action=reportCSVList&caracter=" +
-    //   caracter);
-    window.open(
-      this.baseUrl +
-        "Controller/Potreros/CtlPotrero.php?action=reportCSVList&caracter=" +
-        caracter,
-      "_system",
-      "location=yes"
     );
   }
 }

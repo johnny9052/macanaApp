@@ -33,11 +33,11 @@ export class AforosPage implements OnInit {
   Router: Dependencia para poder redireccionar de un formulario a otro
   TranslateService: Servicio para internacionalizacion*/
   constructor(
-    private blockAccess: BlockAccessService,
-    private aforosService: AforoService,
-    public helperService: HelperService,
-    private router: Router,
-    private translate: TranslateService
+    private   blockAccess  : BlockAccessService,
+    private   aforosService: AforoService,
+    public   helperService : HelperService,
+    private  router        : Router,
+    private  translate     : TranslateService
   ) {}
 
   /*Metodo que se ejecuta cuando se carga por primera vez el formulario*/

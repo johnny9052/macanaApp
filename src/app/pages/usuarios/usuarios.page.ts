@@ -60,7 +60,7 @@ export class UsuariosPage implements OnInit {
 
       let res: any;
       res = data;
-      console.log(JSON.parse(res.data));
+      //console.log(JSON.parse(res.data));
       this.usuarios = JSON.parse(res.data);
       this.helperService.ocultarBarraCarga();
     },

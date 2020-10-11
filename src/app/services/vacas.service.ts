@@ -149,4 +149,25 @@ export class VacasService {
       }
     );
   }
+
+  getPDFVaca() {
+    window.open(
+      this.baseUrl + "Controller/Vaca/CtlVaca.php?action=generatePDFList",
+      "_system",
+      "location=yes"
+    );
+  }
+
+  getCSVVaca(caracter: string) {
+    // console.log(this.baseUrl +
+    //   "Controller/Cronograma/CtlACronograma.php?action=reportCSVList&caracter=" +
+    //   caracter);
+    window.open(
+      this.baseUrl +
+        "Controller/Vaca/CtlVaca.php?action=reportCSVList&caracter=" +
+        caracter,
+      "_system",
+      "location=yes"
+    );
+  }
 }

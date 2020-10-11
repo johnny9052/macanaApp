@@ -1,37 +1,40 @@
-import { Injectable } from "@angular/core";
-import { environment } from "src/environments/environment";
-import { HttpHeaders, HttpClient } from "@angular/common/http";
-import { HelperService } from "../util/HelperService";
-import { TranslateService } from "@ngx-translate/core";
-import { ModelPotrero } from "../interfaces/potrerointerface";
+import { Injectable }              from '@angular/core';
+import { ModelCronograma }         from '../interfaces/cronogramainterface';
+import { environment }             from 'src/environments/environment';
+import { HttpHeaders, HttpClient } from '@angular/common/http';
+import { HelperService }           from '../util/HelperService';
+import { TranslateService }        from '@ngx-translate/core';
+import { CronogramaPage } from '../pages/cronograma/cronograma.page';
 
 @Injectable({
-  providedIn: "root"
+  providedIn: 'root'
 })
-export class PotreroService {
+export class CronogramaService {
+
   baseUrl = environment.baseUrl;
 
   /*Definicion del header funcional para envios via post*/
   private headersPost = new HttpHeaders({
-    "Content-Type": "application/x-www-form-urlencoded"
+    'Content-Type': 'application/x-www-form-urlencoded'
   });
 
   constructor(
-    private http: HttpClient,
+    private http:         HttpClient,
     public helperService: HelperService,
-    private translate: TranslateService
+    private translate:    TranslateService,
   ) {}
 
-  getPotrero() {
-    return this.http.get<ModelPotrero>(
-      this.baseUrl + "Controller/Potreros/CtlPotrero.php?action=list"
+  getCronogramas() {
+    return this.http.get<ModelCronograma>(
+      this.baseUrl + 'Controller/Cronograma/CtlCronograma.php?action=list'
     );
   }
-  /*Funcion que se encarga de registrar al rol, recibiendo por parametro
-  los datos del rol*/
-  savePotreroDataService(postData: any) {
+
+    /*Funcion que se encarga de registrar al cronograma, recibiendo por parametro
+  los datos del cronograma*/
+  saveCronogramaDataService(postData: any) {
     /*URL del web service*/
-    const url = this.baseUrl + "Controller/Potreros/CtlPotrero.php";
+    const url = this.baseUrl + "Controller/Cronograma/CtlCronograma.php";
     /*Se muestra una barra de carga*/
     this.helperService.mostrarBarraDeCarga(this.translate.instant("espere"));
     /*Se envian los datos al servidor, enviando la url, los datos y la configuracion necesaria del header*/
@@ -46,17 +49,17 @@ export class PotreroService {
         if (res.code === "1") {
           /*Se muestra un modal indicando que el registro fue exitoso, el cual al ser presionado
         redireccionara al login*/
-          this.helperService.showAlertRedirect(
+            this.helperService.showAlertRedirect(
             this.translate.instant("exitoTitulo"),
             this.translate.instant("exitoTransaccion"),
-            "/potrero"
+            "/tabs/pendientes"
           );
         } else {
           if (res.code === "2") {
             /*Si no retorna uno es porque el registro*/
             this.helperService.showAlert(
               this.translate.instant("errorTitulo"),
-              "El Registro ya existe o el Orden de Rotacion ya esta Asignado"
+              this.translate.instant("registroExistente")
             );
           } else {
             /*Si no retorna uno es porque el usuario ya existe*/
@@ -81,9 +84,9 @@ export class PotreroService {
 
   /*Funcion que se encarga de eliminar rol, recibiendo por parametro
   el id*/
-  deletePotreroDataService(postData: any) {
+  deleteCronogramaDataService(postData: any) {
     /*URL del web service*/
-    const url = this.baseUrl + "Controller/Potreros/CtlPotrero.php";
+    const url = this.baseUrl + "Controller/Cronograma/CtlCronograma.php";
     /*Se muestra una barra de carga*/
     this.helperService.mostrarBarraDeCarga(this.translate.instant("espere"));
     /*Se envian los datos al servidor, enviando la url, los datos y la configuracion necesaria del header*/
@@ -101,7 +104,7 @@ export class PotreroService {
           this.helperService.showAlertRedirect(
             this.translate.instant("exitoTitulo"),
             this.translate.instant("exitoTransaccion"),
-            "/potrero"
+            "/tabs"
           );
         } else {
           if (res.code === "3") {
@@ -110,9 +113,9 @@ export class PotreroService {
               this.translate.instant("errorTitulo"),
               this.translate.instant("noSePuedeEliminar")
             );
-          } else {
-            /*Si no retorna uno es porque el rol ya existe*/
-            this.helperService.showAlert(
+          }else{
+             /*Si no retorna uno es porque el rol ya existe*/
+             this.helperService.showAlert(
               this.translate.instant("errorTitulo"),
               this.translate.instant("errorTransaccion")
             );
@@ -131,24 +134,26 @@ export class PotreroService {
     );
   }
 
-  getPDFPotrero() {
+  getPDFCronogramas() {
     window.open(
-      this.baseUrl + "Controller/Potreros/CtlPotrero.php?action=generatePDFList",
+      this.baseUrl + "Controller/Cronograma/CtlCronograma.php?action=generatePDFList",
       "_system",
       "location=yes"
     );
   }
 
-  getCSVPotrero(caracter: string) {
+  getCSVCronogramas(caracter: string) {
     // console.log(this.baseUrl +
     //   "Controller/Cronograma/CtlACronograma.php?action=reportCSVList&caracter=" +
     //   caracter);
     window.open(
       this.baseUrl +
-        "Controller/Potreros/CtlPotrero.php?action=reportCSVList&caracter=" +
+        "Controller/Cronograma/CtlCronograma.php?action=reportCSVList&caracter=" +
         caracter,
       "_system",
       "location=yes"
     );
   }
+
 }
+

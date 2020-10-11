@@ -38,11 +38,11 @@ export class PlanDeManejoDetailPage implements OnInit {
    this.route.queryParams.subscribe(params => {
      if (this.router.getCurrentNavigation().extras.state) {
 
-       this.plandemanejoData.id = this.router.getCurrentNavigation().extras.state.id;
-       this.plandemanejoData.fecha = this.router.getCurrentNavigation().extras.state.fecha;
-       this.plandemanejoData.nombre = this.router.getCurrentNavigation().extras.state.nombre;
-       this.plandemanejoData.idResponsable = this.router.getCurrentNavigation().extras.state.idResponsable;
-       this.plandemanejoData.observaciones= this.router.getCurrentNavigation().extras.state.observaciones;
+       this.plandemanejoData.id              = this.router.getCurrentNavigation().extras.state.id;
+       this.plandemanejoData.fecha           = this.router.getCurrentNavigation().extras.state.fecha;
+       this.plandemanejoData.nombre          = this.router.getCurrentNavigation().extras.state.nombre;
+       this.plandemanejoData.idResponsable   = this.router.getCurrentNavigation().extras.state.idResponsable;
+       this.plandemanejoData.observaciones   = this.router.getCurrentNavigation().extras.state.observaciones;
 
      }
    });
@@ -67,9 +67,9 @@ getProfilePk() {
   savePLanDeManejoData() {
     // tslint:disable-next-line: prefer-const
     let postDataObj = new FormData();
-    postDataObj.append('id' , this.plandemanejoData.id);
-    postDataObj.append('fecha' , this.plandemanejoData.fecha);
-    postDataObj.append('nombre' , this.plandemanejoData.nombre);
+    postDataObj.append('id' ,            this.plandemanejoData.id);
+    postDataObj.append('fecha' ,         this.plandemanejoData.fecha);
+    postDataObj.append('nombre' ,        this.plandemanejoData.nombre);
     postDataObj.append('idResponsable' , this.codeUser);
     postDataObj.append('observaciones' , this.helperService.fixNotRequiredValue(this.plandemanejoData.observaciones));
 

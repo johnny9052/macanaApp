@@ -42,44 +42,44 @@ export class AforoDetailPage implements OnInit {
    aforoService: Servicio para el consumo de web services del perfil
    AlertContaforoler: Permite mostrar alerts emergentes en pantalla */
   constructor(
-    private blockAccess: BlockAccessService,
-    public helperService: HelperService,
-    public aforoService: AforoService,
-    public potrerosService: PotreroService,
-    public alertCtrl: AlertController,
-    private route: ActivatedRoute,
-    private router: Router,
-    private translate: TranslateService
+    private blockAccess:     BlockAccessService,
+    public helperService:    HelperService,
+    public aforoService:     AforoService,
+    public potrerosService:  PotreroService,
+    public alertCtrl:        AlertController,
+    private route:           ActivatedRoute,
+    private router:          Router,
+    private translate:       TranslateService
   ) {
     this.route.queryParams.subscribe(params => {
       if (this.router.getCurrentNavigation().extras.state) {
-        this.aforoData.id = this.router.getCurrentNavigation().extras.state.id;
-        this.aforoData.fecha = this.router.getCurrentNavigation().extras.state.fecha;
-        this.idPotreroTempo = this.router.getCurrentNavigation().extras.state.idpotrero;
-        this.aforoData.pastoalto = this.router.getCurrentNavigation().extras.state.pastoalto;
-        this.aforoData.pastobajo = this.router.getCurrentNavigation().extras.state.pastobajo;
-        this.aforoData.pastomedio = this.router.getCurrentNavigation().extras.state.pastomedio;
-        this.aforoData.lancealto = this.router.getCurrentNavigation().extras.state.lancealto;
-        this.aforoData.lancemedio = this.router.getCurrentNavigation().extras.state.lancemedio;
-        this.aforoData.lancebajo = this.router.getCurrentNavigation().extras.state.lancebajo;
-        this.aforoData.cantlances = this.router.getCurrentNavigation().extras.state.cantlances;
-        this.aforoData.pesopastoalto = this.router.getCurrentNavigation().extras.state.pesopastoalto;
+        this.aforoData.id             = this.router.getCurrentNavigation().extras.state.id;
+        this.aforoData.fecha          = this.router.getCurrentNavigation().extras.state.fecha;
+        this.idPotreroTempo           = this.router.getCurrentNavigation().extras.state.idpotrero;
+        this.aforoData.pastoalto      = this.router.getCurrentNavigation().extras.state.pastoalto;
+        this.aforoData.pastobajo      = this.router.getCurrentNavigation().extras.state.pastobajo;
+        this.aforoData.pastomedio     = this.router.getCurrentNavigation().extras.state.pastomedio;
+        this.aforoData.lancealto      = this.router.getCurrentNavigation().extras.state.lancealto;
+        this.aforoData.lancemedio     = this.router.getCurrentNavigation().extras.state.lancemedio;
+        this.aforoData.lancebajo      = this.router.getCurrentNavigation().extras.state.lancebajo;
+        this.aforoData.cantlances     = this.router.getCurrentNavigation().extras.state.cantlances;
+        this.aforoData.pesopastoalto  = this.router.getCurrentNavigation().extras.state.pesopastoalto;
         this.aforoData.pesopastomedio = this.router.getCurrentNavigation().extras.state.pesopastomedio;
-        this.aforoData.pesopastobajo = this.router.getCurrentNavigation().extras.state.pesopastobajo;
+        this.aforoData.pesopastobajo  = this.router.getCurrentNavigation().extras.state.pesopastobajo;
 
-        this.aforoData.cantpasto = this.router.getCurrentNavigation().extras.state.cantpasto;
-        this.aforoData.porcentajealtro = this.router.getCurrentNavigation().extras.state.porcentajealtro;
-        this.aforoData.porcentajemedio = this.router.getCurrentNavigation().extras.state.porcentajemedio;
-        this.aforoData.porcentajebajo = this.router.getCurrentNavigation().extras.state.porcentajebajo;
+        this.aforoData.cantpasto          = this.router.getCurrentNavigation().extras.state.cantpasto;
+        this.aforoData.porcentajealtro    = this.router.getCurrentNavigation().extras.state.porcentajealtro;
+        this.aforoData.porcentajemedio    = this.router.getCurrentNavigation().extras.state.porcentajemedio;
+        this.aforoData.porcentajebajo     = this.router.getCurrentNavigation().extras.state.porcentajebajo;
         this.aforoData.totalmetrocuadrado = this.router.getCurrentNavigation().extras.state.totalmetrocuadrado;
-        this.aforoData.cantpastopotrero = this.router.getCurrentNavigation().extras.state.cantpastopotrero;
-        this.aforoData.tiempopotrero = this.router.getCurrentNavigation().extras.state.tiempopotrero;
-        this.aforoData.observaciones = this.router.getCurrentNavigation().extras.state.observaciones;
-        this.aforoData.idresponsable = this.router.getCurrentNavigation().extras.state.idresponsable;
-        this.aforoData.numeropotrero = this.router.getCurrentNavigation().extras.state.numeropotrero;
+        this.aforoData.cantpastopotrero   = this.router.getCurrentNavigation().extras.state.cantpastopotrero;
+        this.aforoData.tiempopotrero      = this.router.getCurrentNavigation().extras.state.tiempopotrero;
+        this.aforoData.observaciones      = this.router.getCurrentNavigation().extras.state.observaciones;
+        this.aforoData.idresponsable      = this.router.getCurrentNavigation().extras.state.idresponsable;
+        this.aforoData.numeropotrero      = this.router.getCurrentNavigation().extras.state.numeropotrero;
         
-        this.aforoData.fechaentrada = this.router.getCurrentNavigation().extras.state.fechaentrada;
-        this.aforoData.fechasalida = this.router.getCurrentNavigation().extras.state.fechasalida;
+        this.aforoData.fechaentrada      = this.router.getCurrentNavigation().extras.state.fechaentrada;
+        this.aforoData.fechasalida       = this.router.getCurrentNavigation().extras.state.fechasalida;
       }
     });
   }
@@ -241,15 +241,12 @@ export class AforoDetailPage implements OnInit {
     postDataObj.append("totalmetrocuadrado", this.aforoData.totalmetrocuadrado);
     postDataObj.append("cantpastopotrero", this.aforoData.cantpastopotrero);
     postDataObj.append("tiempopotrero", this.aforoData.tiempopotrero);
-    postDataObj.append(
-      "observaciones",
-      this.helperService.fixNotRequiredValue(this.aforoData.observaciones)
-    );
+    postDataObj.append("observaciones", this.helperService.fixNotRequiredValue(this.aforoData.observaciones));
     postDataObj.append("idresponsable", this.codeUser);
     postDataObj.append("fechaentrada", this.aforoData.fechaentrada);
     postDataObj.append("fechasalida", this.aforoData.fechasalida);
 
-    /*Se valida si se ha seleccionado un rol en el select, para saber si se le solicita al usuario*/
+    /*Se valida si se ha seleccionado un aforo en el select, para saber si se le solicita al usuario*/
     if (this.helperService.isValidValue(this.aforoData.idpotrero)) {
       postDataObj.append("idpotrero", this.aforoData.idpotrero);
     } else {
@@ -457,16 +454,32 @@ export class AforoDetailPage implements OnInit {
   }
 
   mostrarMensajeTiempoPotrero() {
+    
+    let parteEntera = 0, parteDecimal = 0;
+    
     if (this.helperService.isValidValue(this.aforoData.tiempopotrero)) {
-      if (parseFloat(this.aforoData.tiempopotrero) <= 0.75) {
-        this.mjsTiempoPotrero = "Las vacas pueden estar medio dia";
-      } else {
-        if (parseFloat(this.aforoData.tiempopotrero) < 1.4) {
-          this.mjsTiempoPotrero = "Las vacas pueden estar un dia";
-        } else {
-          this.mjsTiempoPotrero = "Las vacas pueden estar un dia y medio";
-        }
-      }
+      
+      parteEntera  = parseInt(this.aforoData.tiempopotrero);
+      parteDecimal = parseFloat(this.aforoData.tiempopotrero) - parteEntera;
+
+      if(parseFloat(this.aforoData.tiempopotrero) < 1){
+        if(parseFloat(this.aforoData.tiempopotrero) <= 0.75)
+          this.mjsTiempoPotrero = "Las vacas pueden comer medio dia";
+        else 
+          this.mjsTiempoPotrero = "Las vacas pueden comer "+1+" dia.";
+      }else{
+            if(parteDecimal < 0.4) 
+              this.mjsTiempoPotrero = "Las vacas pueden comer "+parteEntera+" dias.";
+            else
+              if(parteDecimal >= 0.4 && parteDecimal <= 0.75)
+                this.mjsTiempoPotrero = "Las vacas pueden comer "+parteEntera+" dias y medio.";
+              else
+                this.mjsTiempoPotrero = "Las vacas pueden comer "+(parteEntera+1)+" dias.";
+          }
+      
+
+      
+    
     }
   }
 }

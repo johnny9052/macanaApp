@@ -18,51 +18,51 @@ import { PlanManejoFertilizacionPotreroGrupoPage } from "../plan-manejo-fertiliz
   styleUrls: ["./plan-manejo-fertilizacion-detail.page.scss"],
 })
 export class PlanManejoFertilizacionDetailPage implements OnInit {
+
   /*************CODIGO GLOBAL DEL USUARIO IDENTIFICADO********************* */
   codeUser = "";
 
   /****************OBJETOS************************** */
   planManejoFertilizacionData = {} as ModelPlanManejoFertilizacion;
+  potrero                     = {} as ModelPlanManejoFertilizacionPotrero;
+  potreros:                           ModelPlanManejoFertilizacionPotrero[] = [];
 
-  potrero = {} as ModelPlanManejoFertilizacionPotrero;
-  potreros: ModelPlanManejoFertilizacionPotrero[] = [];
-
-  fertilizante = {} as ModelPlanManejoFertilizacionFertilizante;
-  fertilizantes: ModelPlanManejoFertilizacionFertilizante[] = [];
+  fertilizante                = {} as ModelPlanManejoFertilizacionFertilizante;
+  fertilizantes:                      ModelPlanManejoFertilizacionFertilizante[] = [];
   /****************END OBJETOS************************** */
 
   /*Almacena la configuracion del calendar*/
   customPickerOptionsFechaInicio;
 
   /*******VARIABLES DE CONTROL VISUAL****************/
-  hiddenPotreros = true;
-  hiddenFertilizantes = true;
+  hiddenPotreros              = true;
+  hiddenFertilizantes         = true;
   /*******END VARIABLES DE CONTROL VISUAL****************/
 
   /*El tiempo espera es utilizado para que, cuando se agregue un nuevo elemento como un skill o 
   similares, se de un tiempo suficiente para almacenar y poder actualizar la lista con todos los
   nuevos elementos*/
-  tiempoEspera = 1500;
+  tiempoEspera               = 1500;
 
   /********************INYECCION DE DEPENDENCIAS********* */
   /*HelperService: Servicio generico para funcionalidades ya implementadas
     planManejoFertilizacionService: Servicio para el consumo de web services del perfil
     AlertController: Permite mostrar alerts emergentes en pantalla */
   constructor(
-    private blockAccess: BlockAccessService,
-    public helperService: HelperService,
+    private blockAccess:                   BlockAccessService,
+    public helperService:                  HelperService,
     public planManejoFertilizacionService: PlanManejoFertilizacionService,
-    public alertCtrl: AlertController,
-    private route: ActivatedRoute,
-    private router: Router,
-    private translate: TranslateService,
-    private modalCtrl: ModalController
+    public alertCtrl:                      AlertController,
+    private route:                         ActivatedRoute,
+    private router:                        Router,
+    private translate:                     TranslateService,
+    private modalCtrl:                     ModalController
   ) {
     this.route.queryParams.subscribe((params) => {
       if (this.router.getCurrentNavigation().extras.state) {
-        this.planManejoFertilizacionData.id = this.router.getCurrentNavigation().extras.state.id;
-        this.planManejoFertilizacionData.nombre = this.router.getCurrentNavigation().extras.state.nombre;
-        this.planManejoFertilizacionData.fechainicio = this.router.getCurrentNavigation().extras.state.fechainicio;
+        this.planManejoFertilizacionData.id            = this.router.getCurrentNavigation().extras.state.id;
+        this.planManejoFertilizacionData.nombre        = this.router.getCurrentNavigation().extras.state.nombre;
+        this.planManejoFertilizacionData.fechainicio   = this.router.getCurrentNavigation().extras.state.fechainicio;
         this.planManejoFertilizacionData.observaciones = this.router.getCurrentNavigation().extras.state.observaciones;
 
         this.getListPotrerosData();

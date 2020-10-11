@@ -1,0 +1,61 @@
+<app-header titulo="{{ 'Cronograma' | translate }}"></app-header>
+
+<ion-content padding="padding">
+    <form #formulario="ngForm" (ngSubmit)="saveCronogramaData()">
+        <ion-list>
+            <ion-item>
+                <ion-label position="floating">{{ 'Actividad' | translate }}*</ion-label>
+                <ion-select placeholder="seleccione" [(ngModel)]="cronogramaData.idactividad" name="actividad">
+                    <ion-select-option value="{{actividad.id}}" *ngFor="let actividad of actividades">{{actividad.nombre}}</ion-select-option>
+                </ion-select>
+            </ion-item>
+
+            <ion-item>
+                <ion-label position="floating">{{ 'Fecha Programada' | translate }}</ion-label>
+                <ion-datetime placeholder="{{ 'seleccione' | translate }}" display-format="YYYY MM DD" cancelText="{{ 'cancelar' | translate }}" [(ngModel)]="cronogramaData.fechaprogramada" name="fechaProgramada" [pickerOptions]="customPickerOptions"></ion-datetime>
+            </ion-item>
+
+            <ion-item>
+                <ion-label position="floating">{{ 'Potrero' | translate }}</ion-label>
+                <ion-select placeholder="Seleccione" [(ngModel)]="cronogramaData.idpotrero" name="potrero">
+                    <ion-select-option *ngFor="let potrero of potreros" value="{{potrero.id}}">{{potrero.numero}}</ion-select-option>
+                </ion-select>
+            </ion-item>
+
+            <ion-item>
+                <ion-label position="floating">{{ 'Ejecutado' | translate }} </ion-label>
+                <ion-checkbox name="ejecutado" color="primary" [(ngModel)]="estado" (ngModelChange)=estadoCheck()>
+                </ion-checkbox>
+            </ion-item>
+
+            <ion-item *ngIf="estado">
+                <ion-label position="floating">{{ 'Fecha Ejecutada' | translate }}</ion-label>
+                <ion-datetime placeholder="{{ 'seleccione' | translate }}" display-format="YYYY MM DD" cancelText="{{ 'cancelar' | translate }}" [(ngModel)]="cronogramaData.fechaejecutada" name="fechaEjecutada" [pickerOptions]="customPickerOptions1"></ion-datetime>
+            </ion-item>
+
+        </ion-list>
+
+        <ion-grid fixed="fixed">
+            <ion-row class="ion-text-center">
+                <ion-col size="12" *ngIf="!this.helperService.isValidValue(cronogramaData.id)">
+                    <ion-button color="macana" type="submit" [disabled]="formulario.invalid" fill="outline" expand="full">{{ 'guardar' | translate }}</ion-button>
+                </ion-col>
+
+                <ion-col size="12" *ngIf="this.helperService.isValidValue(cronogramaData.id)">
+                    <ion-button color="macana" type="submit" [disabled]="formulario.invalid" fill="outline" expand="full">{{ 'editar' | translate }}</ion-button>
+                </ion-col>
+
+
+                <ion-col size="12" *ngIf="this.helperService.isValidValue(cronogramaData.id)">
+                    <ion-button color="macana" fill="outline" expand="full" (click)="deleteCronogramaData();">{{ 'eliminar' | translate }}</ion-button>
+                </ion-col>
+
+                <ion-col size="12">
+                    <ion-button color="macana" fill="outline" routerLink="/tabs/pendientes" expand="full">{{ 'regresar' | translate }}</ion-button>
+                </ion-col>
+            </ion-row>
+
+
+        </ion-grid>
+    </form>
+</ion-content>

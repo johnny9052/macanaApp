@@ -110,6 +110,8 @@
     "***************ESTADO CLIMATOLOGICO**********************": "",
     "climatologico": "Estado climatologico",
     "crearClimatologico": "Crear estado climatologico",
+    "pluviometria": "Pluviometria mm",
+    "nubosidad": "Nubosidad",
 
     "***************GESTION VACAS**********************": "",
     "crearVaca": "Crear vaca",
@@ -170,12 +172,18 @@
 
     "***************GESTION REPORTES**********************": "",
 
-    "reporteAforos": "Reporte aforos",
+    "reporteAforos": "Aforos",
+    "reporteCronogramas": "Cronogramas",
+    "reporteClimatologico": "Estados Climatologicos",
+    "reportePotreros": "Potreros",
+    "reporteVacas": "Vacas",
+    "reporteRotacion": "Rotaciones",
     "PDF": "PDF",
     "EXCEL": "EXCEL",
     "EXCELCOMA": "EXCEL (,)",
     "EXCELPUNTOCOMA": "EXCEL (;)",
     "Cancelar": "Cancelar",
+
 
     "***************GESTION PRESENTACION**********************": "",
     "crearPresentacion": "Crear presentacion",
@@ -204,5 +212,11 @@
     "agregarGrupoPotreros": "Añadir grupo de potreros",
 
     "***************GESTION PLAN DE MANEJO FERTILIZACION FERTILIZANTE OPERARIO**********************": "",
-    "planManejoFertilizanteOperario": "Plan fertilizacion Operario"
+    "planManejoFertilizanteOperario": "Plan fertilizacion Operario",
+
+    "***************GESTION PLAN DE MANEJO ACTIVIDAD**********************": "",
+    "crearActividad": "Crear Actividad",
+    "nombreActividad": "Nombre:",
+    "descripcionActividad": "Descripcion:"
+
 }

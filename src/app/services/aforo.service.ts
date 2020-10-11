@@ -17,9 +17,9 @@ export class AforoService {
   });
 
   constructor(
-    private http: HttpClient,
-    public helperService: HelperService,
-    private translate: TranslateService
+    private   http          : HttpClient,
+    public    helperService : HelperService,
+    private   translate     : TranslateService
   ) {}
 
   getAforos() {
@@ -27,7 +27,6 @@ export class AforoService {
       this.baseUrl + "Controller/Aforo/CtlAforo.php?action=list"
     );
   }
-
   getPDFAforos() {
     window.open(
       this.baseUrl + "Controller/Aforo/CtlAforo.php?action=generatePDFList",

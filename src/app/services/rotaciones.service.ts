@@ -132,4 +132,25 @@ export class RotacionesService {
       }
     );
   }
+
+  getPDFRotacion() {
+    window.open(
+      this.baseUrl + "Controller/Rotaciones/CtlRotaciones.php?action=generatePDFList",
+      "_system",
+      "location=yes"
+    );
+  }
+
+  getCSVRotacion(caracter: string) {
+    // console.log(this.baseUrl +
+    //   "Controller/Cronograma/CtlACronograma.php?action=reportCSVList&caracter=" +
+    //   caracter);
+    window.open(
+      this.baseUrl +
+        "Controller/Rotaciones/CtlRotaciones.php?action=reportCSVList&caracter=" +
+        caracter,
+      "_system",
+      "location=yes"
+    );
+  }
 }

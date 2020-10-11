@@ -31,10 +31,10 @@ export class MenuComponent implements OnInit {
 
 
   /* HelperService: Servicio generico que ofrece funcionalidades adicionales */
-  constructor(public helperService: HelperService, 
-              public events: Events,
-              private permisosService: PermisosService,
-              private translate: TranslateService) {
+  constructor(public  helperService   : HelperService, 
+              public  events          : Events,
+              private permisosService : PermisosService,
+              private translate       : TranslateService) {
 
     /*Se registra el evento user:login, para que cuando este sea llamado cuando el
     usuario se identifica correctamente, se actualice la informacion del menu, y

@@ -1,0 +1,43 @@
+<app-header titulo="{{ 'actividad' | translate }}"></app-header>
+
+<ion-content padding="padding">
+    <form #formulario="ngForm" (ngSubmit)="saveActividadData()">
+        <ion-list>
+
+            <ion-item>
+                <ion-label position="floating">{{ 'nombreActividad' | translate }}*</ion-label>
+                <ion-input type="text" name="nombreActividad" required="required" [(ngModel)]="actividadData.nombre"></ion-input>
+            </ion-item>
+
+            <ion-item>
+                <ion-label position="floating">{{ 'descripcionActividad' | translate }}</ion-label>
+                <ion-input type="text" name="descripcionActividad" [(ngModel)]="actividadData.descripcion">
+                </ion-input>
+            </ion-item>
+
+        </ion-list>
+
+        <ion-grid fixed="fixed">
+            <ion-row class="ion-text-center">
+                <ion-col size="12" *ngIf="!this.helperService.isValidValue(actividadData.id)">
+                    <ion-button color="macana" type="submit" [disabled]="formulario.invalid" fill="outline" expand="full">{{ 'guardar' | translate }}</ion-button>
+                </ion-col>
+
+                <ion-col size="12" *ngIf="this.helperService.isValidValue(actividadData.id)">
+                    <ion-button color="macana" type="submit" [disabled]="formulario.invalid" fill="outline" expand="full">{{ 'editar' | translate }}</ion-button>
+                </ion-col>
+
+
+                <ion-col size="12" *ngIf="this.helperService.isValidValue(actividadData.id)">
+                    <ion-button color="macana" fill="outline" expand="full" (click)="deleteActividadData();">{{ 'eliminar' | translate }}</ion-button>
+                </ion-col>
+
+                <ion-col size="12">
+                    <ion-button color="macana" fill="outline" routerLink="/actividad" expand="full">{{ 'regresar' | translate }}</ion-button>
+                </ion-col>
+            </ion-row>
+
+
+        </ion-grid>
+    </form>
+</ion-content>

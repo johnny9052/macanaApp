@@ -131,4 +131,26 @@ export class ClimatologicoService {
       }
     );
   }
+
+  getPDFClimatologico() {
+    window.open(
+      this.baseUrl + "Controller/Climatologico/CtClimatologico.php?action=generatePDFList",
+      "_system",
+      "location=yes"
+    );
+  }
+
+  getCSVClimatologico(caracter: string) {
+    // console.log(this.baseUrl +
+    //   "Controller/Cronograma/CtlACronograma.php?action=reportCSVList&caracter=" +
+    //   caracter);
+    window.open(
+      this.baseUrl +
+        "Controller/Climatologico/CtClimatologico.php?action=reportCSVList&caracter=" +
+        caracter,
+      "_system",
+      "location=yes"
+    );
+  }
+
 }

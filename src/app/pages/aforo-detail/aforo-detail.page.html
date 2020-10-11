@@ -13,7 +13,6 @@
 
             <ion-item>
                 <ion-label>{{ 'potrero' | translate }}*</ion-label>
-
                 <ion-select placeholder="Seleccione" [(ngModel)]="aforoData.idpotrero" name="potreroAforo">
                     <ion-select-option *ngFor="let potrero of potreros" value="{{potrero.id}}">{{potrero.numero}}</ion-select-option>
                 </ion-select>
@@ -142,8 +141,10 @@
             </ion-item>
 
             <ion-item>
+                <strong>
                 <ion-label position="floating">{{ 'totalMetroCuadrado' | translate }}* {{aforoData.totalmetrocuadrado | number: '.'}}</ion-label>
-                <ion-input type="number" name="totalMetroCuadradoAforo" required="required" disabled [(ngModel)]="aforoData.totalmetrocuadrado"></ion-input>
+                    <ion-input  type="number" name="totalMetroCuadradoAforo" required="required" disabled [(ngModel)]="aforoData.totalmetrocuadrado"></ion-input>
+                </strong>
             </ion-item>
 
             <ion-item>
