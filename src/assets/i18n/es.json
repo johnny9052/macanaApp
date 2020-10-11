@@ -30,6 +30,8 @@
     "desconectarse": "Desconectarse",
     "deseaDesconectarse": "¿Esta seguro que desea desconectarse?",
 
+    "queEsMacana": "¿Que es macana app?",
+
     "***************MENU**********************": "",
     "inicio": "Inicio",
     "usuarios": "Usuarios",
@@ -61,6 +63,8 @@
     "passwordNoCoiciden": "Los password no coinciden",
     "aceptar": "Aceptar",
     "borrar": "Borrar",
+    "guardar": "Guardar",
+    "buscar": "Buscar",
     "eliminar": "Eliminar",
     "editar": "Editar",
     "cancelar": "Cancelar",
@@ -215,5 +219,19 @@
     "***************GESTION PLAN DE MANEJO ACTIVIDAD**********************": "",
     "crearActividad": "Crear Actividad",
     "nombreActividad": "Nombre:",
-    "descripcionActividad": "Descripcion:"
+    "descripcionActividad": "Descripcion:",
+
+    "***************INSUMO FUMIGACION**********************": "",
+    "crearInsumoFumigacion": "Crear insumo",
+    "insumoFumigacion": "Insumo fumigacion",
+    "nombreInsumoFumigacion": "Nombre insumo",
+    "marcaInsumoFumigacion": "Marca insumo",
+    "presentacion": "Presentacion",
+    "planManejoFumigacion": "Plan manejo fumigacion",
+    "crearPlanManejoFumigacion": "Crear plan manejo",
+    "observacionesPlanManejoFumigacion": "Observaciones",
+    "insumosFumigacion": "Insumos fumigacion",
+    "agregarInsumoFumigacion": "Agregar insumos fumigacion",
+    "guardarInsumo": "Guardar insumo",
+    "fumigacion": "Fumigacion"
 }

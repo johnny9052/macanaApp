@@ -1,35 +1,33 @@
 <!-- Componente del header que recibe el titulo que se mostrara, para que este sea reconocido, en el modulo 
 se debe agregar el components-->
-<app-header-login
-  titulo="{{ 'macanaTitulo' | translate }}"
-></app-header-login>
-
+<app-header-login titulo="{{ 'macanaTitulo' | translate }}"></app-header-login>
 
 <ion-content padding="padding">
   <!-- Con el position floating da el efecto de materalized, en 
   donde se selecciona la caja de texto, y sube el texto como el placeholder -->
 
   <!-- Cuando se hace un submit, se ejecuta el metodo identify -->
-  <form
-    #formulario="ngForm"
-    (ngSubmit)="identify()"
-  >
+  <form #formulario="ngForm" (ngSubmit)="identify()">
     <!-- Inicio del formulario del logIn -->
     <ion-list>
       <ion-item>
-        <ion-label position="floating">{{ 'ingreseUsuario' | translate }}</ion-label>
+        <ion-label position="floating"
+          >{{ 'ingreseUsuario' | translate }}</ion-label
+        >
 
         <!-- El ngModel asocia el campo al atributo definido en el .ts -->
         <ion-input
           name="username"
           type="text"
-          required="required"          
+          required="required"
           [(ngModel)]="userDataLogIn.username"
         ></ion-input>
       </ion-item>
 
       <ion-item>
-        <ion-label position="floating">{{ 'ingresePassword' | translate }}</ion-label>
+        <ion-label position="floating"
+          >{{ 'ingresePassword' | translate }}</ion-label
+        >
 
         <ion-input
           type="Password"
@@ -51,11 +49,31 @@ se debe agregar el components-->
             color="macana"
             type="submit"
             [disabled]="formulario.invalid"
-          >{{ 'acceder' | translate }}</ion-button>
+            >{{ 'acceder' | translate }}</ion-button
+          >
         </ion-col>
       </ion-row>
 
+      <br />
+
+      <ion-row>
+        <ion-col size="12">
+          <div class="ion-text-center">
+                        
+            <ion-button routerLink="/info-macana" fill="clear">
+              <a
+                target="_blank"
+                style="text-decoration: none; color: black;"
+                
+              >
+              {{ 'queEsMacana' | translate }}
+              </a>
+
+            </ion-button>
+            
+          </div>
+        </ion-col>
+      </ion-row>
     </ion-grid>
   </form>
 </ion-content>
-

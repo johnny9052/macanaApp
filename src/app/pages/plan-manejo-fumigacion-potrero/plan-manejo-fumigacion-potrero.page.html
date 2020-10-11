@@ -1,0 +1,53 @@
+<app-header-modal titulo="{{ 'planManejoFumigacion' | translate }}"></app-header-modal>
+
+<ion-content padding="padding">
+  <!-- Con el position floating da el efecto de materalized, en 
+            donde se selecciona la caja de texto, y sube el texto como el placeholder -->
+
+  <form
+    #formulario="ngForm"
+    (ngSubmit)="enviarDatosAlFormulario()"
+  >
+    <ion-list>
+      <ion-item>
+        <ion-label>{{ 'potrero' | translate }}</ion-label>
+
+        <ion-select
+          placeholder="{{ 'seleccione' | translate }}"
+          name="idPotrero"
+          [(ngModel)]="potrero.idpotrero"
+          required="required"
+        >
+          <ion-select-option
+            *ngFor="let potrero of potreros"
+            value="{{potrero.id}}"
+          >{{potrero.numero}}</ion-select-option>
+        </ion-select>
+      </ion-item>
+
+    </ion-list>
+
+    <ion-grid fixed="fixed">
+      <ion-row class="ion-text-center">
+        <ion-col size="12">
+          <ion-button
+            color="macana"
+            type="submit"
+            [disabled]="formulario.invalid"
+            expand="full"
+          >
+            {{ 'guardarPotrero' | translate }}
+          </ion-button>
+        </ion-col>
+
+        <ion-col size="12">
+          <ion-button
+            color="macana"
+            (click)="cerrarModal()"
+            expand="full"
+          >{{ 'cancelar' | translate }}</ion-button>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+  </form>
+</ion-content>

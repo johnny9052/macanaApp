@@ -1,0 +1,52 @@
+<app-header titulo="{{ 'insumoFumigacion' | translate }}"></app-header>
+
+<ion-content padding="padding">
+    <form #formulario="ngForm" (ngSubmit)="saveInsumoFumigacionData()">
+        <ion-list>
+
+            <ion-item>
+                <ion-label position="floating">{{ 'nombreInsumoFumigacion' | translate }}*</ion-label>
+                <ion-input type="text" name="nombreInsumoFumigacion" required="required" [(ngModel)]="insumoFumigacionData.nombre"></ion-input>
+            </ion-item>
+
+            <ion-item>
+                <ion-label position="floating">{{ 'marcaInsumoFumigacion' | translate }}</ion-label>
+                <ion-input type="text" name="marcaInsumoFumigacion" [(ngModel)]="insumoFumigacionData.marca">
+                </ion-input>
+            </ion-item>
+
+            <ion-item>
+                <ion-label position="floating">{{ 'presentacion' | translate }}</ion-label>
+                <ion-select placeholder="Seleccione" [(ngModel)]="insumoFumigacionData.idpresentacion" name="presentacion">
+                    <ion-select-option *ngFor="let presentacion of presentaciones" value="{{presentacion.id}}">{{presentacion.nombre}}
+                    </ion-select-option>
+
+                </ion-select>
+            </ion-item>
+
+        </ion-list>
+
+        <ion-grid fixed="fixed">
+            <ion-row class="ion-text-center">
+                <ion-col size="12" *ngIf="!this.helperService.isValidValue(insumoFumigacionData.id)">
+                    <ion-button color="macana" type="submit" [disabled]="formulario.invalid" fill="outline" expand="full">{{ 'guardar' | translate }}</ion-button>
+                </ion-col>
+
+                <ion-col size="12" *ngIf="this.helperService.isValidValue(insumoFumigacionData.id)">
+                    <ion-button color="macana" type="submit" [disabled]="formulario.invalid" fill="outline" expand="full">{{ 'editar' | translate }}</ion-button>
+                </ion-col>
+
+
+                <ion-col size="12" *ngIf="this.helperService.isValidValue(insumoFumigacionData.id)">
+                    <ion-button color="macana" fill="outline" expand="full" (click)="deleteInsumoFumigacionData();">{{ 'eliminar' | translate }}</ion-button>
+                </ion-col>
+
+                <ion-col size="12">
+                    <ion-button color="macana" fill="outline" routerLink="/insumo-fumigacion" expand="full">{{ 'regresar' | translate }}</ion-button>
+                </ion-col>
+            </ion-row>
+
+
+        </ion-grid>
+    </form>
+</ion-content>
