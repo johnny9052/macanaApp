@@ -31,6 +31,7 @@ import { TranslateLoader, TranslateModule } from '@ngx-translate/core';
 import { TranslateHttpLoader } from '@ngx-translate/http-loader';
 import { PipesModule } from './pipes/pipes.module';
 import { DatePipe } from '@angular/common';
+import { TabsPage } from './pages/tabs/tabs.page';
 
 /*Para instalar cordova en el proyecto
 ionic cordova plugin add cordova-plugin-advanced-http
@@ -62,6 +63,7 @@ npm install @ionic-native/http*/
     Camera,
     DatePipe,
     Base64,
+    TabsPage,
     { provide: RouteReuseStrategy, useClass: IonicRouteStrategy }
   ],
   bootstrap: [AppComponent]

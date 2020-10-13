@@ -151,13 +151,10 @@ const routes: Routes = [
     path: 'plan-manejo-fumigacion-detail',
     loadChildren: () => import('./pages/plan-manejo-fumigacion-detail/plan-manejo-fumigacion-detail.module').then( m => m.PlanManejoFumigacionDetailPageModule)
   },
-
   {
     path: 'plan-manejo-fumigacion-operario',
     loadChildren: () => import('./pages/plan-manejo-fumigacion-operario/plan-manejo-fumigacion-operario.module').then( m => m.PlanManejoFumigacionOperarioPageModule)
   },
-
- 
   {
     path: 'insumo-fumigacion-detail',
     loadChildren: () => import('./pages/insumo-fumigacion-detail/insumo-fumigacion-detail.module').then( m => m.InsumoFumigacionDetailPageModule)

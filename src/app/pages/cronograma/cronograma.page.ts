@@ -16,18 +16,16 @@ import { ActividadService } from '../../services/actividad.service';
   styleUrls:    ['./cronograma.page.scss'],
 })
 // implements OnInit
-export class CronogramaPage  {
-
+export class CronogramaPage implements OnInit  {
+ /* Se obtiene la url global definida en el archivo environment*/
+ baseUrl = environment.baseUrl;
 
   OrdenActi: string[] = ['Fertilizar','Fumigar', 'Rotar', 'Otros'];
-
-  
 
   // variable para clasificar las tareas pendientes de la terminadas
   estado: string = "1";
 
-  /* Se obtiene la url global definida en el archivo environment*/
-  baseUrl = environment.baseUrl;
+ 
 
   /*Se define una lista de objetos de tipo Rol*/
   cronogramas:   ModelCronograma[] = [];
