@@ -161,11 +161,11 @@ export class UsuariosDetailPage implements OnInit {
       this.helperService.fixNotRequiredValueByCharacter(this.userData.foto)
     );
 
-    console.log(
-      "************************FOTO**************" +
-        this.helperService.fixNotRequiredValueByCharacter(this.userData.foto) +
-        "************************ENDFOTO**************"
-    );
+    // console.log(
+    //   "************************FOTO**************" +
+    //     this.helperService.fixNotRequiredValueByCharacter(this.userData.foto) +
+    //     "************************ENDFOTO**************"
+    // );
 
     /*Esta variable se utiliza como una copia de la ruta original de la foto, ya que una es la ruta que queda en
     la base de datos, y otra la que se estructura para cargar la imagen desde el app*/
@@ -176,22 +176,22 @@ export class UsuariosDetailPage implements OnInit {
       )
     );
 
-    console.log(
-      "************************FOTO COPIA RUTA ORIGINAL**************" +
-        this.helperService.fixNotRequiredValue(
-          this.userData.foto_copia_ruta_original
-        ) +
-        "************************END FOTO COPIA RUTA ORIGINAL**************"
-    );
+    // console.log(
+    //   "************************FOTO COPIA RUTA ORIGINAL**************" +
+    //     this.helperService.fixNotRequiredValue(
+    //       this.userData.foto_copia_ruta_original
+    //     ) +
+    //     "************************END FOTO COPIA RUTA ORIGINAL**************"
+    // );
 
     /*Valor boleando que indica si se actualizo o no una foto*/
     postDataObj.append("seActualizoFoto", this.editoImagen.toString());
 
-    console.log(
-      "************************SE ACTUALIZO FOTO**************" +
-        this.editoImagen.toString() +
-        "************************END SE ACTUALIZO FOTO**************"
-    );
+    // console.log(
+    //   "************************SE ACTUALIZO FOTO**************" +
+    //     this.editoImagen.toString() +
+    //     "************************END SE ACTUALIZO FOTO**************"
+    // );
 
     /*Se valida si se genero una foto a base64, sino es asi se reemplaza por un -1*/
     this.userData.fotoBase64 = this.helperService.isValidValue(
@@ -212,11 +212,11 @@ export class UsuariosDetailPage implements OnInit {
       this.userData.fotoBase64.replace("data:image/jpeg;base64,", "")
     );
 
-    console.log(
-      "************************BASE64 FILE**************" +
-        this.userData.fotoBase64.replace("data:image/jpeg;base64,", "") +
-        "************************END BASE64 FILE**************"
-    );
+    // console.log(
+    //   "************************BASE64 FILE**************" +
+    //     this.userData.fotoBase64.replace("data:image/jpeg;base64,", "") +
+    //     "************************END BASE64 FILE**************"
+    // );
 
     /*Al igual que el anterior, se almacena el nombre del archivo convertido en base64 para ser generado en el lado del 
     servidor*/
@@ -232,11 +232,11 @@ export class UsuariosDetailPage implements OnInit {
       ? this.userData.fotoNombreBase64
       : "-1";
 
-    console.log(
-      "************************OJOOOOO**************" +
-        zzz +
-        "************************OJOOOOO**************"
-    );
+    // console.log(
+    //   "************************OJOOOOO**************" +
+    //     zzz +
+    //     "************************OJOOOOO**************"
+    // );
 
     /*Cada vez que se elimina o actualiza una imagen, se anaden al array imagenesEliminar, aqui se recorre una a una
     para anadirlas dinamicamente y se eliminan todas en el webService*/
@@ -244,11 +244,11 @@ export class UsuariosDetailPage implements OnInit {
     for (let x = 0; x < this.imagenesEliminar.length; x++) {
       postDataObj.append("nameFileDelete" + x, this.imagenesEliminar[x]);
 
-      console.log(
-        "************************NAME FILE DELETE**************" +
-          this.imagenesEliminar[x] +
-          "************************END NAME FILE DELETE**************"
-      );
+      // console.log(
+      //   "************************NAME FILE DELETE**************" +
+      //     this.imagenesEliminar[x] +
+      //     "************************END NAME FILE DELETE**************"
+      // );
     }
 
     /*************END SECCION DE INFORMACION DE LAS FOTOS************************************/

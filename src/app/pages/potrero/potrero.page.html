@@ -20,11 +20,12 @@
             <img src="{{baseUrl}}Resource/Images/Users/avatar_2x2.png" />
         </ion-avatar>
         <ion-label>
-            <h3>Numero Potrero: </h3>
-            <h3 slot="start">
-                {{potrero.numero}}
-            </h3>
-            <p>Area: {{potrero.area | number: '.'}}</p>
+            <h3>Potrero Numero: {{potrero.numero}} </h3>
+            <p>
+                {{potrero.nombre_rotacion}}
+                <br> Area: {{potrero.area | number: '.'}}
+            </p>
+
         </ion-label>
     </ion-item>
 </ion-content>

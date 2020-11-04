@@ -8,6 +8,7 @@ export interface ModelPotrero {
     estado: boolean;
     idresponsable: string;
     cantvacas: string;
-    ordenrotacion: string;
+    ordenrotacion: string; 
+    nombre_rotacion: string;
   }
   

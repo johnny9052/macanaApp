@@ -23,7 +23,7 @@ export class PotreroDetailPage implements OnInit {
 
   /****************OBJETOS************************** */
   potreroData = {} as ModelPotrero;
-  rotaciones: ModelRotacion[] = [];
+  rotaciones  : ModelRotacion[] = [];
   /****************END OBJETOS************************** */
 
   /********************INYECCION DE DEPENDENCIAS********* */
@@ -31,14 +31,14 @@ export class PotreroDetailPage implements OnInit {
      rolService: Servicio para el consumo de web services del perfil
      AlertController: Permite mostrar alerts emergentes en pantalla */
   constructor(
-    private blockAccess: BlockAccessService,
-    public helperService: HelperService,
-    public potreroService: PotreroService,
-    public alertCtrl: AlertController,
-    private route: ActivatedRoute,
-    private router: Router,
-    public rotacionesService: RotacionesService,
-    private translate: TranslateService
+    private blockAccess       : BlockAccessService,
+    public  helperService     : HelperService,
+    public  potreroService    : PotreroService,
+    public  alertCtrl         : AlertController,
+    private route             : ActivatedRoute,
+    private router            : Router,
+    public  rotacionesService : RotacionesService,
+    private translate         : TranslateService
   ) {
     this.route.queryParams.subscribe((params) => {
       if (this.router.getCurrentNavigation().extras.state) {
@@ -47,11 +47,9 @@ export class PotreroDetailPage implements OnInit {
         this.potreroData.area           = this.router.getCurrentNavigation().extras.state.area;
         this.potreroData.observacion    = this.router.getCurrentNavigation().extras.state.observacion;
         this.idRotacionTemp             = this.router.getCurrentNavigation().extras.state.idrotacion;
-        this.potreroData.idresponsable  = this.router.getCurrentNavigation().extras.state.idresponsable;
         this.potreroData.estado         = this.router.getCurrentNavigation().extras.state.estado;
         this.potreroData.ordenrotacion  = this.router.getCurrentNavigation().extras.state.ordenrotacion
-        
-        console.log("El orden  es "+ this.potreroData.ordenrotacion);
+        this.potreroData.idresponsable  = this.router.getCurrentNavigation().extras.state.idresponsable;
       }
     });    
   }

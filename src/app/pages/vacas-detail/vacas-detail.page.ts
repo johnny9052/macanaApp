@@ -28,10 +28,10 @@ export class VacasDetailPage implements OnInit {
   idTipoTemp;
 
   /****************OBJETOS************************** */
-  vacaData = {} as ModelVaca;
-  rotaciones: ModelRotacion[] = [];
-  sexos: ModelSexoVaca[] = [];
-  razas: ModelRazaVaca[] = [];
+  vacaData   = {} as ModelVaca;
+  rotaciones : ModelRotacion[] = [];
+  sexos      : ModelSexoVaca[] = [];
+  razas      : ModelRazaVaca[] = [];
   tiposAnimal: ModelTipoAnimalVaca[] = [];
   /****************END OBJETOS************************** */
 

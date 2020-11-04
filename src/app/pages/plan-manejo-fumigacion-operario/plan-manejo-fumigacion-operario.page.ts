@@ -46,12 +46,12 @@ HelperService: Clase utilitaria,
 Router: Dependencia para poder redireccionar de un formulario a otro
 TranslateService: Servicio para internacionalizacion*/
 constructor(
-  private blockAccess: BlockAccessService,
+  private blockAccess                : BlockAccessService,
   private planManejoFumigacionService: PlanManejoFumigacionService,
-  public helperService: HelperService,
-  private router: Router,
-  private translate: TranslateService,
-  public potrerosService: PotreroService
+  public helperService               : HelperService,
+  private router                     : Router,
+  private translate                  : TranslateService,
+  public potrerosService             : PotreroService
 ) {}
 
 /*Metodo que se ejecuta cuando se carga por primera vez el formulario*/

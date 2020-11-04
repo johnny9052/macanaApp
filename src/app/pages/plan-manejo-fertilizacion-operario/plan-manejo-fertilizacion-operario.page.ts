@@ -46,12 +46,12 @@ HelperService: Clase utilitaria,
 Router: Dependencia para poder redireccionar de un formulario a otro
 TranslateService: Servicio para internacionalizacion*/
   constructor(
-    private blockAccess: BlockAccessService,
-    private planManejoFertilizacionService: PlanManejoFertilizacionService,
-    public helperService: HelperService,
-    private router: Router,
-    private translate: TranslateService,
-    public potrerosService: PotreroService
+    private blockAccess                      : BlockAccessService,
+    private planManejoFertilizacionService   : PlanManejoFertilizacionService,
+    public  helperService                    : HelperService,
+    private router                           : Router,
+    private translate                        : TranslateService,
+    public  potrerosService                  : PotreroService
   ) {}
 
   /*Metodo que se ejecuta cuando se carga por primera vez el formulario*/
@@ -106,6 +106,7 @@ TranslateService: Servicio para internacionalizacion*/
   }
 
   getPotrero(idPlanManejo: string) {
+
     this.planPotrero.idpotrero = "";
 
     this.planManejoFertilizacionService
@@ -115,7 +116,6 @@ TranslateService: Servicio para internacionalizacion*/
           let res: any;
           res = data;
           this.potreros = JSON.parse(res.data);
-
           /*Se limpia el id del potrero para que visualmente se oculte la informacion a diligenciar*/
         },
         (error) => {
@@ -137,14 +137,13 @@ TranslateService: Servicio para internacionalizacion*/
         (data) => {
           let res: any;
           res = data;
-          // console.log(res);
           // Se obtiene la informacio
           this.fertilizantes = JSON.parse(res.data);
 
           this.actualizarTamanio();
         },
         (error) => {
-          // console.log('oops', error);
+          console.log('oops', error);
         }
       );
   }

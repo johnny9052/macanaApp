@@ -101,7 +101,7 @@ export class PotreroPage implements OnInit {
     });
   }
 
-  /*Metodo que envia los datos de un rol seleccionado en particular a otro formulario,
+  /*Metodo que envia los datos de un potrero seleccionado en particular a otro formulario,
   encapsulando los datos en un NavigationExtras*/
   viewPotrero(id: string, numero: string, area: string, observacion: string, idrotacion: string, estado: boolean, ordenrotacion: string) {
     /*Se encapsulan los datos en el extra, definiendo un objeto llamado state y su

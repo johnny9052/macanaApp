@@ -46,7 +46,6 @@ export class UsuariosService {
     /*Se envian los datos al servidor, enviando la url, los datos y la configuracion necesaria del header*/
     this.http.post(url, postData).subscribe(
       data => {
-        console.log(data);
         /*Se Oculta la barra de carga tan pronto se recibe una respuesta*/
         this.helperService.ocultarBarraCarga();
         /*Se define una variable local para recibir la respuesta*/
